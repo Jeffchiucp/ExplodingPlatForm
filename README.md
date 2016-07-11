@@ -1,6 +1,7 @@
 # ExplodingPlatForm
 
-[Goal of the game is to jump to the next platform and avoid the explosion]
+[Goal of the game]
+Player can have fun, engaging mission to rescue different treasure from different explosion.
 
 
 ## Table of Contents
@@ -20,6 +21,14 @@
 * [Week 5](#week-5)
 * [Week 6](#week-6)
 
+#### Game Design
+This is platform jumping game for one superhero who is going through 
+Epic explosion, and facing challenges and Rewards as he explores the tower.
+
+
+#### Game Objective
+Player is the hero who is in a mission to rescue different treasure from explosion.
+
 
 ### Technical
 
@@ -30,8 +39,10 @@
 [describe the control scheme used in the game]
 
 #### Level Design
-[describe what a typical level or puzzle would look like]
-
+Level 1
+Rescue 5 objects 
+Level 2
+Rescue all 10 objects 
 [Back to top ^](#)
 
 
@@ -41,10 +52,12 @@
 #### Week 1
 _planing your game_
 * [goals for the week]
+Set up the Game play
 
 #### Week 2
 _finishing a playable build_
 * [goals for the week, should be finishing a playable game]
+Work on the Game Mechanics
 
 #### Week 3
 * [goals for the week]
