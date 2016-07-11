@@ -7,8 +7,21 @@
 //
 
 import SpriteKit
+import CoreMotion
 
-
+func setupCoreMotion() {
+    let motionManager = CMMotionManager()
+    var xAcceleration = CGFloat(0)
+    
+    motionManager.accelerometerUpdateInterval = 0.2
+    let queue = NSOperationQueue()
+    motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue) { (<#CMAccelerometerData?#>, <#NSError?#>) in
+        <#code#>
+    }
+    
+    
+    }
+    
 struct PhysicsCategory {
     static let None: UInt32              = 0
     static let Player: UInt32            = 0b1      // 1

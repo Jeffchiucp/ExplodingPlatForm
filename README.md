@@ -45,7 +45,7 @@ Player is the hero who is in a mission to rescue different treasure from explosi
 #### Scenes
 * [list the different scenes/screens used in the game]
 
-Same scene 
+List of Prototype and Game Design
 
 #### Controls/Input
 [describe the control scheme used in the game]
@@ -55,6 +55,8 @@ Level 1
 Player rescue 5 objects 
 Level 2
 Player rescue all 10 objects 
+Level 3
+Collect all of the power equipment to upgrade to reach safety
 [Back to top ^](#)
 
 
@@ -64,20 +66,35 @@ Player rescue all 10 objects
 #### Week 1
 _planing your game_
 * [goals for the week]
-Set up the Game play, game prototype
+Set up the Game play and think through the game prototype for the game. Come up with GamePlay and MockUp for the Game. 
+Building up a prototype
 
 #### Week 2
-* [goals for the week, should be finishing a playable game]
-Work on the Game Mechanics and prototype
-_finishing a playable build_
+* [goals for the week]
+Starting on the Game Mechanics and core gameplay:
+
+- Adding randomized platform 
+- Adding Coins
+- Implementing touch events to Start the Game.
+- Adding Physics and Collision and Detection so that the marine can jump to platforms collect coins;
+- Implementing code to read the device accelerometer data to steer the Hero;
+- Creating methods to handle the camera node so that it follows the player sprite;
 
 #### Week 3
 * [goals for the week]
-_finishing a playable build_
+_finishing a playable build including the following:
+
+- Adding randomized platform 
+- Adding Coins
+- Implementing touch events to Start the Game.
+- Adding Physics and Collision and Detection so that the marine can jump to platforms collect coins;
+- Implementing code to read the device accelerometer data to steer the Hero;
+- Creating methods to handle the camera node so that it follows the player sprite;
 
 
 #### Week 4
 * [goals for the week, should be finishing all core gameplay]
+User Testing and review
 
 #### Week 5
 _starting the polish_
