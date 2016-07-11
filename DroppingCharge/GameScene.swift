@@ -40,7 +40,6 @@ class GameScene: SKScene {
         
     }
     
-    setCameraPosition(CGPoint(x: size.width/2, y: size.height/2))
 
 
 //set gameCamera

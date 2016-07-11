@@ -29,20 +29,32 @@ Epic explosion, and facing challenges and Rewards as he explores the tower.
 #### Game Objective
 Player is the hero who is in a mission to rescue different treasure from explosion.
 
+###[Gameplay Mechanics](#gameplay-mechanics)
 
-### Technical
+- Adding randomized platform and Coins
+- Implementing touch events to Start the Game.
+- Adding Physics and Collision and Detection so that the marine can jump to platforms collect coins;
+
+- Implementing code to read the device accelerometer data to steer the Hero;
+- Creating methods to handle the camera node so that it follows the player sprite;
+
+- Implement code to get the fire flowing;
+
+- Adding code to continuously repeat the background, platforms and coins;
 
 #### Scenes
 * [list the different scenes/screens used in the game]
+
+Same scene 
 
 #### Controls/Input
 [describe the control scheme used in the game]
 
 #### Level Design
 Level 1
-Rescue 5 objects 
+Player rescue 5 objects 
 Level 2
-Rescue all 10 objects 
+Player rescue all 10 objects 
 [Back to top ^](#)
 
 
@@ -52,15 +64,17 @@ Rescue all 10 objects
 #### Week 1
 _planing your game_
 * [goals for the week]
-Set up the Game play
+Set up the Game play, game prototype
 
 #### Week 2
-_finishing a playable build_
 * [goals for the week, should be finishing a playable game]
-Work on the Game Mechanics
+Work on the Game Mechanics and prototype
+_finishing a playable build_
 
 #### Week 3
 * [goals for the week]
+_finishing a playable build_
+
 
 #### Week 4
 * [goals for the week, should be finishing all core gameplay]
