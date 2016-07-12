@@ -39,7 +39,6 @@ Player is the hero who is in a mission to rescue different treasure from explosi
 - Creating methods to handle the camera node so that it follows the player sprite;
 
 - Implement code to get the fire flowing;
-
 - Adding code to continuously repeat the background, platforms and coins;
 
 #### Scenes
@@ -68,11 +67,12 @@ _planing your game_
 * [goals for the week]
 Set up the Game play and think through the game prototype for the game. Come up with GamePlay and MockUp for the Game. 
 Building up a prototype
+- Adding platform 
+- placing the nodes and platform overlays to set up in the scene editor.
 
 #### Week 2
 * [goals for the week]
 Starting on the Game Mechanics and core gameplay:
-
 - Adding randomized platform 
 - Adding Coins
 - Implementing touch events to Start the Game.
