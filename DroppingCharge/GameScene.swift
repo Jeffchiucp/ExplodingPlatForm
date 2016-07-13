@@ -67,6 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var xAcceleration = CGFloat(0)
     var lastUpdateTimeInterval: NSTimeInterval = 0
     var deltaTime: NSTimeInterval = 0
+    var isPlaying: Bool = false
     
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
@@ -88,11 +89,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         setupNodes()
         setupLevel()
+        // This code will center the camera. To make sure that the camera is tracking y
         setCameraPosition(CGPoint(x: size.width/2, y: size.height/2))
+        updateCamera()
         setupCoreMotion()
         physicsWorld.contactDelegate = self
-        
         gameState.enterState(WaitingForTap)
+        setupPlayer()
         //playerState.enterState(Idle)
         
     }
@@ -111,6 +114,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     (self.xAcceleration * 0.25)
         })
     }
+    
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event:
+        UIEvent?) {
+        if !isPlaying {
+            bombDrop() }
+    }
+    func bombDrop() {
+        let scaleUp = SKAction.scaleTo(1.25, duration: 0.25)
+        let scaleDown = SKAction.scaleTo(1.0, duration: 0.25)
+        let sequence = SKAction.sequence([scaleUp, scaleDown])
+        let repeatSeq = SKAction.repeatActionForever(sequence)
+        fgNode.childNodeWithName("Bomb")!.runAction(SKAction.unhide())
+        fgNode.childNodeWithName("Bomb")!.runAction(repeatSeq)
+        runAction(SKAction.sequence([
+            SKAction.waitForDuration(2.0),
+            SKAction.runBlock(startGame)
+            ]))
+    }
+    func startGame() {
+        fgNode.childNodeWithName("Title")!.removeFromParent()
+        fgNode.childNodeWithName("Bomb")!.removeFromParent()
+        isPlaying = true
+    }
+    
     func updatePlayer() {
         // Set velocity based on core motion
         player.physicsBody?.velocity.dx = xAcceleration * 1000.0
@@ -204,6 +232,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         levelY += backHeight
     }
     
+    func setupPlayer() {
+        player.physicsBody = SKPhysicsBody(circleOfRadius:
+            player.size.width * 0.3)
+        player.physicsBody!.dynamic = false
+        player.physicsBody!.allowsRotation = false
+        player.physicsBody!.categoryBitMask = 0
+        player.physicsBody!.collisionBitMask = 0
+    }
+    
     
     func setupNodes() {
         let worldNode = childNodeWithName("World")!
@@ -237,6 +274,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        
  }
     
+    
+    
+    //falling off the platform like that.
+    func setPlayerVelocity(amount:CGFloat) {
+        let gain: CGFloat = 1.5
+        player.physicsBody!.velocity.dy =
+            max(player.physicsBody!.velocity.dy, amount * gain)
+    }
+    func jumpPlayer() {
+        setPlayerVelocity(650)
+    }
+    func boostPlayer() {
+        setPlayerVelocity(1200)
+    }
+    func superBoostPlayer() {
+        setPlayerVelocity(1700)
+    }
+    
     //This method places the platform right below the player, and updates lastItemPosition and lastItemHeight appropriately
     func setupLevel() {
         // Place initial platform
@@ -254,5 +309,48 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         while lastItemPosition.y < levelY {
             addRandomOverlayNode()
         }
+        
+        
+    }
+    func updateLava(dt: NSTimeInterval) {
+        // 1
+        let lowerLeft = CGPoint(x: 0, y: cameraNode.position.y -
+            (size.height / 2))
+        // 2
+        let visibleMinYFg = scene!.convertPoint(lowerLeft, toNode:
+            fgNode).y
+        // 3
+        let lavaVelocity = CGPoint(x: 0, y: 120)
+        let lavaStep = lavaVelocity * CGFloat(dt)
+        var newPosition = lava.position + lavaStep
+        // 4
+        newPosition.y = max(newPosition.y, (visibleMinYFg - 125.0))
+        // 5
+        lava.position = newPosition
+    }
+    
+    func updateCollisionLava() {
+        if player.position.y < lava.position.y + 90 {
+            boostPlayer()
+        }
+    }
+    
+    // Contact Collision
+    func didBeginContact(contact: SKPhysicsContact) {
+        let other = contact.bodyA.categoryBitMask ==
+            PhysicsCategory.Player ? contact.bodyB : contact.bodyA
+        switch other.categoryBitMask {
+        case PhysicsCategory.CoinNormal:
+            if let coin = other.node as? SKSpriteNode {
+                coin.removeFromParent()
+                jumpPlayer()
+            }
+        case PhysicsCategory.PlatformNormal:
+            if let _ = other.node as? SKSpriteNode {
+                if player.physicsBody!.velocity.dy < 0 {
+                    jumpPlayer()
+                }
+            } default:
+                break; }
     }
 }
