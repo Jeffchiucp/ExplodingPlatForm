@@ -89,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupNodes()
         //setupLevel()
         setCameraPosition(CGPoint(x: size.width/2, y: size.height/2))
-        //setupCoreMotion()
+        setupCoreMotion()
         physicsWorld.contactDelegate = self
         
         gameState.enterState(WaitingForTap)
@@ -97,6 +97,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func setupCoreMotion() {
+        motionManager.accelerometerUpdateInterval = 0.2
+        let queue = NSOperationQueue()
+        motionManager.startAccelerometerUpdatesToQueue(queue, withHandler:
+            {
+                accelerometerData, error in
+                guard let accelerometerData = accelerometerData else {
+                    return
+                }
+                let acceleration = accelerometerData.acceleration
+                self.xAcceleration = (CGFloat(acceleration.x) * 0.75) +
+                    (self.xAcceleration * 0.25)
+        })
+    }
+    func updatePlayer() {
+        // Set velocity based on core motion
+        player.physicsBody?.velocity.dx = xAcceleration * 1000.0
+        // Wrap player around edges of screen
+        var playerPosition = convertPoint(player.position,
+                                          fromNode: fgNode)
+        if playerPosition.x < -player.size.width/2 {
+            playerPosition = convertPoint(CGPoint(x: size.width +
+                player.size.width/2, y: 0.0), toNode: fgNode)
+            player.position.x = playerPosition.x
+        }
+        else if playerPosition.x > size.width + player.size.width/2 {
+            playerPosition = convertPoint(CGPoint(x:
+                -player.size.width/2, y: 0.0), toNode: fgNode)
+            player.position.x = playerPosition.x
+        }
+    }
     func overlapAmount() -> CGFloat {
         guard let view = self.view else {
             return 0 }
@@ -110,6 +141,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             x: cameraNode.position.x + overlapAmount()/2,
             y: cameraNode.position.y)
     }
+    override func update(currentTime: NSTimeInterval) {
+        updatePlayer()
+    }
     func setCameraPosition(position: CGPoint) {
         cameraNode.position = CGPoint(
             x: position.x - overlapAmount()/2,
@@ -119,6 +153,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 1
         let cameraTarget = convertPoint(player.position,
                                         fromNode: fgNode)
+        // 2
+        var targetPosition = CGPoint(x: getCameraPosition().x,
+                                     y: cameraTarget.y - (scene!.view!.bounds.height * 0.40))
+        // 3
+        let diff = targetPosition - getCameraPosition()
+        // 4
+        let lerpValue = CGFloat(0.05)
+        let lerpDiff = diff * lerpValue
+        let newPosition = getCameraPosition() + lerpDiff
+        // 5
+        setCameraPosition(CGPoint(x: size.width/2, y: newPosition.y))
+    }
+    
+    func loadOverlayNode(fileName: String) -> SKSpriteNode {
+        let overlayScene = SKScene(fileNamed: fileName)!
+        let contentTemplateNode = overlayScene.childNodeWithName("Overlay")
+        
+        return contentTemplateNode as! SKSpriteNode
     }
     
     func setupNodes() {
@@ -133,6 +185,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(cameraNode)
         camera = cameraNode
         
-
+        platformArrow = loadOverlayNode("PlatformArrow")
+        platform5Across = loadOverlayNode("Platform5Across")
+        platformDiagonal = loadOverlayNode("PlatformDiagonal")
+        breakArrow = loadOverlayNode("BreakArrow")
+        break5Across = loadOverlayNode("Break5Across")
+        breakDiagonal = loadOverlayNode("BreakDiagonal")
+        //coinRef = loadOverlayNode("Coin")
+//        coinSpecialRef = loadOverlayNode("CoinSpecial")
+//        coin5Across = loadCoinOverlayNode("Coin5Across")
+//        coinDiagonal = loadCoinOverlayNode("CoinDiagonal")
+//        coinCross = loadCoinOverlayNode("CoinCross")
+//        coinArrow = loadCoinOverlayNode("CoinArrow")
+//        coinS5Across = loadCoinOverlayNode("CoinS5Across")
+//        coinSDiagonal = loadCoinOverlayNode("CoinSDiagonal")
+//        coinSCross = loadCoinOverlayNode("CoinSCross")
+//        coinSArrow = loadCoinOverlayNode("CoinSArrow")
+//        
  }
 }
