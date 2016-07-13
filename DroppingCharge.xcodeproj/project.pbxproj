@@ -7,6 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		102AF05D1D36B52000496991 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF05C1D36B52000496991 /* GameOver.swift */; };
+		102AF05F1D36B5BA00496991 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF05E1D36B5BA00496991 /* Play.swift */; };
+		102AF0611D36B5D800496991 /* WaitingForBomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0601D36B5D800496991 /* WaitingForBomb.swift */; };
+		102AF0641D36B6C500496991 /* WaitingForTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0631D36B6C500496991 /* WaitingForTap.swift */; };
+		102AF0661D36BB1700496991 /* Idle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0651D36BB1700496991 /* Idle.swift */; };
+		102AF0681D36BB5100496991 /* Jump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0671D36BB5100496991 /* Jump.swift */; };
+		102AF06A1D36BB7E00496991 /* Fall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0691D36BB7E00496991 /* Fall.swift */; };
+		102AF06C1D36BB8D00496991 /* Lava.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF06B1D36BB8D00496991 /* Lava.swift */; };
+		102AF06E1D36BB9900496991 /* Dead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF06D1D36BB9900496991 /* Dead.swift */; };
+		102AF0821D36BCC800496991 /* Break5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF06F1D36BCC800496991 /* Break5Across.sks */; };
+		102AF0831D36BCC800496991 /* BreakArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0701D36BCC800496991 /* BreakArrow.sks */; };
+		102AF0841D36BCC800496991 /* BreakDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0711D36BCC800496991 /* BreakDiagonal.sks */; };
+		102AF0851D36BCC800496991 /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0721D36BCC800496991 /* BrokenPlatform.sks */; };
+		102AF0861D36BCC800496991 /* Coin5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0731D36BCC800496991 /* Coin5Across.sks */; };
+		102AF0871D36BCC800496991 /* CoinArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0741D36BCC800496991 /* CoinArrow.sks */; };
+		102AF0881D36BCC800496991 /* CoinCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0751D36BCC800496991 /* CoinCross.sks */; };
+		102AF0891D36BCC800496991 /* CoinDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0761D36BCC800496991 /* CoinDiagonal.sks */; };
+		102AF08A1D36BCC800496991 /* CoinS5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0771D36BCC800496991 /* CoinS5Across.sks */; };
+		102AF08B1D36BCC800496991 /* CoinSArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0781D36BCC800496991 /* CoinSArrow.sks */; };
+		102AF08C1D36BCC800496991 /* CoinSCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0791D36BCC800496991 /* CoinSCross.sks */; };
+		102AF08D1D36BCC800496991 /* CoinSDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07A1D36BCC800496991 /* CoinSDiagonal.sks */; };
+		102AF08E1D36BCC800496991 /* CollectNormal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07B1D36BCC800496991 /* CollectNormal.sks */; };
+		102AF08F1D36BCC800496991 /* CollectSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07C1D36BCC800496991 /* CollectSpecial.sks */; };
+		102AF0901D36BCC800496991 /* Lava.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07D1D36BCC800496991 /* Lava.sks */; };
+		102AF0911D36BCC800496991 /* Platform5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07E1D36BCC800496991 /* Platform5Across.sks */; };
+		102AF0921D36BCC800496991 /* PlatformArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07F1D36BCC800496991 /* PlatformArrow.sks */; };
+		102AF0931D36BCC800496991 /* PlatformDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0801D36BCC800496991 /* PlatformDiagonal.sks */; };
+		102AF0941D36BCC800496991 /* PlayerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0811D36BCC800496991 /* PlayerTrail.sks */; };
 		10304D9A1D301B98007372D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10304D991D301B98007372D8 /* AppDelegate.swift */; };
 		10304D9C1D301B98007372D8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 10304D9B1D301B98007372D8 /* GameScene.sks */; };
 		10304D9E1D301B98007372D8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10304D9D1D301B98007372D8 /* GameScene.swift */; };
@@ -17,6 +45,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		102AF05C1D36B52000496991 /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOver.swift; path = ../GameOver.swift; sourceTree = "<group>"; };
+		102AF05E1D36B5BA00496991 /* Play.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Play.swift; path = ../Play.swift; sourceTree = "<group>"; };
+		102AF0601D36B5D800496991 /* WaitingForBomb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingForBomb.swift; path = ../WaitingForBomb.swift; sourceTree = "<group>"; };
+		102AF0631D36B6C500496991 /* WaitingForTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingForTap.swift; sourceTree = "<group>"; };
+		102AF0651D36BB1700496991 /* Idle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Idle.swift; path = Player/Idle.swift; sourceTree = "<group>"; };
+		102AF0671D36BB5100496991 /* Jump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Jump.swift; path = Player/Jump.swift; sourceTree = "<group>"; };
+		102AF0691D36BB7E00496991 /* Fall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fall.swift; sourceTree = "<group>"; };
+		102AF06B1D36BB8D00496991 /* Lava.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lava.swift; sourceTree = "<group>"; };
+		102AF06D1D36BB9900496991 /* Dead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dead.swift; sourceTree = "<group>"; };
+		102AF06F1D36BCC800496991 /* Break5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Break5Across.sks; path = Scene/Break5Across.sks; sourceTree = "<group>"; };
+		102AF0701D36BCC800496991 /* BreakArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = BreakArrow.sks; path = Scene/BreakArrow.sks; sourceTree = "<group>"; };
+		102AF0711D36BCC800496991 /* BreakDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = BreakDiagonal.sks; path = Scene/BreakDiagonal.sks; sourceTree = "<group>"; };
+		102AF0721D36BCC800496991 /* BrokenPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = BrokenPlatform.sks; path = Scene/BrokenPlatform.sks; sourceTree = "<group>"; };
+		102AF0731D36BCC800496991 /* Coin5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Coin5Across.sks; path = Scene/Coin5Across.sks; sourceTree = "<group>"; };
+		102AF0741D36BCC800496991 /* CoinArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinArrow.sks; path = Scene/CoinArrow.sks; sourceTree = "<group>"; };
+		102AF0751D36BCC800496991 /* CoinCross.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinCross.sks; path = Scene/CoinCross.sks; sourceTree = "<group>"; };
+		102AF0761D36BCC800496991 /* CoinDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinDiagonal.sks; path = Scene/CoinDiagonal.sks; sourceTree = "<group>"; };
+		102AF0771D36BCC800496991 /* CoinS5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinS5Across.sks; path = Scene/CoinS5Across.sks; sourceTree = "<group>"; };
+		102AF0781D36BCC800496991 /* CoinSArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinSArrow.sks; path = Scene/CoinSArrow.sks; sourceTree = "<group>"; };
+		102AF0791D36BCC800496991 /* CoinSCross.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinSCross.sks; path = Scene/CoinSCross.sks; sourceTree = "<group>"; };
+		102AF07A1D36BCC800496991 /* CoinSDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinSDiagonal.sks; path = Scene/CoinSDiagonal.sks; sourceTree = "<group>"; };
+		102AF07B1D36BCC800496991 /* CollectNormal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CollectNormal.sks; path = Scene/CollectNormal.sks; sourceTree = "<group>"; };
+		102AF07C1D36BCC800496991 /* CollectSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CollectSpecial.sks; path = Scene/CollectSpecial.sks; sourceTree = "<group>"; };
+		102AF07D1D36BCC800496991 /* Lava.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Lava.sks; path = Scene/Lava.sks; sourceTree = "<group>"; };
+		102AF07E1D36BCC800496991 /* Platform5Across.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Platform5Across.sks; path = Scene/Platform5Across.sks; sourceTree = "<group>"; };
+		102AF07F1D36BCC800496991 /* PlatformArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = PlatformArrow.sks; path = Scene/PlatformArrow.sks; sourceTree = "<group>"; };
+		102AF0801D36BCC800496991 /* PlatformDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = PlatformDiagonal.sks; path = Scene/PlatformDiagonal.sks; sourceTree = "<group>"; };
+		102AF0811D36BCC800496991 /* PlayerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = PlayerTrail.sks; path = Scene/PlayerTrail.sks; sourceTree = "<group>"; };
 		10304D961D301B98007372D8 /* DroppingCharge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DroppingCharge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10304D991D301B98007372D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10304D9B1D301B98007372D8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -39,6 +95,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		102AF0621D36B6A700496991 /* GameState */ = {
+			isa = PBXGroup;
+			children = (
+				102AF05C1D36B52000496991 /* GameOver.swift */,
+				102AF0631D36B6C500496991 /* WaitingForTap.swift */,
+				102AF05E1D36B5BA00496991 /* Play.swift */,
+				102AF0601D36B5D800496991 /* WaitingForBomb.swift */,
+			);
+			path = GameState;
+			sourceTree = "<group>";
+		};
+		102AF0951D36BDFB00496991 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				102AF06F1D36BCC800496991 /* Break5Across.sks */,
+				102AF0701D36BCC800496991 /* BreakArrow.sks */,
+				102AF0711D36BCC800496991 /* BreakDiagonal.sks */,
+				102AF0721D36BCC800496991 /* BrokenPlatform.sks */,
+				102AF0731D36BCC800496991 /* Coin5Across.sks */,
+				102AF0741D36BCC800496991 /* CoinArrow.sks */,
+				102AF0751D36BCC800496991 /* CoinCross.sks */,
+				102AF0761D36BCC800496991 /* CoinDiagonal.sks */,
+				102AF0771D36BCC800496991 /* CoinS5Across.sks */,
+				102AF0781D36BCC800496991 /* CoinSArrow.sks */,
+				102AF0791D36BCC800496991 /* CoinSCross.sks */,
+				102AF07A1D36BCC800496991 /* CoinSDiagonal.sks */,
+				102AF07B1D36BCC800496991 /* CollectNormal.sks */,
+				102AF07C1D36BCC800496991 /* CollectSpecial.sks */,
+				102AF07D1D36BCC800496991 /* Lava.sks */,
+				102AF07E1D36BCC800496991 /* Platform5Across.sks */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
 		10304D8D1D301B98007372D8 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +151,16 @@
 				10304D991D301B98007372D8 /* AppDelegate.swift */,
 				10304D9B1D301B98007372D8 /* GameScene.sks */,
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
+				102AF0951D36BDFB00496991 /* Scene */,
+				102AF07F1D36BCC800496991 /* PlatformArrow.sks */,
+				102AF0801D36BCC800496991 /* PlatformDiagonal.sks */,
+				102AF0811D36BCC800496991 /* PlayerTrail.sks */,
+				102AF0671D36BB5100496991 /* Jump.swift */,
+				102AF0651D36BB1700496991 /* Idle.swift */,
+				102AF0691D36BB7E00496991 /* Fall.swift */,
+				102AF06B1D36BB8D00496991 /* Lava.swift */,
+				102AF06D1D36BB9900496991 /* Dead.swift */,
+				102AF0621D36B6A700496991 /* GameState */,
 				10304D9F1D301B98007372D8 /* GameViewController.swift */,
 				10304DA11D301B98007372D8 /* Main.storyboard */,
 				10304DA41D301B98007372D8 /* Assets.xcassets */,
@@ -128,10 +228,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				102AF08C1D36BCC800496991 /* CoinSCross.sks in Resources */,
+				102AF08E1D36BCC800496991 /* CollectNormal.sks in Resources */,
+				102AF0821D36BCC800496991 /* Break5Across.sks in Resources */,
+				102AF0881D36BCC800496991 /* CoinCross.sks in Resources */,
+				102AF08A1D36BCC800496991 /* CoinS5Across.sks in Resources */,
+				102AF0861D36BCC800496991 /* Coin5Across.sks in Resources */,
+				102AF08B1D36BCC800496991 /* CoinSArrow.sks in Resources */,
+				102AF0891D36BCC800496991 /* CoinDiagonal.sks in Resources */,
+				102AF0871D36BCC800496991 /* CoinArrow.sks in Resources */,
 				10304D9C1D301B98007372D8 /* GameScene.sks in Resources */,
+				102AF08F1D36BCC800496991 /* CollectSpecial.sks in Resources */,
 				10304DA81D301B98007372D8 /* LaunchScreen.storyboard in Resources */,
 				10304DA51D301B98007372D8 /* Assets.xcassets in Resources */,
+				102AF0931D36BCC800496991 /* PlatformDiagonal.sks in Resources */,
+				102AF08D1D36BCC800496991 /* CoinSDiagonal.sks in Resources */,
 				10304DA31D301B98007372D8 /* Main.storyboard in Resources */,
+				102AF0911D36BCC800496991 /* Platform5Across.sks in Resources */,
+				102AF0841D36BCC800496991 /* BreakDiagonal.sks in Resources */,
+				102AF0831D36BCC800496991 /* BreakArrow.sks in Resources */,
+				102AF0921D36BCC800496991 /* PlatformArrow.sks in Resources */,
+				102AF0941D36BCC800496991 /* PlayerTrail.sks in Resources */,
+				102AF0851D36BCC800496991 /* BrokenPlatform.sks in Resources */,
+				102AF0901D36BCC800496991 /* Lava.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +264,15 @@
 				10304D9E1D301B98007372D8 /* GameScene.swift in Sources */,
 				10304DA01D301B98007372D8 /* GameViewController.swift in Sources */,
 				10304D9A1D301B98007372D8 /* AppDelegate.swift in Sources */,
+				102AF06E1D36BB9900496991 /* Dead.swift in Sources */,
+				102AF0681D36BB5100496991 /* Jump.swift in Sources */,
+				102AF0661D36BB1700496991 /* Idle.swift in Sources */,
+				102AF0641D36B6C500496991 /* WaitingForTap.swift in Sources */,
+				102AF06A1D36BB7E00496991 /* Fall.swift in Sources */,
+				102AF0611D36B5D800496991 /* WaitingForBomb.swift in Sources */,
+				102AF05D1D36B52000496991 /* GameOver.swift in Sources */,
+				102AF06C1D36BB8D00496991 /* Lava.swift in Sources */,
+				102AF05F1D36B5BA00496991 /* Play.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +424,7 @@
 				10304DAE1D301B98007372D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

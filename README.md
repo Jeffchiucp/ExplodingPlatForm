@@ -63,7 +63,7 @@ Collect all of the power equipment to upgrade to reach safety
 [The overall milestones of first playable build, core gameplay, and polish are just suggestions, plan to finish earlier if possible. The last 20% of work tends to take about as much time as the first 80% so do not slack off on your milestones!]
 
 #### Week 1
-_planing your game_
+_planing my game_
 * [goals for the week]
 Set up the Game play and think through the game prototype for the game. Come up with GamePlay and MockUp for the Game. 
 Building up a prototype
