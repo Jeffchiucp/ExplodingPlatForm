@@ -87,7 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         setupNodes()
-        //setupLevel()
+        setupLevel()
         setCameraPosition(CGPoint(x: size.width/2, y: size.height/2))
         setupCoreMotion()
         physicsWorld.contactDelegate = self
@@ -166,12 +166,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setCameraPosition(CGPoint(x: size.width/2, y: newPosition.y))
     }
     
+//    adOverlayNode() takes the name of a scene file (such as Platform5Across) and looks for a node called "Overlay" inside, and then returns that node. Remember that you created an "Overlay" node in both of your scenes so far, and all the platforms/coins were children of this.
+    
     func loadOverlayNode(fileName: String) -> SKSpriteNode {
         let overlayScene = SKScene(fileNamed: fileName)!
-        let contentTemplateNode = overlayScene.childNodeWithName("Overlay")
-        
+        let contentTemplateNode =
+            overlayScene.childNodeWithName("Overlay")
         return contentTemplateNode as! SKSpriteNode
     }
+    func createOverlayNode(nodeType: SKSpriteNode, flipX: Bool) {
+        let platform = nodeType.copy() as! SKSpriteNode
+        lastItemPosition.y = lastItemPosition.y +
+            (lastItemHeight + (platform.size.height / 2.0))
+        lastItemHeight = platform.size.height / 2.0
+        platform.position = lastItemPosition
+        if flipX == true {
+            platform.xScale = -1.0
+        }
+        fgNode.addChild(platform)
+    }
+    func createBackgroundNode() {
+        let backNode = background.copy() as! SKNode
+        backNode.position = CGPoint(x: 0.0, y: levelY)
+        bgNode.addChild(backNode)
+        levelY += backHeight
+    }
+    
     
     func setupNodes() {
         let worldNode = childNodeWithName("World")!
@@ -185,6 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(cameraNode)
         camera = cameraNode
         
+        //coinArrow = loadOverlayNode("CoinArrow")
         platformArrow = loadOverlayNode("PlatformArrow")
         platform5Across = loadOverlayNode("Platform5Across")
         platformDiagonal = loadOverlayNode("PlatformDiagonal")
@@ -203,4 +224,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        coinSArrow = loadCoinOverlayNode("CoinSArrow")
 //        
  }
+    
+    //This method places the platform right below the player, and updates lastItemPosition and lastItemHeight appropriately
+    func setupLevel() {
+        // Place initial platform
+        let initialPlatform = platform5Across.copy() as! SKSpriteNode
+        var itemPosition = player.position
+        itemPosition.y = player.position.y -
+            ((player.size.height * 0.5) +
+                (initialPlatform.size.height * 0.20))
+        initialPlatform.position = itemPosition
+        fgNode.addChild(initialPlatform)
+        lastItemPosition = itemPosition
+        lastItemHeight = initialPlatform.size.height / 2.0
+    }
 }
