@@ -185,6 +185,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         fgNode.addChild(platform)
     }
+    
+    func addRandomOverlayNode() {
+        let overlaySprite: SKSpriteNode!
+        let platformPercentage = 60
+        if Int.random(min: 1, max: 100) <= platformPercentage {
+            overlaySprite = platform5Across
+        } else {
+            overlaySprite = coinArrow
+        }
+        createOverlayNode(overlaySprite, flipX: false)
+    }
+    
     func createBackgroundNode() {
         let backNode = background.copy() as! SKNode
         backNode.position = CGPoint(x: 0.0, y: levelY)
