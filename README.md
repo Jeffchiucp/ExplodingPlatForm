@@ -44,16 +44,16 @@ Player is the hero who is in a mission to rescue different treasure from explosi
 #### Scenes
 * [list the different scenes/screens used in the game]
 
-List of Prototype and Game Design
+Design Prototype and Game Design
 
 #### Controls/Input
 [describe the control scheme used in the game]
 
 #### Level Design
 Level 1
-Player rescue 5 objects 
+Player begins to jump and rescue 1 objects 
 Level 2
-Player rescue all 10 objects 
+Player rescue all 5 objects 
 Level 3
 Collect all of the power equipment to upgrade to reach safety
 [Back to top ^](#)
@@ -69,6 +69,7 @@ Set up the Game play and think through the game prototype for the game. Come up 
 Building up a prototype
 - Adding platform 
 - placing the nodes and platform overlays to set up in the scene editor.
+- Game State design through GameplayKit
 
 #### Week 2
 * [goals for the week]
@@ -79,6 +80,7 @@ Starting on the Game Mechanics and core gameplay:
 - Adding Physics and Collision and Detection so that the marine can jump to platforms collect coins;
 - Implementing code to read the device accelerometer data to steer the Hero;
 - Creating methods to handle the camera node so that it follows the player sprite;
+- Game State Design
 
 #### Week 3
 * [goals for the week]
