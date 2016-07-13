@@ -217,7 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(cameraNode)
         camera = cameraNode
         
-        //coinArrow = loadOverlayNode("CoinArrow")
+        coinArrow = loadOverlayNode("CoinArrow")
         platformArrow = loadOverlayNode("PlatformArrow")
         platform5Across = loadOverlayNode("Platform5Across")
         platformDiagonal = loadOverlayNode("PlatformDiagonal")
@@ -249,5 +249,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.addChild(initialPlatform)
         lastItemPosition = itemPosition
         lastItemHeight = initialPlatform.size.height / 2.0
+        // Create random level
+        levelY = bgNode.childNodeWithName("Overlay")!.position.y + backHeight
+        while lastItemPosition.y < levelY {
+            addRandomOverlayNode()
+        }
     }
 }
