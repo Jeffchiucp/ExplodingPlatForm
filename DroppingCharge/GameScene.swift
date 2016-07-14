@@ -303,7 +303,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode = worldNode.childNodeWithName("Foreground")!
         player = fgNode.childNodeWithName("Player") as! SKSpriteNode
         lava = fgNode.childNodeWithName("Lava") as! SKSpriteNode
-        //setupLava()
+        setupLava()
         fgNode.childNodeWithName("Bomb")?.runAction(SKAction.hide())
         addChild(cameraNode)
         camera = cameraNode
@@ -328,6 +328,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        
  }
     
+    
+    func setupLava() {
+        lava = fgNode.childNodeWithName("Lava") as! SKSpriteNode
+        let emitter = SKEmitterNode(fileNamed: "Lava.sks")!
+        emitter.particlePositionRange = CGVector(dx: size.width * 1.125, dy:
+            0.0)
+        emitter.advanceSimulationTime(3.0)
+        emitter.zPosition = 4
+        lava.addChild(emitter)
+    }
     
     
     
@@ -389,6 +399,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateCollisionLava() {
         if player.position.y < lava.position.y + 180 {
             playerState.enterState(Lava)
+            print(lives)
             if lives <= 0 {
                 playerState.enterState(Dead)
                 gameState.enterState(GameOver)
