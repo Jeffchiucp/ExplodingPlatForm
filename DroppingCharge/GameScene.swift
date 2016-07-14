@@ -69,6 +69,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deltaTime: NSTimeInterval = 0
     var isPlaying: Bool = false
     
+
+    
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
         WaitingForBomb(scene: self),
@@ -86,6 +88,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var lives = 3
     
+    func updateLevel() {
+        let cameraPos = getCameraPosition()
+        if cameraPos.y > levelY - (size.height * 0.55) {
+            createBackgroundNode()
+            while lastItemPosition.y < levelY {
+                addRandomOverlayNode()
+            }
+        }
+    }
+    
+    
     override func didMoveToView(view: SKView) {
         setupNodes()
         setupLevel()
@@ -99,6 +112,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //playerState.enterState(Idle)
         
     }
+    
+    
+    func setupPlayer() {
+        player.physicsBody = SKPhysicsBody(circleOfRadius:
+            player.size.width * 0.3)
+        player.physicsBody!.dynamic = false
+        player.physicsBody!.allowsRotation = false
+        player.physicsBody!.categoryBitMask = 0
+        player.physicsBody!.collisionBitMask = 0
+    }
+    
+    
     
     func setupCoreMotion() {
         motionManager.accelerometerUpdateInterval = 0.2
@@ -118,9 +143,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event:
         UIEvent?) {
-        if !isPlaying {
-            bombDrop() }
-    }
+        switch gameState.currentState {
+        case is WaitingForTap:
+            gameState.enterState(WaitingForBomb)
+        default:
+            break
+        } }
+    
+    
     func bombDrop() {
         let scaleUp = SKAction.scaleTo(1.25, duration: 0.25)
         let scaleDown = SKAction.scaleTo(1.0, duration: 0.25)
@@ -137,6 +167,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.childNodeWithName("Title")!.removeFromParent()
         fgNode.childNodeWithName("Bomb")!.removeFromParent()
         isPlaying = true
+        player.physicsBody!.dynamic = true
     }
     
     func updatePlayer() {
@@ -170,8 +201,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             y: cameraNode.position.y)
     }
     override func update(currentTime: NSTimeInterval) {
-        updatePlayer()
+        if lastUpdateTimeInterval > 0 {
+            deltaTime = currentTime - lastUpdateTimeInterval
+        } else {
+            deltaTime = 0
+        }
+        lastUpdateTimeInterval = currentTime
+        if paused { return }
+        gameState.updateWithDeltaTime(deltaTime)
     }
+    
     func setCameraPosition(position: CGPoint) {
         cameraNode.position = CGPoint(
             x: position.x - overlapAmount()/2,
@@ -232,15 +271,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         levelY += backHeight
     }
     
-    func setupPlayer() {
-        player.physicsBody = SKPhysicsBody(circleOfRadius:
-            player.size.width * 0.3)
-        player.physicsBody!.dynamic = false
-        player.physicsBody!.allowsRotation = false
-        player.physicsBody!.categoryBitMask = 0
-        player.physicsBody!.collisionBitMask = 0
-    }
-    
     
     func setupNodes() {
         let worldNode = childNodeWithName("World")!
@@ -273,6 +303,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        coinSArrow = loadCoinOverlayNode("CoinSArrow")
 //        
  }
+    
     
     
     

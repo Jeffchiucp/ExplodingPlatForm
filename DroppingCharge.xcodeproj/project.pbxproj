@@ -141,7 +141,7 @@
 		102AF07F1D36BCC800496991 /* PlatformArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = PlatformArrow.sks; path = Scene/PlatformArrow.sks; sourceTree = "<group>"; };
 		102AF0801D36BCC800496991 /* PlatformDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = PlatformDiagonal.sks; path = Scene/PlatformDiagonal.sks; sourceTree = "<group>"; };
 		102AF0811D36BCC800496991 /* PlayerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = PlayerTrail.sks; path = Scene/PlayerTrail.sks; sourceTree = "<group>"; };
-		102AF0961D36C01700496991 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../GameScene.sks; sourceTree = "<group>"; };
+		102AF0961D36C01700496991 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		102AF09A1D36C16800496991 /* BrokenPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrokenPlatform.sks; sourceTree = "<group>"; };
 		102AF09B1D36C16800496991 /* CollectNormal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectNormal.sks; sourceTree = "<group>"; };
 		102AF09C1D36C16800496991 /* CollectSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectSpecial.sks; sourceTree = "<group>"; };
@@ -271,7 +271,6 @@
 		102AF0981D36C16800496991 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				102AF0961D36C01700496991 /* GameScene.sks */,
 				102AF0991D36C16800496991 /* particles */,
 				102AF09F1D36C16800496991 /* sounds */,
 			);
@@ -408,6 +407,7 @@
 			children = (
 				10304D991D301B98007372D8 /* AppDelegate.swift */,
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
+				102AF0961D36C01700496991 /* GameScene.sks */,
 				102AF0F01D36F26500496991 /* SKTUtils */,
 				102AF0981D36C16800496991 /* resources */,
 				102AF0951D36BDFB00496991 /* Scene */,

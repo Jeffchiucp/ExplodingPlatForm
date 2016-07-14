@@ -21,17 +21,17 @@ class Playing: GKState {
     override func didEnterWithPreviousState(previousState: GKState?) {
         if previousState is WaitingForBomb {
             scene.player.physicsBody!.dynamic = true
-//            scene.superBoostPlayer()
+            scene.superBoostPlayer()
         }
     }
     
-//    override func updateWithDeltaTime(seconds: NSTimeInterval) {
-//        scene.updateCamera()
-//        scene.updateLevel()
-//        scene.updatePlayer()
-//        scene.updateLava(seconds)
-//        scene.updateCollisionLava()
-//    }
+    override func updateWithDeltaTime(seconds: NSTimeInterval) {
+        scene.updateCamera()
+        scene.updateLevel()
+        scene.updatePlayer()
+        scene.updateLava(seconds)
+        scene.updateCollisionLava()
+    }
     
     override func isValidNextState(stateClass: AnyClass) -> Bool {
         return stateClass is GameOver.Type
