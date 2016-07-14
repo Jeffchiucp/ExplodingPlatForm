@@ -70,7 +70,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deltaTime: NSTimeInterval = 0
     var isPlaying: Bool = false
     
-
+    var animJump: SKAction! = nil
+    var animFall: SKAction! = nil
+    var animSteerLeft: SKAction! = nil
+    var animSteerRight: SKAction! = nil
+    var curAnim: SKAction? = nil
+    
     
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
@@ -155,6 +160,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                            completion:{
                             self.gameState.enterState(Playing)
             })
+            
+        case is GameOver:
+            let newScene = GameScene(fileNamed:"GameScene")
+            newScene!.scaleMode = .AspectFill
+            let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+            self.view?.presentScene(newScene!, transition: reveal)
+            
+
         default:
             break
         } }
@@ -414,14 +427,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             PhysicsCategory.Player ? contact.bodyB : contact.bodyA
         print("******Contact!!!!_________________")
 
-        
         switch other.categoryBitMask {
         case PhysicsCategory.CoinNormal:
+            print("******CoinNormal__________________")
             if let coin = other.node as? SKSpriteNode {
-                print("******CoinNormal__________________")
-                coin.removeFromParent()
+                emitParticles("CollectNormal", sprite: coin)
                 jumpPlayer()
+                //runAction(soundCoin)
             }
+
         case PhysicsCategory.PlatformNormal:
             if let _ = other.node as? SKSpriteNode {
                 if player.physicsBody!.velocity.dy < 0 {
@@ -441,7 +455,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break; }
     }
     
-
+    // Normal Coin Animation
+    func emitParticles(name: String, sprite: SKSpriteNode) {
+        let pos = fgNode.convertPoint(sprite.position, fromNode: sprite.parent!)
+        let particles = SKEmitterNode(fileNamed: name)!
+        particles.position = pos
+        particles.zPosition = 3
+        fgNode.addChild(particles)
+        particles.runAction(SKAction.removeFromParentAfterDelay(1.0))
+        sprite.runAction(SKAction.sequence([SKAction.scaleTo(0.0, duration: 0.5), SKAction.removeFromParent()]))
+    }
+    
+    func runAnim(anim: SKAction) {
+        if curAnim == nil || curAnim! != anim {
+            player.removeActionForKey("anim")
+            player.runAction(anim, withKey: "anim")
+            curAnim = anim
+        }
+    }
     
     func explosion(intensity: CGFloat) -> SKEmitterNode {
         let emitter = SKEmitterNode()
