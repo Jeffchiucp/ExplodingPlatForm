@@ -196,8 +196,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 -player.size.width/2, y: 0.0), toNode: fgNode)
             player.position.x = playerPosition.x
         }
+        
+        // Set Player State
+        if player.physicsBody?.velocity.dy < 0 {
+            playerState.enterState(Fall)
+            
+        } else {
+            playerState.enterState(Jump)
+        }
     }
-    
     
     func overlapAmount() -> CGFloat {
         guard let view = self.view else {
@@ -377,9 +384,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lava.position = newPosition
     }
     
+
+    // collision with the lava
     func updateCollisionLava() {
-        if player.position.y < lava.position.y + 90 {
-            boostPlayer()
+        if player.position.y < lava.position.y + 180 {
+            playerState.enterState(Lava)
+            if lives <= 0 {
+                playerState.enterState(Dead)
+                gameState.enterState(GameOver)
+            }
         }
     }
     
@@ -388,11 +401,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         let other = contact.bodyA.categoryBitMask ==
             PhysicsCategory.Player ? contact.bodyB : contact.bodyA
+        print("******Contact!!!!_________________")
+
         
         switch other.categoryBitMask {
         case PhysicsCategory.CoinNormal:
             if let coin = other.node as? SKSpriteNode {
-                print("*************__________________")
+                print("******CoinNormal__________________")
                 coin.removeFromParent()
                 jumpPlayer()
             }
@@ -414,6 +429,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             default:
                 break; }
     }
+    
+
     
     func explosion(intensity: CGFloat) -> SKEmitterNode {
         let emitter = SKEmitterNode()

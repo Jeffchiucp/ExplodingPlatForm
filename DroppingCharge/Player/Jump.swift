@@ -46,4 +46,5 @@ class Jump: GKState {
     override func isValidNextState(stateClass: AnyClass) -> Bool {
         return stateClass is Fall.Type
     }
+    
 }
