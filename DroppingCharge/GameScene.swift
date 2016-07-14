@@ -24,6 +24,7 @@ import SpriteKit
 import CoreMotion
 import GameplayKit
 
+
 struct PhysicsCategory {
     static let None: UInt32              = 0
     static let Player: UInt32            = 0b1      // 1
@@ -78,13 +79,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameOver(scene: self)
         ])
     
-//    lazy var playerState: GKStateMachine = GKStateMachine(states: [
-//        Idle(scene: self),
-//        Jump(scene: self),
-//        Fall(scene: self),
-//        Lava(scene: self),
-//        Dead(scene: self)
-//        ])
+    lazy var playerState: GKStateMachine = GKStateMachine(states: [
+        Idle(scene: self),
+        Jump(scene: self),
+        Fall(scene: self),
+        Lava(scene: self),
+        Dead(scene: self)
+        ])
     
     var lives = 3
     
@@ -107,23 +108,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         updateCamera()
         setupCoreMotion()
         physicsWorld.contactDelegate = self
+        
+        playerState.enterState(Idle)
         gameState.enterState(WaitingForTap)
-        setupPlayer()
-        //playerState.enterState(Idle)
+        //setupPlayer()
+        playerState.enterState(Idle)
         
     }
     
-    
+    //initiate the player with physics and Collision
     func setupPlayer() {
         player.physicsBody = SKPhysicsBody(circleOfRadius:
             player.size.width * 0.3)
         player.physicsBody!.dynamic = false
         player.physicsBody!.allowsRotation = false
+        player.physicsBody!.categoryBitMask = PhysicsCategory.Player
         player.physicsBody!.categoryBitMask = 0
         player.physicsBody!.collisionBitMask = 0
     }
     
-    
+    // Set up the Core Motion for the Game Player
     
     func setupCoreMotion() {
         motionManager.accelerometerUpdateInterval = 0.2
@@ -173,6 +177,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.childNodeWithName("Bomb")!.removeFromParent()
         isPlaying = true
         player.physicsBody!.dynamic = true
+        superBoostPlayer()
     }
     
     func updatePlayer() {
@@ -192,6 +197,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.position.x = playerPosition.x
         }
     }
+    
+    
     func overlapAmount() -> CGFloat {
         guard let view = self.view else {
             return 0 }
@@ -228,10 +235,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 2
         var targetPosition = CGPoint(x: getCameraPosition().x,
                                      y: cameraTarget.y - (scene!.view!.bounds.height * 0.40))
+        let lavaPos = convertPoint(lava.position, fromNode: fgNode)
+        targetPosition.y = max(targetPosition.y, lavaPos.y)
+        
+        //Lerp Camera
         // 3
         let diff = targetPosition - getCameraPosition()
         // 4
-        let lerpValue = CGFloat(0.05)
+        let lerpValue = CGFloat(0.2)
         let lerpDiff = diff * lerpValue
         let newPosition = getCameraPosition() + lerpDiff
         // 5
@@ -284,6 +295,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backHeight = background.calculateAccumulatedFrame().height
         fgNode = worldNode.childNodeWithName("Foreground")!
         player = fgNode.childNodeWithName("Player") as! SKSpriteNode
+        lava = fgNode.childNodeWithName("Lava") as! SKSpriteNode
         //setupLava()
         fgNode.childNodeWithName("Bomb")?.runAction(SKAction.hide())
         addChild(cameraNode)
@@ -371,22 +383,69 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    // Contact Collision
+    // Contact Collision 
+    // Marks: Contacts
     func didBeginContact(contact: SKPhysicsContact) {
         let other = contact.bodyA.categoryBitMask ==
             PhysicsCategory.Player ? contact.bodyB : contact.bodyA
+        
         switch other.categoryBitMask {
         case PhysicsCategory.CoinNormal:
             if let coin = other.node as? SKSpriteNode {
+                print("*************__________________")
                 coin.removeFromParent()
                 jumpPlayer()
             }
         case PhysicsCategory.PlatformNormal:
             if let _ = other.node as? SKSpriteNode {
                 if player.physicsBody!.velocity.dy < 0 {
-                    jumpPlayer()
+                jumpPlayer()
+                    
                 }
-            } default:
+            }
+        case PhysicsCategory.PlatformBreakable:
+            if let platform = other.node as? SKSpriteNode {
+                if player.physicsBody!.velocity.dy < 0 {
+                    //platformAction(platform, breakable: true)
+                    jumpPlayer()
+                    //runAction(soundBrick)
+                }
+            }
+            default:
                 break; }
+    }
+    
+    func explosion(intensity: CGFloat) -> SKEmitterNode {
+        let emitter = SKEmitterNode()
+        let particleTexture = SKTexture(imageNamed: "spark")
+        
+        emitter.zPosition = 2
+        emitter.particleTexture = particleTexture
+        emitter.particleBirthRate = 4000 * intensity
+        emitter.numParticlesToEmit = Int(400 * intensity)
+        emitter.particleLifetime = 2.0
+        emitter.emissionAngle = CGFloat(90.0).degreesToRadians()
+        emitter.emissionAngleRange = CGFloat(360.0).degreesToRadians()
+        emitter.particleSpeed = 600 * intensity
+        emitter.particleSpeedRange = 1000 * intensity
+        emitter.particleAlpha = 1.0
+        emitter.particleAlphaRange = 0.25
+        emitter.particleScale = 1.2
+        emitter.particleScaleRange = 2.0
+        emitter.particleScaleSpeed = -1.5
+        emitter.particleColorBlendFactor = 1
+        emitter.particleBlendMode = SKBlendMode.Add
+        emitter.runAction(SKAction.removeFromParentAfterDelay(2.0))
+        
+        let sequence = SKKeyframeSequence(capacity: 5)
+        sequence.addKeyframeValue(SKColor.whiteColor(), time: 0)
+        sequence.addKeyframeValue(SKColor.yellowColor(), time: 0.10)
+        sequence.addKeyframeValue(SKColor.orangeColor(), time: 0.15)
+        sequence.addKeyframeValue(SKColor.redColor(), time: 0.75)
+        sequence.addKeyframeValue(SKColor.blackColor(), time: 0.95)
+        
+        emitter.particleColorSequence = sequence
+        
+        return emitter
     }
 }
