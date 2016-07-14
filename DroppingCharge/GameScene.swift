@@ -146,6 +146,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch gameState.currentState {
         case is WaitingForTap:
             gameState.enterState(WaitingForBomb)
+            // Switch to playing state
+            self.runAction(SKAction.waitForDuration(2.0),
+                           completion:{
+                            self.gameState.enterState(Playing)
+            })
         default:
             break
         } }

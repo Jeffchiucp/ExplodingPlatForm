@@ -70,22 +70,23 @@ Building up a prototype
 - Adding platform 
 - placing the nodes and platform overlays to set up in the scene editor.
 - Game State design through GameplayKit
+- Starting on the Game Mechanics and core gameplay:
 
 #### Week 2
 * [goals for the week]
-Starting on the Game Mechanics and core gameplay:
+Working on the Game Mechanics and core gameplay:
 - Adding randomized platform 
 - Adding Coins
 - Implementing touch events to Start the Game.
 - Adding Physics and Collision and Detection so that the marine can jump to platforms collect coins;
 - Implementing code to read the device accelerometer data to steer the Hero;
 - Creating methods to handle the camera node so that it follows the player sprite;
-- Game State Design
+- Game State 
 
 #### Week 3
 * [goals for the week]
 _finishing a playable build including the following:
-
+- Adding Levels for various topics
 - Adding randomized platform 
 - Adding Coins
 - Implementing touch events to Start the Game.

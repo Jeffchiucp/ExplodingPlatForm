@@ -22,6 +22,7 @@ class WaitingForBomb: GKState {
         previousState: GKState?) {
         if previousState is WaitingForTap {
             
+            print("_________________________waiting for bomb________")
             // Scale out title & ready label
             let scale = SKAction.scaleTo(0, duration: 0.4)
             scene.fgNode.childNodeWithName("Title")!.runAction(scale)
@@ -38,6 +39,8 @@ class WaitingForBomb: GKState {
                 SKAction.unhide())
             scene.fgNode.childNodeWithName("Bomb")!.runAction(
                 repeatSeq)
+            
+            
         }
     }
     
@@ -48,9 +51,9 @@ class WaitingForBomb: GKState {
     override func willExitWithNextState(nextState: GKState) {
         if nextState is Playing {
             let bomb = scene.fgNode.childNodeWithName("Bomb")!
-            //let explosion = scene.explosion(2.0)
-            //explosion.position = bomb.position
-            //scene.fgNode.addChild(explosion)
+//            let explosion = scene.explosion(2.0)
+//            explosion.position = bomb.position
+//            scene.fgNode.addChild(explosion)
             bomb.removeFromParent()
         }
     }
