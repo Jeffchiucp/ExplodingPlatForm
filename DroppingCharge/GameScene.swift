@@ -70,13 +70,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var deltaTime: NSTimeInterval = 0
     var isPlaying: Bool = false
     
+    var timeSinceLastExplosion: NSTimeInterval = 0
+    var timeForNextExplosion: NSTimeInterval = 1.0
+    
     var animJump: SKAction! = nil
     var animFall: SKAction! = nil
     var animSteerLeft: SKAction! = nil
     var animSteerRight: SKAction! = nil
     var curAnim: SKAction? = nil
     
-    
+    // gameGain value
+    let gameGain: CGFloat = 2.5
+
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
         WaitingForBomb(scene: self),
@@ -94,6 +99,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var lives = 3
     
+    
+    //added BackgroundMusicNode
+    var backgroundMusic: SKAudioNode!
+    var bgMusicAlarm: SKAudioNode!
+    
     func updateLevel() {
         let cameraPos = getCameraPosition()
         if cameraPos.y > levelY - (size.height * 0.55) {
@@ -104,6 +114,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    let soundExplosions = [
+        SKAction.playSoundFileNamed("explosion1.wav", waitForCompletion: false),
+        SKAction.playSoundFileNamed("explosion2.wav", waitForCompletion: false),
+        SKAction.playSoundFileNamed("explosion3.wav", waitForCompletion: false),
+        SKAction.playSoundFileNamed("explosion4.wav", waitForCompletion: false)
+    ]
     
     override func didMoveToView(view: SKView) {
         setupNodes()
@@ -114,6 +130,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupCoreMotion()
         physicsWorld.contactDelegate = self
         
+        playBackgroundMusic("SpaceGame.caf")
+
         playerState.enterState(Idle)
         gameState.enterState(WaitingForTap)
         //setupPlayer()
@@ -370,6 +388,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setPlayerVelocity(1700)
     }
     
+    //function for explosion
+    
+    func createRandomExplosion() {
+        // 1
+        let cameraPos = getCameraPosition()
+        let screenSize = self.view!.bounds.size
+        let screenPos = CGPoint(x: CGFloat.random(min: 0.0, max: cameraPos.x * 2.0),
+                                y: CGFloat.random(min: cameraPos.y - screenSize.height * 0.75,
+                                    max: cameraPos.y + screenSize.height))
+        // 2
+        let randomNum = Int.random(soundExplosions.count)
+        runAction(soundExplosions[randomNum])
+        // 3
+        let explode = explosion(0.25 * CGFloat(randomNum + 1))
+        explode.position = convertPoint(screenPos, toNode: bgNode)
+        explode.runAction(SKAction.removeFromParentAfterDelay(2.0))
+        //bgNode.addChild(explode)
+        
+        if randomNum == 3 {
+            screenShakeByAmt(10)
+        }
+    }
+    
     //This method places the platform right below the player, and updates lastItemPosition and lastItemHeight appropriately
     func setupLevel() {
         // Place initial platform
@@ -419,7 +460,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    
+    //random Explosion
+    func updateExplosions(dt: NSTimeInterval) {
+        timeSinceLastExplosion += dt
+        if timeSinceLastExplosion > timeForNextExplosion {
+            timeForNextExplosion = NSTimeInterval(CGFloat.random(min: 0.1, max: 0.5))
+            timeSinceLastExplosion = 0
+            
+            createRandomExplosion()
+        }
+    }
     // Contact Collision 
     // Marks: Contacts
     func didBeginContact(contact: SKPhysicsContact) {
@@ -455,6 +505,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break; }
     }
     
+    //screenShake by amount
+    func screenShakeByAmt(amt: CGFloat) {
+        let worldNode = childNodeWithName("World")!
+        worldNode.position = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
+        worldNode.removeActionForKey("shake")
+        
+        // introduce amount
+        let amount = CGPoint(x: 0, y: -(amt * gameGain))
+        let action = SKAction.screenShakeWithNode(worldNode, amount: amount, oscillations: 10, duration: 2.0)
+        worldNode.runAction(action, withKey: "shake")
+    }
+    
     // Normal Coin Animation
     func emitParticles(name: String, sprite: SKSpriteNode) {
         let pos = fgNode.convertPoint(sprite.position, fromNode: sprite.parent!)
@@ -471,6 +533,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.removeActionForKey("anim")
             player.runAction(anim, withKey: "anim")
             curAnim = anim
+        }
+    }
+    func playBackgroundMusic(name: String) {
+        var delay = 0.0
+        if backgroundMusic != nil {
+            backgroundMusic.removeFromParent()
+            if bgMusicAlarm != nil {
+                bgMusicAlarm.removeFromParent()
+            } else {
+                bgMusicAlarm = SKAudioNode(fileNamed: "alarm.wav") as? SKAudioNode
+                bgMusicAlarm.autoplayLooped = true
+                addChild(bgMusicAlarm)
+            }
+        } else {
+            delay = 0.1
+        }
+        
+        runAction(SKAction.waitForDuration(delay)) {
+            self.backgroundMusic = SKAudioNode(fileNamed: name) as? SKAudioNode
+            self.backgroundMusic.autoplayLooped = true
+            self.addChild(self.backgroundMusic)
         }
     }
     
