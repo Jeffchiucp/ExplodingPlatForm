@@ -361,7 +361,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             max(player.physicsBody!.velocity.dy, amount * gain)
     }
     func jumpPlayer() {
-        setPlayerVelocity(650)
+        setPlayerVelocity(850)
     }
     func boostPlayer() {
         setPlayerVelocity(1200)
