@@ -58,7 +58,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var breakArrow: SKSpriteNode!
     var break5Across: SKSpriteNode!
     var breakDiagonal: SKSpriteNode!
-    var coin5Across: SKSpriteNode!
     var coinDiagonal: SKSpriteNode!
     var coinCross: SKSpriteNode!
     var coinS5Across: SKSpriteNode!
@@ -338,7 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let overlaySprite: SKSpriteNode!
         let platformPercentage = 60
         if Int.random(min: 1, max: 100) <= platformPercentage {
-            overlaySprite = platform5Across
+            overlaySprite = platformArrow
         } else {
             overlaySprite = coinArrow
         }
