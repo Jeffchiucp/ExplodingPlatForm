@@ -83,7 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var animSteerLeft: SKAction! = nil
     var animSteerRight: SKAction! = nil
     var curAnim: SKAction? = nil
-    var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 250, height: 20))
+    var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 1000, height: 20))
 
     let maxHealth: CGFloat = 100
     var currentHealth: CGFloat = 100
@@ -376,14 +376,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //healthBar = childNodeWithName("health1") as! SKSpriteNode
         healthBar.removeFromParent()
         camera!.addChild(healthBar)
-        healthBar.position.x = -40
+        healthBar.anchorPoint.x = 0
+        healthBar.position.x = -300
         healthBar.position.y = 700
         healthBar.zPosition = 200
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
+        scoreLabel.fontSize = 70
         scoreLabel.fontName = "Helvetica"
         scoreLabel.position.x = 175
-        scoreLabel.position.y = 700
+        scoreLabel.position.y = 600
 
         scoreLabel.fontSize = 70
         scoreLabel.fontColor = SKColor.whiteColor()
