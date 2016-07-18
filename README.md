@@ -22,7 +22,7 @@ Player can have fun, engaging mission to rescue different treasure from differen
 * [Week 6](#week-6)
 
 #### Game Design
-This is platform jumping game for one superhero who is going through 
+This is platform jumping game for one superhero who is going through (flesh out the detail -- put this picture )
 Epic explosion, and facing challenges and Rewards as he explores the tower.
 
 

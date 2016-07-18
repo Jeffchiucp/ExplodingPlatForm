@@ -43,10 +43,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var fgNode = SKNode()
     var player: SKSpriteNode!
     var lava: SKSpriteNode!
+    var health: SKSpriteNode!
     var background: SKNode!
     var backHeight: CGFloat = 0.0
     
-    var platform5Across: SKSpriteNode!
+    //testing
+    var scoreLabel: SKLabelNode!
+
+    
+    var platform5Across: SKSpriteNode! = nil
     var coinArrow: SKSpriteNode!
     var platformArrow: SKSpriteNode!
     var platformDiagonal: SKSpriteNode!
@@ -97,9 +102,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Dead(scene: self)
         ])
     
-    var lives = 3
+    var lives = 10
     
     
+    var scorePoint: Int = 0 {
+        didSet {
+            scoreLabel.text = "\(scorePoint)"
+            if scorePoint % 10 == 0 {
+                if scorePoint == 9 {
+                    print("__________1________________")
+                }
+                
+                // CHANGE THIS AFTER TESTING
+                if scorePoint == 10 {
+                    print("__________10________________")
+                }
+            }
+        }
+    }
+   
+                
     //added BackgroundMusicNode
     var backgroundMusic: SKAudioNode!
     var bgMusicAlarm: SKAudioNode!
@@ -122,6 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     ]
     
     override func didMoveToView(view: SKView) {
+        
         setupNodes()
         setupLevel()
         // This code will center the camera. To make sure that the camera is tracking y
@@ -131,11 +154,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         playBackgroundMusic("SpaceGame.caf")
-
+        
         playerState.enterState(Idle)
         gameState.enterState(WaitingForTap)
         //setupPlayer()
-        playerState.enterState(Idle)
         
     }
     
@@ -283,6 +305,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let lerpValue = CGFloat(0.2)
         let lerpDiff = diff * lerpValue
         let newPosition = getCameraPosition() + lerpDiff
+        let cameraPosition = getCameraPosition() + lerpDiff
         // 5
         setCameraPosition(CGPoint(x: size.width/2, y: newPosition.y))
     }
@@ -338,6 +361,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.childNodeWithName("Bomb")?.runAction(SKAction.hide())
         addChild(cameraNode)
         camera = cameraNode
+        health = childNodeWithName("health1") as! SKSpriteNode
+        health.removeFromParent()
+        camera!.addChild(health)
+        health.position.x = -20
+        health.position.y = 400
+        health.zPosition = 200
+        
+        scoreLabel = childNodeWithName("score1") as! SKLabelNode
+        scoreLabel.fontName = "Helvetica"
+        scoreLabel.position.x = 0
+        scoreLabel.position.y = 240
+
+        scoreLabel.fontSize = 70
+        scoreLabel.fontColor = SKColor.whiteColor()
+        scoreLabel.zPosition = 200
+//        self.addChild(scoreLabel)
+        
+        scoreLabel.removeFromParent()
+        camera!.addChild(scoreLabel)
+//        scoreLabel.position.x = 0
+//        scoreLabel.position.y = 0
+//        scoreLabel.zPosition = 200
         
         coinArrow = loadOverlayNode("CoinArrow")
         platformArrow = loadOverlayNode("PlatformArrow")
@@ -448,6 +493,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lava.position = newPosition
     }
     
+    
+//        let lowerLeft = CGPoint(x: 0, y: cameraNode.position.y - (size.height / 2))
+//        let visibleMinYFg = scene!.convertPoint(lowerLeft, toNode: fgNode).y
+//        let healthVelocity = CGPoint(x: 0, y: 220)
+//        let healthStep = healthVelocity * CGFloat(dt)
+//        var cameraPosition = health.position + healthStep
+//        cameraPosition.y = max(cameraPosition.y, (visibleMinYFg - 125.0))
+//        health.position = cameraPosition
+    
 
     // collision with the lava
     func updateCollisionLava() {
@@ -476,6 +530,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let other = contact.bodyA.categoryBitMask ==
             PhysicsCategory.Player ? contact.bodyB : contact.bodyA
         print("******Contact!!!!_________________")
+        //scoreLabel.text = String(scorePoint)
 
         switch other.categoryBitMask {
         case PhysicsCategory.CoinNormal:
@@ -484,13 +539,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 emitParticles("CollectNormal", sprite: coin)
                 jumpPlayer()
                 //runAction(soundCoin)
+                scoreLabel.text = String(scorePoint)
+
             }
 
         case PhysicsCategory.PlatformNormal:
             if let _ = other.node as? SKSpriteNode {
                 if player.physicsBody!.velocity.dy < 0 {
                 jumpPlayer()
-                    
+                scoreLabel.text = String(scorePoint)
+
                 }
             }
         case PhysicsCategory.PlatformBreakable:
@@ -499,6 +557,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     //platformAction(platform, breakable: true)
                     jumpPlayer()
                     //runAction(soundBrick)
+                    scoreLabel.text = String(scorePoint)
+
                 }
             }
             default:

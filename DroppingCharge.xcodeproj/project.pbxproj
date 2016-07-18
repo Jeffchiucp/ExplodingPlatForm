@@ -443,6 +443,7 @@
 			children = (
 				10304D991D301B98007372D8 /* AppDelegate.swift */,
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
+				102AF0621D36B6A700496991 /* GameState */,
 				10F0AE6A1D399548004B287C /* sounds */,
 				102AF0961D36C01700496991 /* GameScene.sks */,
 				102AF0F01D36F26500496991 /* SKTUtils */,
@@ -456,7 +457,6 @@
 				102AF0691D36BB7E00496991 /* Fall.swift */,
 				102AF06B1D36BB8D00496991 /* Lava.swift */,
 				102AF06D1D36BB9900496991 /* Dead.swift */,
-				102AF0621D36B6A700496991 /* GameState */,
 				10304D9F1D301B98007372D8 /* GameViewController.swift */,
 				10304DA11D301B98007372D8 /* Main.storyboard */,
 				10304DA41D301B98007372D8 /* Assets.xcassets */,
