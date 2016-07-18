@@ -83,6 +83,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var animSteerLeft: SKAction! = nil
     var animSteerRight: SKAction! = nil
     var curAnim: SKAction? = nil
+    var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 250, height: 20))
+
+    let maxHealth: CGFloat = 100
+    var currentHealth: CGFloat = 100
     
     // gameGain value
     let gameGain: CGFloat = 2.5
@@ -102,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Dead(scene: self)
         ])
     
-    var lives = 10
+    var lives = 3
     
     
     var scorePoint: Int = 0 {
@@ -361,28 +365,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.childNodeWithName("Bomb")?.runAction(SKAction.hide())
         addChild(cameraNode)
         camera = cameraNode
-        health = childNodeWithName("health1") as! SKSpriteNode
-        health.removeFromParent()
-        camera!.addChild(health)
-        health.position.x = -20
-        health.position.y = 400
-        health.zPosition = 200
+//        health = childNodeWithName("health1") as! SKSpriteNode
+//        health.removeFromParent()
+//        camera!.addChild(health)
+//        health.position.x = -20
+//        health.position.y = 700
+//        health.zPosition = 200
+        
+        //adding HealthBar
+        //healthBar = childNodeWithName("health1") as! SKSpriteNode
+        healthBar.removeFromParent()
+        camera!.addChild(healthBar)
+        healthBar.position.x = -40
+        healthBar.position.y = 700
+        healthBar.zPosition = 200
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
         scoreLabel.fontName = "Helvetica"
-        scoreLabel.position.x = 0
-        scoreLabel.position.y = 240
+        scoreLabel.position.x = 175
+        scoreLabel.position.y = 700
 
         scoreLabel.fontSize = 70
         scoreLabel.fontColor = SKColor.whiteColor()
         scoreLabel.zPosition = 200
-//        self.addChild(scoreLabel)
-        
         scoreLabel.removeFromParent()
         camera!.addChild(scoreLabel)
-//        scoreLabel.position.x = 0
-//        scoreLabel.position.y = 0
-//        scoreLabel.zPosition = 200
+
         
         coinArrow = loadOverlayNode("CoinArrow")
         platformArrow = loadOverlayNode("PlatformArrow")
@@ -416,6 +424,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
+    func reduceHealthBar(){
+        if currentHealth > 0 {
+            currentHealth -= 25
+            let healthBarReduce = SKAction.scaleXTo(currentHealth / maxHealth, duration: 0.5)
+            healthBar.runAction(healthBarReduce)
+            
+        }
+    }
+
     
     //falling off the platform like that.
     func setPlayerVelocity(amount:CGFloat) {
@@ -507,6 +524,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateCollisionLava() {
         if player.position.y < lava.position.y + 180 {
             playerState.enterState(Lava)
+            reduceHealthBar()
             print(lives)
             if lives <= 0 {
                 playerState.enterState(Dead)
