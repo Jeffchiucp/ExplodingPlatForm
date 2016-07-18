@@ -112,6 +112,8 @@
 		10304DA51D301B98007372D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA41D301B98007372D8 /* Assets.xcassets */; };
 		10304DA81D301B98007372D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA61D301B98007372D8 /* LaunchScreen.storyboard */; };
 		106DFE181D3D83A1004FD9D0 /* bigger_platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE171D3D83A1004FD9D0 /* bigger_platform.png */; };
+		106DFE1E1D3D9636004FD9D0 /* Coin.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1D1D3D9636004FD9D0 /* Coin.sks */; };
+		106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */; };
 		10F0AE7D1D399548004B287C /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6B1D399548004B287C /* alarm.wav */; };
 		10F0AE7E1D399548004B287C /* attribution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6C1D399548004B287C /* attribution.txt */; };
 		10F0AE7F1D399548004B287C /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6D1D399548004B287C /* bgMusic.mp3 */; };
@@ -240,6 +242,8 @@
 		10304DA71D301B98007372D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10304DA91D301B98007372D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		106DFE171D3D83A1004FD9D0 /* bigger_platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigger_platform.png; sourceTree = "<group>"; };
+		106DFE1D1D3D9636004FD9D0 /* Coin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Coin.sks; path = Scene/Coin.sks; sourceTree = "<group>"; };
+		106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinSpecial.sks; path = Scene/CoinSpecial.sks; sourceTree = "<group>"; };
 		10F0AE6B1D399548004B287C /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		10F0AE6C1D399548004B287C /* attribution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attribution.txt; sourceTree = "<group>"; };
 		10F0AE6D1D399548004B287C /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
@@ -442,6 +446,8 @@
 			children = (
 				10304D991D301B98007372D8 /* AppDelegate.swift */,
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
+				106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */,
+				106DFE1D1D3D9636004FD9D0 /* Coin.sks */,
 				102AF0621D36B6A700496991 /* GameState */,
 				10F0AE6A1D399548004B287C /* sounds */,
 				102AF0961D36C01700496991 /* GameScene.sks */,
@@ -597,6 +603,7 @@
 				102AF0E11D36E76500496991 /* Coin5Across.sks in Resources */,
 				102AF1231D36F56700496991 /* CoinS5Across.sks in Resources */,
 				102AF0EB1D36E76500496991 /* Lava.sks in Resources */,
+				106DFE1E1D3D9636004FD9D0 /* Coin.sks in Resources */,
 				102AF1271D36F56700496991 /* CollectNormal.sks in Resources */,
 				102AF0B71D36C16800496991 /* alarm.wav in Resources */,
 				102AF0B51D36C16800496991 /* PlayerTrail.sks in Resources */,
@@ -611,6 +618,7 @@
 				102AF0931D36BCC800496991 /* PlatformDiagonal.sks in Resources */,
 				10F0AE851D399548004B287C /* DrownFireBug.mp3 in Resources */,
 				102AF0EA1D36E76500496991 /* CollectSpecial.sks in Resources */,
+				106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */,
 				102AF08D1D36BCC800496991 /* CoinSDiagonal.sks in Resources */,
 				10304DA31D301B98007372D8 /* Main.storyboard in Resources */,
 				102AF0E31D36E76500496991 /* CoinCross.sks in Resources */,

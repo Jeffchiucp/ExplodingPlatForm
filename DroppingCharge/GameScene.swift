@@ -49,7 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //testing
     var scoreLabel: SKLabelNode!
-
+    
     
     var platform5Across: SKSpriteNode! = nil
     var coinArrow: SKSpriteNode!
@@ -58,12 +58,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var breakArrow: SKSpriteNode!
     var break5Across: SKSpriteNode!
     var breakDiagonal: SKSpriteNode!
+    //adding Coin
+    var coin5Across: SKSpriteNode!
     var coinDiagonal: SKSpriteNode!
     var coinCross: SKSpriteNode!
     var coinS5Across: SKSpriteNode!
     var coinSDiagonal: SKSpriteNode!
     var coinSCross: SKSpriteNode!
     var coinSArrow: SKSpriteNode!
+    var coinRef: SKSpriteNode!
     
     var lastItemPosition = CGPointZero
     var lastItemHeight: CGFloat = 0.0
@@ -83,13 +86,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var animSteerRight: SKAction! = nil
     var curAnim: SKAction? = nil
     var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 1000, height: 20))
-
+    
     let maxHealth: CGFloat = 100
     var currentHealth: CGFloat = 100
     
+    var coinSpecialRef: SKSpriteNode!
+    
     // gameGain value
+    
     let gameGain: CGFloat = 2.5
-
+    
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
         WaitingForBomb(scene: self),
@@ -105,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Dead(scene: self)
         ])
     
-    var lives = 3
+    var lives = 4
     
     
     var scorePoint: Int = 0 {
@@ -123,8 +129,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-   
-                
+    
+    
     //added BackgroundMusicNode
     var backgroundMusic: SKAudioNode!
     var bgMusicAlarm: SKAudioNode!
@@ -210,7 +216,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let reveal = SKTransition.flipHorizontalWithDuration(0.5)
             self.view?.presentScene(newScene!, transition: reveal)
             
-
+            
         default:
             break
         } }
@@ -313,7 +319,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setCameraPosition(CGPoint(x: size.width/2, y: newPosition.y))
     }
     
-//    adOverlayNode() takes the name of a scene file (such as Platform5Across) and looks for a node called "Overlay" inside, and then returns that node. Remember that you created an "Overlay" node in both of your scenes so far, and all the platforms/coins were children of this.
+    //    adOverlayNode() takes the name of a scene file (such as Platform5Across) and looks for a node called "Overlay" inside, and then returns that node. Remember that you created an "Overlay" node in both of your scenes so far, and all the platforms/coins were children of this.
     
     func loadOverlayNode(fileName: String) -> SKSpriteNode {
         let overlayScene = SKScene(fileNamed: fileName)!
@@ -333,16 +339,72 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.addChild(platform)
     }
     
+    //    func addRandomOverlayNode() {
+    //        let overlaySprite: SKSpriteNode!
+    //        let platformPercentage = 60
+    //        if Int.random(min: 1, max: 100) <= platformPercentage {
+    //            overlaySprite = platformArrow
+    //        } else {
+    //            overlaySprite = coinArrow
+    //        }
+    //        createOverlayNode(overlaySprite, flipX: false)
+    //    }
+    //
+    
+    
+    
+    
     func addRandomOverlayNode() {
         let overlaySprite: SKSpriteNode!
+        var flipH = false
         let platformPercentage = 60
+        
         if Int.random(min: 1, max: 100) <= platformPercentage {
-            overlaySprite = platformArrow
+            if Int.random(min: 1, max: 100) <= 75 {
+                // Create standard platforms 75%
+                switch Int.random(min: 0, max: 3) {
+                case 0:
+                    overlaySprite = platformArrow
+                case 1:
+                    overlaySprite = platform5Across
+                case 2:
+                    overlaySprite = platformDiagonal
+                case 3:
+                    overlaySprite = platformDiagonal
+                    flipH = true
+                default:
+                    overlaySprite = platformArrow
+                }
+            } else {
+                // Create breakable platforms 25%
+                switch Int.random(min: 0, max: 3) {
+                case 0:
+                    overlaySprite = breakArrow
+                case 1:
+                    overlaySprite = break5Across
+                    flipH = true
+                default:
+                    overlaySprite = breakArrow
+                }
+            }
         } else {
-            overlaySprite = coinArrow
+            if Int.random(min: 1, max: 100) <= 75 {
+                // Create standard coins 75%
+                switch Int.random(min: 0, max: 4) {
+                case 0:
+                    overlaySprite = coinArrow
+                case 1:
+                    overlaySprite = coin5Across
+                case 4:
+                    overlaySprite = coinCross
+                default:
+                    overlaySprite = coinArrow
+                }
+                createOverlayNode(overlaySprite, flipX: false)
+            }
         }
-        createOverlayNode(overlaySprite, flipX: false)
     }
+    
     
     func createBackgroundNode() {
         let backNode = background.copy() as! SKNode
@@ -364,12 +426,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.childNodeWithName("Bomb")?.runAction(SKAction.hide())
         addChild(cameraNode)
         camera = cameraNode
-//        health = childNodeWithName("health1") as! SKSpriteNode
-//        health.removeFromParent()
-//        camera!.addChild(health)
-//        health.position.x = -20
-//        health.position.y = 700
-//        health.zPosition = 200
+        //        health = childNodeWithName("health1") as! SKSpriteNode
+        //        health.removeFromParent()
+        //        camera!.addChild(health)
+        //        health.position.x = -20
+        //        health.position.y = 700
+        //        health.zPosition = 200
         
         //adding HealthBar
         //healthBar = childNodeWithName("health1") as! SKSpriteNode
@@ -385,13 +447,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.fontName = "Helvetica"
         scoreLabel.position.x = 175
         scoreLabel.position.y = 600
-
+        
         scoreLabel.fontSize = 70
         scoreLabel.fontColor = SKColor.whiteColor()
         scoreLabel.zPosition = 200
         scoreLabel.removeFromParent()
         camera!.addChild(scoreLabel)
-
+        
         
         coinArrow = loadOverlayNode("CoinArrow")
         platformArrow = loadOverlayNode("PlatformArrow")
@@ -400,18 +462,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         breakArrow = loadOverlayNode("BreakArrow")
         break5Across = loadOverlayNode("Break5Across")
         breakDiagonal = loadOverlayNode("BreakDiagonal")
-        //coinRef = loadOverlayNode("Coin")
-//        coinSpecialRef = loadOverlayNode("CoinSpecial")
-//        coin5Across = loadCoinOverlayNode("Coin5Across")
-//        coinDiagonal = loadCoinOverlayNode("CoinDiagonal")
-//        coinCross = loadCoinOverlayNode("CoinCross")
-//        coinArrow = loadCoinOverlayNode("CoinArrow")
-//        coinS5Across = loadCoinOverlayNode("CoinS5Across")
-//        coinSDiagonal = loadCoinOverlayNode("CoinSDiagonal")
-//        coinSCross = loadCoinOverlayNode("CoinSCross")
-//        coinSArrow = loadCoinOverlayNode("CoinSArrow")
-//        
- }
+        coinRef = loadOverlayNode("Coin")
+        coinSpecialRef = loadOverlayNode("CoinSpecial")
+        coin5Across = loadCoinOverlayNode("Coin5Across")
+        coinDiagonal = loadCoinOverlayNode("CoinDiagonal")
+        coinCross = loadCoinOverlayNode("CoinCross")
+        coinArrow = loadCoinOverlayNode("CoinArrow")
+        coinS5Across = loadCoinOverlayNode("CoinS5Across")
+        coinSDiagonal = loadCoinOverlayNode("CoinSDiagonal")
+        coinSCross = loadCoinOverlayNode("CoinSCross")
+        coinSArrow = loadCoinOverlayNode("CoinSArrow")
+        //
+    }
+    
+    // load up the coin
+    func loadCoinOverlayNode(fileName: String) -> SKSpriteNode {
+        let overlayScene = SKScene(fileNamed: fileName)!
+        let contentTemplateNode = overlayScene.childNodeWithName("Overlay")
+        
+        contentTemplateNode!.enumerateChildNodesWithName("*", usingBlock: {
+            (node, stop) in
+            let coinPos = node.position
+            let ref: SKSpriteNode
+            if node.name == "special" {
+                ref = self.coinSpecialRef.copy() as! SKSpriteNode
+            } else {
+                ref = self.coinRef.copy() as! SKSpriteNode
+            }
+            ref.position = coinPos
+            contentTemplateNode?.addChild(ref)
+            node.removeFromParent()
+        })
+        
+        return contentTemplateNode as! SKSpriteNode
+    }
     
     
     func setupLava() {
@@ -433,7 +517,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
     }
-
+    
     
     //falling off the platform like that.
     func setPlayerVelocity(amount:CGFloat) {
@@ -512,15 +596,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-//        let lowerLeft = CGPoint(x: 0, y: cameraNode.position.y - (size.height / 2))
-//        let visibleMinYFg = scene!.convertPoint(lowerLeft, toNode: fgNode).y
-//        let healthVelocity = CGPoint(x: 0, y: 220)
-//        let healthStep = healthVelocity * CGFloat(dt)
-//        var cameraPosition = health.position + healthStep
-//        cameraPosition.y = max(cameraPosition.y, (visibleMinYFg - 125.0))
-//        health.position = cameraPosition
+    //        let lowerLeft = CGPoint(x: 0, y: cameraNode.position.y - (size.height / 2))
+    //        let visibleMinYFg = scene!.convertPoint(lowerLeft, toNode: fgNode).y
+    //        let healthVelocity = CGPoint(x: 0, y: 220)
+    //        let healthStep = healthVelocity * CGFloat(dt)
+    //        var cameraPosition = health.position + healthStep
+    //        cameraPosition.y = max(cameraPosition.y, (visibleMinYFg - 125.0))
+    //        health.position = cameraPosition
     
-
+    
     // collision with the lava
     func updateCollisionLava() {
         if player.position.y < lava.position.y + 180 {
@@ -543,14 +627,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             createRandomExplosion()
         }
     }
-    // Contact Collision 
+    // Contact Collision
     // Marks: Contacts
     func didBeginContact(contact: SKPhysicsContact) {
         let other = contact.bodyA.categoryBitMask ==
             PhysicsCategory.Player ? contact.bodyB : contact.bodyA
         print("******Contact!!!!_________________")
         //scoreLabel.text = String(scorePoint)
-
+        
         switch other.categoryBitMask {
         case PhysicsCategory.CoinNormal:
             print("******CoinNormal__________________")
@@ -559,15 +643,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 jumpPlayer()
                 //runAction(soundCoin)
                 scoreLabel.text = String(scorePoint)
-
+                
             }
-
+            
         case PhysicsCategory.PlatformNormal:
             if let _ = other.node as? SKSpriteNode {
                 if player.physicsBody!.velocity.dy < 0 {
-                jumpPlayer()
-                scoreLabel.text = String(scorePoint)
-
+                    jumpPlayer()
+                    scoreLabel.text = String(scorePoint)
+                    
                 }
             }
         case PhysicsCategory.PlatformBreakable:
@@ -577,11 +661,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     jumpPlayer()
                     //runAction(soundBrick)
                     scoreLabel.text = String(scorePoint)
-
+                    
                 }
             }
-            default:
-                break; }
+        default:
+            break; }
     }
     
     //screenShake by amount
