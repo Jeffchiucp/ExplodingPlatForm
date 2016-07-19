@@ -364,14 +364,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // Create standard platforms 75%
                 switch Int.random(min: 0, max: 3) {
                 case 0:
-                    overlaySprite = platformArrow
+                    overlaySprite = platform5Across
                 case 1:
                     overlaySprite = platform5Across
                 case 2:
-                    overlaySprite = platformDiagonal
+                    overlaySprite = platform5Across
                 case 3:
-                    overlaySprite = platformDiagonal
-                    flipH = true
+                    overlaySprite = platform5Across
+                    flipH = false
                 default:
                     overlaySprite = platformArrow
                 }

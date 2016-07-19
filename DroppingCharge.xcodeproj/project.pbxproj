@@ -114,6 +114,8 @@
 		106DFE181D3D83A1004FD9D0 /* bigger_platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE171D3D83A1004FD9D0 /* bigger_platform.png */; };
 		106DFE1E1D3D9636004FD9D0 /* Coin.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1D1D3D9636004FD9D0 /* Coin.sks */; };
 		106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */; };
+		1094BE161D3ED86C00DC8460 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 1094BE151D3ED86C00DC8460 /* platform.png */; };
+		1094BE181D3ED96300DC8460 /* new_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1094BE171D3ED96300DC8460 /* new_bg1.png */; };
 		10F0AE7D1D399548004B287C /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6B1D399548004B287C /* alarm.wav */; };
 		10F0AE7E1D399548004B287C /* attribution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6C1D399548004B287C /* attribution.txt */; };
 		10F0AE7F1D399548004B287C /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6D1D399548004B287C /* bgMusic.mp3 */; };
@@ -244,6 +246,8 @@
 		106DFE171D3D83A1004FD9D0 /* bigger_platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigger_platform.png; sourceTree = "<group>"; };
 		106DFE1D1D3D9636004FD9D0 /* Coin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Coin.sks; path = Scene/Coin.sks; sourceTree = "<group>"; };
 		106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinSpecial.sks; path = Scene/CoinSpecial.sks; sourceTree = "<group>"; };
+		1094BE151D3ED86C00DC8460 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
+		1094BE171D3ED96300DC8460 /* new_bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_bg1.png; sourceTree = "<group>"; };
 		10F0AE6B1D399548004B287C /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		10F0AE6C1D399548004B287C /* attribution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attribution.txt; sourceTree = "<group>"; };
 		10F0AE6D1D399548004B287C /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
@@ -464,8 +468,10 @@
 				102AF06B1D36BB8D00496991 /* Lava.swift */,
 				102AF06D1D36BB9900496991 /* Dead.swift */,
 				10304D9F1D301B98007372D8 /* GameViewController.swift */,
+				1094BE151D3ED86C00DC8460 /* platform.png */,
 				10304DA11D301B98007372D8 /* Main.storyboard */,
 				10304DA41D301B98007372D8 /* Assets.xcassets */,
+				1094BE171D3ED96300DC8460 /* new_bg1.png */,
 				10304DA61D301B98007372D8 /* LaunchScreen.storyboard */,
 				10304DA91D301B98007372D8 /* Info.plist */,
 			);
@@ -589,6 +595,7 @@
 				102AF0BC1D36C16800496991 /* brick.caf in Resources */,
 				102AF0891D36BCC800496991 /* CoinDiagonal.sks in Resources */,
 				102AF0E51D36E76500496991 /* CoinS5Across.sks in Resources */,
+				1094BE161D3ED86C00DC8460 /* platform.png in Resources */,
 				102AF0C71D36C16800496991 /* SpaceGame.caf in Resources */,
 				10F0AE891D399548004B287C /* explosion4.wav in Resources */,
 				102AF0E41D36E76500496991 /* CoinDiagonal.sks in Resources */,
@@ -599,6 +606,7 @@
 				102AF0BE1D36C16800496991 /* coin4.wav in Resources */,
 				10F0AE831D399548004B287C /* coin1.wav in Resources */,
 				102AF0DD1D36E76500496991 /* Break5Across.sks in Resources */,
+				1094BE181D3ED96300DC8460 /* new_bg1.png in Resources */,
 				102AF0B31D36C16800496991 /* CollectNormal.sks in Resources */,
 				102AF0E11D36E76500496991 /* Coin5Across.sks in Resources */,
 				102AF1231D36F56700496991 /* CoinS5Across.sks in Resources */,
