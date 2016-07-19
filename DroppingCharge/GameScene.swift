@@ -111,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Dead(scene: self)
         ])
     
-    var lives = 4
+    var lives = 3
     
     
     var scorePoint: Int = 0 {
@@ -370,10 +370,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 case 2:
                     overlaySprite = platform5Across
                 case 3:
-                    overlaySprite = platform5Across
+                    overlaySprite = platformDiagonal
                     flipH = false
                 default:
-                    overlaySprite = platformArrow
+                    overlaySprite = platformDiagonal
                 }
             } else {
                 // Create breakable platforms 25%
@@ -466,14 +466,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         camera!.addChild(healthBar)
         healthBar.anchorPoint.x = 0
         healthBar.position.x = -300
-        healthBar.position.y = 700
+        healthBar.position.y = 800
         healthBar.zPosition = 200
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
         scoreLabel.fontSize = 70
         scoreLabel.fontName = "Helvetica"
         scoreLabel.position.x = 175
-        scoreLabel.position.y = 600
+        scoreLabel.position.y = 700
         
         scoreLabel.fontSize = 70
         scoreLabel.fontColor = SKColor.whiteColor()

@@ -116,6 +116,8 @@
 		106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */; };
 		1094BE161D3ED86C00DC8460 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 1094BE151D3ED86C00DC8460 /* platform.png */; };
 		1094BE181D3ED96300DC8460 /* new_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1094BE171D3ED96300DC8460 /* new_bg1.png */; };
+		1094BE1A1D3EE67200DC8460 /* character_male-ninja.png in Resources */ = {isa = PBXBuildFile; fileRef = 1094BE191D3EE67200DC8460 /* character_male-ninja.png */; };
+		1094BE1C1D3EE86A00DC8460 /* Kunai.png in Resources */ = {isa = PBXBuildFile; fileRef = 1094BE1B1D3EE86A00DC8460 /* Kunai.png */; };
 		10F0AE7D1D399548004B287C /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6B1D399548004B287C /* alarm.wav */; };
 		10F0AE7E1D399548004B287C /* attribution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6C1D399548004B287C /* attribution.txt */; };
 		10F0AE7F1D399548004B287C /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6D1D399548004B287C /* bgMusic.mp3 */; };
@@ -248,6 +250,8 @@
 		106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinSpecial.sks; path = Scene/CoinSpecial.sks; sourceTree = "<group>"; };
 		1094BE151D3ED86C00DC8460 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
 		1094BE171D3ED96300DC8460 /* new_bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_bg1.png; sourceTree = "<group>"; };
+		1094BE191D3EE67200DC8460 /* character_male-ninja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "character_male-ninja.png"; sourceTree = "<group>"; };
+		1094BE1B1D3EE86A00DC8460 /* Kunai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kunai.png; sourceTree = "<group>"; };
 		10F0AE6B1D399548004B287C /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		10F0AE6C1D399548004B287C /* attribution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attribution.txt; sourceTree = "<group>"; };
 		10F0AE6D1D399548004B287C /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
@@ -470,7 +474,9 @@
 				10304D9F1D301B98007372D8 /* GameViewController.swift */,
 				1094BE151D3ED86C00DC8460 /* platform.png */,
 				10304DA11D301B98007372D8 /* Main.storyboard */,
+				1094BE1B1D3EE86A00DC8460 /* Kunai.png */,
 				10304DA41D301B98007372D8 /* Assets.xcassets */,
+				1094BE191D3EE67200DC8460 /* character_male-ninja.png */,
 				1094BE171D3ED96300DC8460 /* new_bg1.png */,
 				10304DA61D301B98007372D8 /* LaunchScreen.storyboard */,
 				10304DA91D301B98007372D8 /* Info.plist */,
@@ -562,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				102AF08C1D36BCC800496991 /* CoinSCross.sks in Resources */,
+				1094BE1C1D3EE86A00DC8460 /* Kunai.png in Resources */,
 				102AF0B61D36C16800496991 /* Star.png in Resources */,
 				102AF0BB1D36C16800496991 /* boost.wav in Resources */,
 				102AF1281D36F56700496991 /* CollectSpecial.sks in Resources */,
@@ -644,6 +651,7 @@
 				102AF0E71D36E76500496991 /* CoinSCross.sks in Resources */,
 				102AF12A1D36F56700496991 /* Platform5Across.sks in Resources */,
 				102AF1261D36F56700496991 /* CoinSDiagonal.sks in Resources */,
+				1094BE1A1D3EE67200DC8460 /* character_male-ninja.png in Resources */,
 				102AF0C11D36C16800496991 /* explosion2.wav in Resources */,
 				10F0AE8B1D399548004B287C /* nitro.wav in Resources */,
 				106DFE181D3D83A1004FD9D0 /* bigger_platform.png in Resources */,
