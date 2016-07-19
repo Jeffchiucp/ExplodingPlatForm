@@ -382,6 +382,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     overlaySprite = breakArrow
                 case 1:
                     overlaySprite = break5Across
+                case 2:
+                    overlaySprite = breakDiagonal
+                case 3:
+                    overlaySprite = breakDiagonal
                     flipH = true
                 default:
                     overlaySprite = breakArrow
@@ -395,14 +399,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     overlaySprite = coinArrow
                 case 1:
                     overlaySprite = coin5Across
+                case 2:
+                    overlaySprite = coinDiagonal
+                case 3:
+                    overlaySprite = coinDiagonal
+                    flipH = true
                 case 4:
                     overlaySprite = coinCross
                 default:
                     overlaySprite = coinArrow
                 }
-                createOverlayNode(overlaySprite, flipX: false)
+            } else {
+                // Create special coins 25%
+                switch Int.random(min: 0, max: 4) {
+                case 0:
+                    overlaySprite = coinSArrow
+                case 1:
+                    overlaySprite = coinS5Across
+                case 2:
+                    overlaySprite = coinSDiagonal
+                case 3:
+                    overlaySprite = coinSDiagonal
+                    flipH = true
+                case 4:
+                    overlaySprite = coinSCross
+                default:
+                    overlaySprite = coinSArrow
+                }
             }
         }
+        
+        createOverlayNode(overlaySprite, flipX: flipH)
     }
     
     
