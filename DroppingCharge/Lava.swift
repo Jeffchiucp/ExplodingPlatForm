@@ -48,11 +48,14 @@ class Lava: GKState {
  //               self.scene.removeTrail(smokeTrail)
             }
             ]))
-        print(" ******************Super.boostPlayer")
         scene.superBoostPlayer()
+        print(" ******************Super.boostPlayer")
         scene.lives -= 1
+        print(" ******************Lives -1 ")
+
         
     }
+    // testing it to several other state
     
     override func isValidNextState(stateClass: AnyClass) -> Bool {
         return stateClass is Jump.Type || stateClass is Fall.Type || stateClass is Dead.Type

@@ -111,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Dead(scene: self)
         ])
     
-    var lives = 3
+    var lives = 10
     
     
     var scorePoint: Int = 0 {
@@ -223,8 +223,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func bombDrop() {
-        let scaleUp = SKAction.scaleTo(1.25, duration: 0.25)
-        let scaleDown = SKAction.scaleTo(1.0, duration: 0.25)
+        let scaleUp = SKAction.scaleTo(1.8, duration: 0.25)
+        let scaleDown = SKAction.scaleTo(1.8, duration: 0.25)
         let sequence = SKAction.sequence([scaleUp, scaleDown])
         let repeatSeq = SKAction.repeatActionForever(sequence)
         fgNode.childNodeWithName("Bomb")!.runAction(SKAction.unhide())
@@ -235,7 +235,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ]))
     }
     func startGame() {
-        fgNode.childNodeWithName("Title")!.removeFromParent()
+        //fgNode.childNodeWithName("Title")!.removeFromParent()
         fgNode.childNodeWithName("Bomb")!.removeFromParent()
         isPlaying = true
         player.physicsBody!.dynamic = true
@@ -392,7 +392,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         } else {
-            if Int.random(min: 1, max: 100) <= 75 {
+            if Int.random(min: 1, max: 100) <= 1 {
                 // Create standard coins 75%
                 switch Int.random(min: 0, max: 4) {
                 case 0:
@@ -410,6 +410,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     overlaySprite = coinArrow
                 }
             } else {
+                // testing it like 99% special coin
                 // Create special coins 25%
                 switch Int.random(min: 0, max: 4) {
                 case 0:
@@ -560,6 +561,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func superBoostPlayer() {
         setPlayerVelocity(1700)
+        print ("superBoostPlayer")
     }
     
     //function for explosion
@@ -634,9 +636,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // collision with the lava
     func updateCollisionLava() {
-        if player.position.y < lava.position.y + 180 {
+        if player.position.y < lava.position.y + 200 {
             playerState.enterState(Lava)
             reduceHealthBar()
+            print ("!!!!!!!!!Contact lava")
             print(lives)
             if lives <= 0 {
                 playerState.enterState(Dead)
@@ -659,7 +662,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         let other = contact.bodyA.categoryBitMask ==
             PhysicsCategory.Player ? contact.bodyB : contact.bodyA
-        print("******Contact!!!!_________________")
         //scoreLabel.text = String(scorePoint)
         
         switch other.categoryBitMask {
@@ -672,7 +674,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scoreLabel.text = String(scorePoint)
                 
             }
-            
+        case PhysicsCategory.CoinSpecial:
+            if let coin = other.node as? SKSpriteNode {
+            emitParticles("CollectSpecial", sprite: coin)
+            boostPlayer()
+            //runAction(soundBoost)
+        }
+        
         case PhysicsCategory.PlatformNormal:
             if let _ = other.node as? SKSpriteNode {
                 if player.physicsBody!.velocity.dy < 0 {

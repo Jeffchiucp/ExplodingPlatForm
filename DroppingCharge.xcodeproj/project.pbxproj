@@ -118,6 +118,8 @@
 		1094BE181D3ED96300DC8460 /* new_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1094BE171D3ED96300DC8460 /* new_bg1.png */; };
 		1094BE1A1D3EE67200DC8460 /* character_male-ninja.png in Resources */ = {isa = PBXBuildFile; fileRef = 1094BE191D3EE67200DC8460 /* character_male-ninja.png */; };
 		1094BE1C1D3EE86A00DC8460 /* Kunai.png in Resources */ = {isa = PBXBuildFile; fileRef = 1094BE1B1D3EE86A00DC8460 /* Kunai.png */; };
+		1094BE1E1D3EECB800DC8460 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1094BE1D1D3EECB800DC8460 /* MenuScene.swift */; };
+		1094BE201D3EED9700DC8460 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1094BE1F1D3EED9700DC8460 /* MSButtonNode.swift */; };
 		10F0AE7D1D399548004B287C /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6B1D399548004B287C /* alarm.wav */; };
 		10F0AE7E1D399548004B287C /* attribution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6C1D399548004B287C /* attribution.txt */; };
 		10F0AE7F1D399548004B287C /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE6D1D399548004B287C /* bgMusic.mp3 */; };
@@ -252,6 +254,8 @@
 		1094BE171D3ED96300DC8460 /* new_bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_bg1.png; sourceTree = "<group>"; };
 		1094BE191D3EE67200DC8460 /* character_male-ninja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "character_male-ninja.png"; sourceTree = "<group>"; };
 		1094BE1B1D3EE86A00DC8460 /* Kunai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kunai.png; sourceTree = "<group>"; };
+		1094BE1D1D3EECB800DC8460 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		1094BE1F1D3EED9700DC8460 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
 		10F0AE6B1D399548004B287C /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
 		10F0AE6C1D399548004B287C /* attribution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attribution.txt; sourceTree = "<group>"; };
 		10F0AE6D1D399548004B287C /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
@@ -472,6 +476,8 @@
 				102AF06B1D36BB8D00496991 /* Lava.swift */,
 				102AF06D1D36BB9900496991 /* Dead.swift */,
 				10304D9F1D301B98007372D8 /* GameViewController.swift */,
+				1094BE1D1D3EECB800DC8460 /* MenuScene.swift */,
+				1094BE1F1D3EED9700DC8460 /* MSButtonNode.swift */,
 				1094BE151D3ED86C00DC8460 /* platform.png */,
 				10304DA11D301B98007372D8 /* Main.storyboard */,
 				1094BE1B1D3EE86A00DC8460 /* Kunai.png */,
@@ -699,6 +705,7 @@
 				102AF06A1D36BB7E00496991 /* Fall.swift in Sources */,
 				102AF0611D36B5D800496991 /* WaitingForBomb.swift in Sources */,
 				102AF1011D36F26500496991 /* SKAction+Extensions.swift in Sources */,
+				1094BE1E1D3EECB800DC8460 /* MenuScene.swift in Sources */,
 				102AF05D1D36B52000496991 /* GameOver.swift in Sources */,
 				102AF1041D36F26500496991 /* SKNode+Extensions.swift in Sources */,
 				102AF1051D36F26500496991 /* SKTAudio.swift in Sources */,
@@ -706,6 +713,7 @@
 				102AF06C1D36BB8D00496991 /* Lava.swift in Sources */,
 				102AF1081D36F26500496991 /* Vector3.swift in Sources */,
 				102AF05F1D36B5BA00496991 /* Play.swift in Sources */,
+				1094BE201D3EED9700DC8460 /* MSButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

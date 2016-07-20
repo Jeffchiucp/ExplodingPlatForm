@@ -43,6 +43,7 @@ class Fall: GKState {
         print("Fall!")
     }
     
+    // testing my GameState and making sure that I have the Game State to Jump or Lava State
     override func isValidNextState(stateClass: AnyClass) -> Bool {
         return stateClass is Jump.Type || stateClass is Lava.Type
     }
