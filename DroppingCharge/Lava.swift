@@ -45,13 +45,13 @@ class Lava: GKState {
         scene.runAction(SKAction.sequence([
             SKAction.waitForDuration(1.0),
             SKAction.runBlock() {
- //               self.scene.removeTrail(smokeTrail)
+//               self.scene.removeTrail(smokeTrail)
             }
             ]))
         scene.superBoostPlayer()
-        print(" ******************Super.boostPlayer")
         scene.lives -= 1
-        print(" ******************Lives -1 ")
+//        print(" ******************Super.boostPlayer")
+//        print(" ******************Lives -1 ")
 
         
     }

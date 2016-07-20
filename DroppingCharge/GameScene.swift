@@ -111,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Dead(scene: self)
         ])
     
-    var lives = 10
+    var lives = 4
     
     
     var scorePoint: Int = 0 {
