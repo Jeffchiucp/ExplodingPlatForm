@@ -113,6 +113,7 @@
 		10304DA81D301B98007372D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA61D301B98007372D8 /* LaunchScreen.storyboard */; };
 		1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1033F07E1D4048B900266DB4 /* SmokeTrail.sks */; };
 		104D61871D4144E80094737D /* instruction_toRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D61861D4144E80094737D /* instruction_toRight.png */; };
+		104D61891D41465A0094737D /* instruction_toLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D61881D41465A0094737D /* instruction_toLeft.png */; };
 		106DFE181D3D83A1004FD9D0 /* bigger_platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE171D3D83A1004FD9D0 /* bigger_platform.png */; };
 		106DFE1E1D3D9636004FD9D0 /* Coin.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1D1D3D9636004FD9D0 /* Coin.sks */; };
 		106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */; };
@@ -251,6 +252,7 @@
 		10304DA91D301B98007372D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1033F07E1D4048B900266DB4 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
 		104D61861D4144E80094737D /* instruction_toRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = instruction_toRight.png; path = Assets.xcassets/instruction_toRight.png; sourceTree = "<group>"; };
+		104D61881D41465A0094737D /* instruction_toLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = instruction_toLeft.png; path = Assets.xcassets/instruction_toLeft.png; sourceTree = "<group>"; };
 		106DFE171D3D83A1004FD9D0 /* bigger_platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigger_platform.png; sourceTree = "<group>"; };
 		106DFE1D1D3D9636004FD9D0 /* Coin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Coin.sks; path = Scene/Coin.sks; sourceTree = "<group>"; };
 		106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinSpecial.sks; path = Scene/CoinSpecial.sks; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				10304D991D301B98007372D8 /* AppDelegate.swift */,
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
 				104D61861D4144E80094737D /* instruction_toRight.png */,
+				104D61881D41465A0094737D /* instruction_toLeft.png */,
 				1033F07E1D4048B900266DB4 /* SmokeTrail.sks */,
 				106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */,
 				106DFE1D1D3D9636004FD9D0 /* Coin.sks */,
@@ -587,6 +590,7 @@
 				102AF1211D36F56700496991 /* CoinCross.sks in Resources */,
 				102AF0EC1D36E76500496991 /* Platform5Across.sks in Resources */,
 				102AF1251D36F56700496991 /* CoinSCross.sks in Resources */,
+				104D61891D41465A0094737D /* instruction_toLeft.png in Resources */,
 				10F0AE861D399548004B287C /* explosion1.wav in Resources */,
 				102AF08E1D36BCC800496991 /* CollectNormal.sks in Resources */,
 				10F0AE821D399548004B287C /* brick.caf in Resources */,
