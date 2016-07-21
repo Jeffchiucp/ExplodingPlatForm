@@ -25,7 +25,7 @@ class WaitingForBomb: GKState {
             print("_________________________waiting for bomb________")
             // Scale out title & ready label
             let scale = SKAction.scaleTo(0, duration: 0.4)
-            scene.fgNode.childNodeWithName("Title")!.runAction(scale)
+            //scene.fgNode.childNodeWithName("Title")!.runAction(scale)
             scene.fgNode.childNodeWithName("Ready")!.runAction(
                 SKAction.sequence(
                     [SKAction.waitForDuration(0.2), scale]))

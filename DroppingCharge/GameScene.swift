@@ -74,6 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var coinSCross: SKSpriteNode!
     var coinSArrow: SKSpriteNode!
     var coinRef: SKSpriteNode!
+    var coinCrossScene: SKSpriteNode!
     
     var lastItemPosition = CGPointZero
     var lastItemHeight: CGFloat = 0.0
@@ -92,8 +93,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var animSteerLeft: SKAction! = nil
     var animSteerRight: SKAction! = nil
     var curAnim: SKAction? = nil
-    var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 1000, height: 20))
-    
+    var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 1000, height: 40))
+    //var coin = SKSpriteNode
     var playerTrail: SKEmitterNode!
 
     
@@ -105,6 +106,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // gameGain value
     
     let gameGain: CGFloat = 2.5
+    var coinTextures = [SKTexture]()
+
+    let coinNode = SKNode()
+    let coin = SKSpriteNode()
+
+    
+    func makeCoin() -> SKNode {
+        
+        
+        let animate = SKAction.animateWithTextures(coinTextures, timePerFrame: 0.2, resize: true, restore: false)
+        let forever = SKAction.repeatActionForever(animate)
+        coin.runAction(forever)
+        
+        return coin
+    }
     
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
@@ -164,7 +180,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         SKAction.playSoundFileNamed("explosion4.wav", waitForCompletion: false)
     ]
     
+//    func makeCoinBlock() -> SKNode {
+//        let coinNode = SKNode()
+//        for row in 0 ..< coinBlock.count {
+//            for col in 0 ..< coinBlock[row].count {
+//                if coinBlock[row][col] == 1 {
+//                    let coin = makeCoin()
+//                    coinNode.addChild(coin)
+//                    coin.position.x = CGFloat(col) * coinSize.width
+//                    coin.position.y = CGFloat(-row) * coinSize.height
+//                    
+//                }
+//            }
+//        }
+//    
+//        return coinNode
+//    }
+//    
     override func didMoveToView(view: SKView) {
+        
+//        for i in 1...4 {
+//            coinTextures.append(SKTexture(imageNamed: "Coin_\(i)"))
+//        }
+//        
+//        let block = makeCoinBlock()
+//        addChild(block)
+//        block.position.x = 100
+//        block.position.y = 300
+        
         
         setupNodes()
         setupLevel()
@@ -202,8 +245,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
-
+//    let coinSize = CGSize(width: 16, height: 16)
+//
+//    let coinBlock = [[1,0],
+//                     [0,1]]
+//    
+//    func makeCoin() -> SKNode {
+//        
+//        let coin = SKSpriteNode(color: UIColor.yellowColor(), size: coinSize)
+//        
+//        let animate = SKAction.animateWithTextures(coinTextures, timePerFrame: 0.2, resize: true, restore: false)
+//        let forever = SKAction.repeatActionForever(animate)
+//        coin.runAction(forever)
+//        
+//        return coin
+//    }
+//    
     
     //initiate the player with physics and Collision
     func setupPlayer() {
@@ -429,9 +486,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else {
             if Int.random(min: 1, max: 100) <= 1 {
                 // Create standard coins 75%
-                switch Int.random(min: 0, max: 4) {
+                switch Int.random(min: 0, max: 0) {
                 case 0:
-                    overlaySprite = coinArrow
+                    overlaySprite = coinCrossScene
                 case 1:
                     overlaySprite = coin5Across
                 case 2:
@@ -506,13 +563,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         healthBar.zPosition = 200
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
-        scoreLabel.fontSize = 70
+        scoreLabel.fontSize = 85
         scoreLabel.fontName = "Helvetica"
         scoreLabel.position.x = 175
         scoreLabel.position.y = 700
         
         scoreLabel.fontSize = 70
-        scoreLabel.fontColor = SKColor.whiteColor()
+        scoreLabel.fontColor = SKColor.yellowColor()
         scoreLabel.zPosition = 200
         scoreLabel.removeFromParent()
         camera!.addChild(scoreLabel)
