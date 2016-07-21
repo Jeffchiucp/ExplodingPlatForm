@@ -30,7 +30,7 @@ class Playing: GKState {
         scene.updateLevel()
         scene.updatePlayer()
         scene.updateLava(seconds)
-        //scene.updateHealthBar(seconds)
+        scene.updateExplosions(seconds)
         scene.updateCollisionLava()
     }
     

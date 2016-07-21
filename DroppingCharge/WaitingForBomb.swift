@@ -31,8 +31,8 @@ class WaitingForBomb: GKState {
                     [SKAction.waitForDuration(0.2), scale]))
             
             // Bounce bomb
-            let scaleUp = SKAction.scaleTo(1.25, duration: 0.25)
-            let scaleDown = SKAction.scaleTo(1.0, duration: 0.25)
+            let scaleUp = SKAction.scaleTo(1.6, duration: 0.25)
+            let scaleDown = SKAction.scaleTo(1.7 , duration: 0.25)
             let sequence = SKAction.sequence([scaleUp, scaleDown])
             let repeatSeq = SKAction.repeatActionForever(sequence)
             scene.fgNode.childNodeWithName("Bomb")!.runAction(

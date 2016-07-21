@@ -41,11 +41,11 @@ class Lava: GKState {
     
     override func didEnterWithPreviousState(previousState: GKState?) {
         
-//       let smokeTrail = scene.addTrail("SmokeTrail")
+       let smokeTrail = scene.addTrail("SmokeTrail")
         scene.runAction(SKAction.sequence([
             SKAction.waitForDuration(1.0),
             SKAction.runBlock() {
-//               self.scene.removeTrail(smokeTrail)
+               self.scene.removeTrail(smokeTrail)
             }
             ]))
         scene.superBoostPlayer()
@@ -55,7 +55,6 @@ class Lava: GKState {
 
         
     }
-    // testing it to several other state
     
     override func isValidNextState(stateClass: AnyClass) -> Bool {
         return stateClass is Jump.Type || stateClass is Fall.Type || stateClass is Dead.Type

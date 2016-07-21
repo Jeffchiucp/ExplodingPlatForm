@@ -1,3 +1,10 @@
+//
+//  GameScene.swift
+//  DroppingCharge
+//
+//  Created by JeffChiu on 7/7/16.
+//  Copyright © 2016 JeffChiu. All rights reserved.
+//
 /*
  * Copyright (c) 2015 Razeware LLC
  *
@@ -87,6 +94,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var curAnim: SKAction? = nil
     var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 1000, height: 20))
     
+    var playerTrail: SKEmitterNode!
+
+    
     let maxHealth: CGFloat = 100
     var currentHealth: CGFloat = 100
     
@@ -112,7 +122,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ])
     
     var lives = 4
-    
+    // added instruction
+    var shouldShowInstructions = true
+    let instructions = SKSpriteNode(imageNamed: "instruction_ToRight")
     
     var scorePoint: Int = 0 {
         didSet {
@@ -168,7 +180,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameState.enterState(WaitingForTap)
         //setupPlayer()
         
+        /////////////////////
+        
+        instructions.hidden = true
+        
+        instructions.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        instructions.size = CGSize(width: frame.size.width, height: 650)
+        instructions.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        instructions.zPosition = 100
+        addChild(instructions)
+        
+        if shouldShowInstructions {
+            shouldShowInstructions = false
+            let instructionSpawn = SKAction.runBlock({
+                self.instructions.hidden = false
+            })
+            let instructionDisapper = SKAction.runBlock({
+                self.instructions.hidden = true
+            })
+        }
+        
     }
+    
+    
+
     
     //initiate the player with physics and Collision
     func setupPlayer() {
@@ -565,7 +600,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //function for explosion
-    
+    // First,yougetthecamerapositionandgeneratearandompositionwithinthe viewable part of the game world.
+    //2. Next,you get a randomnumbertoplayarandomsoundeffectfromthe soundExplosions array.
+    //3. Finally,you create an explosionwitharandomintensity.Then create a position, removing it after two seconds, and add it to the background node of the game world.
+
     func createRandomExplosion() {
         // 1
         let cameraPos = getCameraPosition()
@@ -575,7 +613,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                     max: cameraPos.y + screenSize.height))
         // 2
         let randomNum = Int.random(soundExplosions.count)
-        runAction(soundExplosions[randomNum])
+        //runAction(soundExplosions[randomNum])
         // 3
         let explode = explosion(0.25 * CGFloat(randomNum + 1))
         explode.position = convertPoint(screenPos, toNode: bgNode)
@@ -648,6 +686,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     //random Explosion
+    // adding this right after updateCollisionLava
+    //method checks periodically to see when to set off an explosion by comparing the last explosion time with a randomly chosen time in the future.
+    
     func updateExplosions(dt: NSTimeInterval) {
         timeSinceLastExplosion += dt
         if timeSinceLastExplosion > timeForNextExplosion {
@@ -671,13 +712,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 emitParticles("CollectNormal", sprite: coin)
                 jumpPlayer()
                 //runAction(soundCoin)
+                scorePoint += 1
                 scoreLabel.text = String(scorePoint)
+                print("&&&&&&&&&")
+
+//                if ((firstBody.categoryBitMask == PhysicsCategory.Enemy) && (secondBody.categoryBitMask == PhysicsCategory.Bullet) || (firstBody.categoryBitMask == PhysicsCategory.Bullet) && (secondBody.categoryBitMask == PhysicsCategory.Enemy)) {
+//                    
+//                    collisionWithBullet(firstBody.node as! SKSpriteNode, Bullet: secondBody.node as! SKSpriteNode)
+//                    
+                
+                    // Used to test if the scorePoint works
+                
                 
             }
         case PhysicsCategory.CoinSpecial:
             if let coin = other.node as? SKSpriteNode {
             emitParticles("CollectSpecial", sprite: coin)
             boostPlayer()
+            scorePoint += 1
+            scoreLabel.text = String(scorePoint)
             //runAction(soundBoost)
         }
         
@@ -701,6 +754,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         default:
             break; }
+    }
+    
+    func addTrail(name: String) -> SKEmitterNode {
+        let trail = SKEmitterNode(fileNamed: name)!
+        trail.targetNode = fgNode
+        player.addChild(trail)
+        return trail
+    }
+    
+    func removeTrail(trail: SKEmitterNode) {
+        trail.numParticlesToEmit = 1
+        trail.runAction(SKAction.removeFromParentAfterDelay(1.0))
     }
     
     //screenShake by amount

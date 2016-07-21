@@ -111,6 +111,8 @@
 		10304DA31D301B98007372D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA11D301B98007372D8 /* Main.storyboard */; };
 		10304DA51D301B98007372D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA41D301B98007372D8 /* Assets.xcassets */; };
 		10304DA81D301B98007372D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA61D301B98007372D8 /* LaunchScreen.storyboard */; };
+		1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1033F07E1D4048B900266DB4 /* SmokeTrail.sks */; };
+		104D61871D4144E80094737D /* instruction_toRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D61861D4144E80094737D /* instruction_toRight.png */; };
 		106DFE181D3D83A1004FD9D0 /* bigger_platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE171D3D83A1004FD9D0 /* bigger_platform.png */; };
 		106DFE1E1D3D9636004FD9D0 /* Coin.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1D1D3D9636004FD9D0 /* Coin.sks */; };
 		106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */; };
@@ -247,6 +249,8 @@
 		10304DA41D301B98007372D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10304DA71D301B98007372D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10304DA91D301B98007372D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1033F07E1D4048B900266DB4 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
+		104D61861D4144E80094737D /* instruction_toRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = instruction_toRight.png; path = Assets.xcassets/instruction_toRight.png; sourceTree = "<group>"; };
 		106DFE171D3D83A1004FD9D0 /* bigger_platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigger_platform.png; sourceTree = "<group>"; };
 		106DFE1D1D3D9636004FD9D0 /* Coin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Coin.sks; path = Scene/Coin.sks; sourceTree = "<group>"; };
 		106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinSpecial.sks; path = Scene/CoinSpecial.sks; sourceTree = "<group>"; };
@@ -458,6 +462,8 @@
 			children = (
 				10304D991D301B98007372D8 /* AppDelegate.swift */,
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
+				104D61861D4144E80094737D /* instruction_toRight.png */,
+				1033F07E1D4048B900266DB4 /* SmokeTrail.sks */,
 				106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */,
 				106DFE1D1D3D9636004FD9D0 /* Coin.sks */,
 				102AF0621D36B6A700496991 /* GameState */,
@@ -637,6 +643,7 @@
 				10304DA51D301B98007372D8 /* Assets.xcassets in Resources */,
 				102AF0BD1D36C16800496991 /* coin1.wav in Resources */,
 				102AF0931D36BCC800496991 /* PlatformDiagonal.sks in Resources */,
+				1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */,
 				10F0AE851D399548004B287C /* DrownFireBug.mp3 in Resources */,
 				102AF0EA1D36E76500496991 /* CollectSpecial.sks in Resources */,
 				106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */,
@@ -655,6 +662,7 @@
 				102AF0941D36BCC800496991 /* PlayerTrail.sks in Resources */,
 				102AF12B1D36F56700496991 /* PlatformArrow.sks in Resources */,
 				102AF0E71D36E76500496991 /* CoinSCross.sks in Resources */,
+				104D61871D4144E80094737D /* instruction_toRight.png in Resources */,
 				102AF12A1D36F56700496991 /* Platform5Across.sks in Resources */,
 				102AF1261D36F56700496991 /* CoinSDiagonal.sks in Resources */,
 				1094BE1A1D3EE67200DC8460 /* character_male-ninja.png in Resources */,
