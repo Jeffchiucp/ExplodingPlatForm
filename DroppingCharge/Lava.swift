@@ -44,6 +44,7 @@ class Lava: GKState {
        let smokeTrail = scene.addTrail("SmokeTrail")
         scene.runAction(SKAction.sequence([
             SKAction.waitForDuration(1.0),
+            SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50),
             SKAction.runBlock() {
                self.scene.removeTrail(smokeTrail)
             }

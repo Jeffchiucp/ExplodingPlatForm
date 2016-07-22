@@ -486,7 +486,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else {
             if Int.random(min: 1, max: 100) <= 1 {
                 // Create standard coins 75%
-                switch Int.random(min: 0, max: 0) {
+                switch Int.random(min: 0, max: 4) {
                 case 0:
                     overlaySprite = coinCrossScene
                 case 1:
@@ -546,17 +546,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fgNode.childNodeWithName("Bomb")?.runAction(SKAction.hide())
         addChild(cameraNode)
         camera = cameraNode
-        //        health = childNodeWithName("health1") as! SKSpriteNode
-        //        health.removeFromParent()
-        //        camera!.addChild(health)
-        //        health.position.x = -20
-        //        health.position.y = 700
-        //        health.zPosition = 200
+
         
-        //adding HealthBar
-        //healthBar = childNodeWithName("health1") as! SKSpriteNode
+        //adding HealthBar // removing it // replacing it with Heart Shape
+        // request for Level and different stages
         healthBar.removeFromParent()
-        camera!.addChild(healthBar)
+        //camera!.addChild(healthBar)
         healthBar.anchorPoint.x = 0
         healthBar.position.x = -300
         healthBar.position.y = 800
@@ -735,11 +730,58 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             playerState.enterState(Lava)
             reduceHealthBar()
             print ("!!!!!!!!!Contact lava")
+
+            //changing the player color
+            //player.runAction()
+            print ("!!!!!!!!!Red")
+
+            player.runAction(SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50))
+            print ("!!!!!!!!!Red ")
+
+            let wait = SKAction.waitForDuration(0.8)
+            //let fadeAway = SKAction.fadeOutWithDuration(1)
+            //let remove = SKAction.removeFromParent()
+            let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
+            let whitecolor = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.50)
+
+            let lavaDamageColor = SKAction.sequence([redColor, whitecolor])
+            player.runAction(lavaDamageColor)
+            
+            
             print(lives)
+            
+            if lives == 2 {
+                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+                let HealthYellow = SKAction.sequence([yellowColor, wait])
+                player.runAction(HealthYellow)
+                print ("!!!!!!!!!You are so Close ")
+
+
+            }
+            if lives == 1{
+                let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
+                let DagerHealth = SKAction.sequence([redColor, wait])
+                player.runAction(DagerHealth)
+
+                
+            }
             if lives <= 0 {
                 playerState.enterState(Dead)
                 gameState.enterState(GameOver)
             }
+        }
+    }
+    
+    func setUpExplosion(point: CGPoint) {
+        if let explosion = SKEmitterNode(fileNamed: "explosion") {
+            explosion.position = point
+            addChild(explosion)
+            let fadeAway = SKAction.fadeOutWithDuration(0.5)
+            let wait = SKAction.waitForDuration(0.8)
+            let remove = SKAction.removeFromParent()
+            let seq = SKAction.sequence([wait, fadeAway, wait, remove])
+            explosion.runAction(seq)
+            
         }
     }
     //random Explosion
