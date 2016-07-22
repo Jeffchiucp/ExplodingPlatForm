@@ -19,9 +19,10 @@ class GameOver: GKState {
     
     override func didEnterWithPreviousState(previousState: GKState?) {
         if previousState is Playing {
-            let gameOver = SKSpriteNode(imageNamed: "restartButton")
+            let gameOver = SKSpriteNode(imageNamed: "Score")
+            
             gameOver.position = scene.getCameraPosition() 
-            gameOver.zPosition = 10
+            gameOver.zPosition = 200
             scene.addChild(gameOver)
         }
     }

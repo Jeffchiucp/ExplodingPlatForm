@@ -32,6 +32,9 @@ import CoreMotion
 import GameplayKit
 
 
+let debugFlag = false
+
+
 struct PhysicsCategory {
     static let None: UInt32              = 0
     static let Player: UInt32            = 0b1      // 1
@@ -40,6 +43,8 @@ struct PhysicsCategory {
     static let CoinNormal: UInt32        = 0b1000   // 8
     static let CoinSpecial: UInt32       = 0b10000  // 16
     static let Edges: UInt32             = 0b100000 // 32
+    static let Heart: UInt32             = 0b1000000 // 64
+    
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -56,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //testing
     var scoreLabel: SKLabelNode!
-    var highScoreLabel = SKLabelNode!.self
+    var highScoreLabel : SKLabelNode!
     
     var platform5Across: SKSpriteNode! = nil
     var coinArrow: SKSpriteNode!
@@ -104,12 +109,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var coinSpecialRef: SKSpriteNode!
     //Set the ScoreLabel
+    
+    var heartRef: SKSpriteNode!
 
     // gameGain value
     
     let gameGain: CGFloat = 2.5
     var coinTextures = [SKTexture]()
 
+    
     let coinNode = SKNode()
     let coin = SKSpriteNode()
 
@@ -144,6 +152,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var shouldShowInstructions = true
     let instructions = SKSpriteNode(imageNamed: "instruction_ToRight")
     
+    var squishAndStretch: SKAction! = nil
+
     var scorePoint: Int = 0 {
         didSet {
             scoreLabel.text = "\(scorePoint)"
@@ -183,6 +193,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         SKAction.playSoundFileNamed("explosion3.wav", waitForCompletion: false),
         SKAction.playSoundFileNamed("explosion4.wav", waitForCompletion: false)
     ]
+    
+    
     
 //    func makeCoinBlock() -> SKNode {
 //        let coinNode = SKNode()
@@ -226,7 +238,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         playerState.enterState(Idle)
         gameState.enterState(WaitingForTap)
         //setupPlayer()
-        
+        animJump = setupAnimWithPrefix("Jump_00", start: 1, end: 7, timePerFrame: 0.1)
+        animFall = setupAnimWithPrefix("Glide_00_", start: 1, end: 7, timePerFrame: 0.1)
+        animSteerLeft = setupAnimWithPrefix("Jump_00", start: 1, end: 9, timePerFrame: 0.2)
+        animSteerRight = setupAnimWithPrefix("Jump_00", start: 1, end: 9, timePerFrame: 0.2)
         /////////////////////
         
         instructions.hidden = true
@@ -242,22 +257,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let instructionSpawn = SKAction.runBlock({
                 self.instructions.hidden = false
             })
-            let instructionDisapper = SKAction.runBlock({
-                self.instructions.hidden = true
-            })
+//            let instructionDisapper = SKAction.runBlock({
+//                self.instructions.hidden = true
+//            })
         }
         
     }
     
     
 
+    func setupAnimWithPrefix(prefix: String,
+                             start: Int,
+                             end: Int,
+                             timePerFrame: NSTimeInterval) -> SKAction {
+        var textures = [SKTexture]()
+        for i in start...end {
+            textures.append(SKTexture(imageNamed: "\(prefix)\(i)"))
+        }
+        return SKAction.animateWithTextures(textures, timePerFrame: timePerFrame, resize: false, restore: true)
+    }
     
 
     
     //initiate the player with physics and Collision
     func setupPlayer() {
         player.physicsBody = SKPhysicsBody(circleOfRadius:
-            player.size.width * 0.3)
+            player.size.width * 0.1)
+        player.anchorPoint.y = -0.1
         player.physicsBody!.dynamic = false
         player.physicsBody!.allowsRotation = false
         player.physicsBody!.categoryBitMask = PhysicsCategory.Player
@@ -461,7 +487,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             } else {
                 // Create breakable platforms 25%
-                switch Int.random(min: 0, max: 3) {
+                switch Int.random(min: 1, max: 3) {
                 case 0:
                     overlaySprite = breakArrow
                 case 1:
@@ -539,6 +565,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(cameraNode)
         camera = cameraNode
 
+        // Squash and Stretch
+        let squishAction = SKAction.scaleXTo(1.15, y: 0.85, duration: 0.25)
+        squishAction.timingMode = SKActionTimingMode.EaseInEaseOut
+        let stretchAction = SKAction.scaleXTo(0.85, y: 1.15, duration: 0.25)
+        stretchAction.timingMode = SKActionTimingMode.EaseInEaseOut
+        
+        squishAndStretch = SKAction.sequence([squishAction, stretchAction])
         
         //adding HealthBar // removing it // replacing it with Heart Shape
         // request for Level and different stages
@@ -550,25 +583,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         healthBar.zPosition = 200
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
-        scoreLabel.fontSize = 85
-        scoreLabel.fontName = "Helvetica"
-        scoreLabel.position.x = 175
-        scoreLabel.position.y = 700
+        scoreLabel.fontSize = 150
+        scoreLabel.position.x = -100
+        scoreLabel.position.y = 900
         
-        scoreLabel.fontSize = 70
+        scoreLabel.fontName = "Minercraftory"
         scoreLabel.fontColor = SKColor.yellowColor()
         scoreLabel.zPosition = 200
         scoreLabel.removeFromParent()
         camera!.addChild(scoreLabel)
         
         //added highScoreLabel
-        //highScoreLabel = childNodeWithName("highScore") as! SKLabelNode
-//        highScoreLabel.position.x = -300
-//        highScoreLabel.position.y = 800
-//        highScoreLabel.zPosition = 200
-        
+        highScoreLabel = childNodeWithName("highScore") as! SKLabelNode
+        highScoreLabel.fontSize = 0
 
-        
+        highScoreLabel.position.x = -100
+        highScoreLabel.position.y = 700
+        highScoreLabel.fontColor = SKColor.redColor()
+        highScoreLabel.fontName = "Pixel Coleco"
+
+        highScoreLabel.zPosition = 200
+        highScoreLabel.removeFromParent()
+        camera!.addChild(highScoreLabel)
+
+
+//        heartRef = loadOverlayNode("heart")
         coinArrow = loadOverlayNode("CoinArrow")
         platformArrow = loadOverlayNode("PlatformArrow")
         platform5Across = loadOverlayNode("Platform5Across")
@@ -626,12 +665,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func reduceHealthBar(){
         if currentHealth > 0 {
             currentHealth -= 25
-            let healthBarReduce = SKAction.scaleXTo(currentHealth / maxHealth, duration: 0.5)
-            healthBar.runAction(healthBarReduce)
+            //let healthBarReduce = SKAction.scaleXTo(currentHealth / maxHealth, duration: 0.5)
+            //healthBar.runAction(healthBarReduce)
             
         }
     }
     
+    
+    
+    func improveHealthBar(){
+        if currentHealth < 100 {
+            currentHealth += 25
+            
+        }
+    }
     
     //falling off the platform like that.
     func setPlayerVelocity(amount:CGFloat) {
@@ -824,6 +871,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                     // Used to test if the scorePoint works
                 
+            }
+        case PhysicsCategory.Heart:
+            if let heart = other.node as? SKSpriteNode {
+                emitParticles("CollectSpecial", sprite: heart)
                 
             }
         case PhysicsCategory.CoinSpecial:

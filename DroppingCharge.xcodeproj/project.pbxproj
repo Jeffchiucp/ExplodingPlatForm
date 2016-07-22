@@ -107,6 +107,8 @@
 		102AF12B1D36F56700496991 /* PlatformArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1191D36F56700496991 /* PlatformArrow.sks */; };
 		102AF12C1D36F56700496991 /* PlatformDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF11A1D36F56700496991 /* PlatformDiagonal.sks */; };
 		102AF12D1D36F56700496991 /* PlayerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF11B1D36F56700496991 /* PlayerTrail.sks */; };
+		102E717D1D42D2FA00815790 /* Minercraftory.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 102E717C1D42D2FA00815790 /* Minercraftory.ttf */; };
+		102E717F1D42D4F300815790 /* Pixel Coleco.otf in Resources */ = {isa = PBXBuildFile; fileRef = 102E717E1D42D4F300815790 /* Pixel Coleco.otf */; };
 		10304D9A1D301B98007372D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10304D991D301B98007372D8 /* AppDelegate.swift */; };
 		10304D9E1D301B98007372D8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10304D9D1D301B98007372D8 /* GameScene.swift */; };
 		10304DA01D301B98007372D8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10304D9F1D301B98007372D8 /* GameViewController.swift */; };
@@ -254,6 +256,8 @@
 		102AF1191D36F56700496991 /* PlatformArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlatformArrow.sks; sourceTree = "<group>"; };
 		102AF11A1D36F56700496991 /* PlatformDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlatformDiagonal.sks; sourceTree = "<group>"; };
 		102AF11B1D36F56700496991 /* PlayerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerTrail.sks; sourceTree = "<group>"; };
+		102E717C1D42D2FA00815790 /* Minercraftory.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minercraftory.ttf; sourceTree = "<group>"; };
+		102E717E1D42D4F300815790 /* Pixel Coleco.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pixel Coleco.otf"; sourceTree = "<group>"; };
 		10304D961D301B98007372D8 /* DroppingCharge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DroppingCharge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10304D991D301B98007372D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10304D9D1D301B98007372D8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 		102AF0981D36C16800496991 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				102E717C1D42D2FA00815790 /* Minercraftory.ttf */,
+				102E717E1D42D4F300815790 /* Pixel Coleco.otf */,
 				102AF1091D36F56700496991 /* Scene */,
 				102AF0991D36C16800496991 /* particles */,
 				102AF09F1D36C16800496991 /* sounds */,
@@ -647,6 +653,7 @@
 				10F0AE821D399548004B287C /* brick.caf in Resources */,
 				10F0AE8A1D399548004B287C /* jump.wav in Resources */,
 				102AF0E61D36E76500496991 /* CoinSArrow.sks in Resources */,
+				102E717F1D42D4F300815790 /* Pixel Coleco.otf in Resources */,
 				102AF0821D36BCC800496991 /* Break5Across.sks in Resources */,
 				10F0AE841D399548004B287C /* coin4.wav in Resources */,
 				102AF0B81D36C16800496991 /* attribution.txt in Resources */,
@@ -703,6 +710,7 @@
 				102AF0BD1D36C16800496991 /* coin1.wav in Resources */,
 				102AF0931D36BCC800496991 /* PlatformDiagonal.sks in Resources */,
 				1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */,
+				102E717D1D42D2FA00815790 /* Minercraftory.ttf in Resources */,
 				10F0AE851D399548004B287C /* DrownFireBug.mp3 in Resources */,
 				102AF0EA1D36E76500496991 /* CollectSpecial.sks in Resources */,
 				106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */,
