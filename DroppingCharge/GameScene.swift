@@ -56,7 +56,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //testing
     var scoreLabel: SKLabelNode!
-    
+    var highScoreLabel = SKLabelNode!.self
     
     var platform5Across: SKSpriteNode! = nil
     var coinArrow: SKSpriteNode!
@@ -94,15 +94,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var animSteerRight: SKAction! = nil
     var curAnim: SKAction? = nil
     var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 1000, height: 40))
+
     //var coin = SKSpriteNode
     var playerTrail: SKEmitterNode!
 
-    
+    // Don't need the MaxHealth anymore
     let maxHealth: CGFloat = 100
     var currentHealth: CGFloat = 100
     
     var coinSpecialRef: SKSpriteNode!
-    
+    //Set the ScoreLabel
+
     // gameGain value
     
     let gameGain: CGFloat = 2.5
@@ -156,7 +158,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
+        
     }
+    
     
     
     //added BackgroundMusicNode
@@ -245,22 +249,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-//    let coinSize = CGSize(width: 16, height: 16)
-//
-//    let coinBlock = [[1,0],
-//                     [0,1]]
-//    
-//    func makeCoin() -> SKNode {
-//        
-//        let coin = SKSpriteNode(color: UIColor.yellowColor(), size: coinSize)
-//        
-//        let animate = SKAction.animateWithTextures(coinTextures, timePerFrame: 0.2, resize: true, restore: false)
-//        let forever = SKAction.repeatActionForever(animate)
-//        coin.runAction(forever)
-//        
-//        return coin
-//    }
-//    
+    
+
+    
+
     
     //initiate the player with physics and Collision
     func setupPlayer() {
@@ -569,6 +561,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.removeFromParent()
         camera!.addChild(scoreLabel)
         
+        //added highScoreLabel
+        //highScoreLabel = childNodeWithName("highScore") as! SKLabelNode
+//        highScoreLabel.position.x = -300
+//        highScoreLabel.position.y = 800
+//        highScoreLabel.zPosition = 200
+        
+
         
         coinArrow = loadOverlayNode("CoinArrow")
         platformArrow = loadOverlayNode("PlatformArrow")
@@ -738,7 +737,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.runAction(SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50))
             print ("!!!!!!!!!Red ")
 
-            let wait = SKAction.waitForDuration(0.8)
+            let wait = SKAction.waitForDuration(0.5)
             //let fadeAway = SKAction.fadeOutWithDuration(1)
             //let remove = SKAction.removeFromParent()
             let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
@@ -750,18 +749,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             print(lives)
             
-            if lives == 2 {
-                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
-                let HealthYellow = SKAction.sequence([yellowColor, wait])
-                player.runAction(HealthYellow)
+            if lives <= 2 {
+                //                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+                //                let HealthYellow = SKAction.sequence([yellowColor, wait])
+                //                player.runAction(HealthYellow)
+                let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 1.50)
+                let HealthDanger = SKAction.sequence([redColor, wait])
+                player.runAction(HealthDanger)
                 print ("!!!!!!!!!You are so Close ")
 
 
-            }
-            if lives == 1{
+            } else if lives == 1 {
                 let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
-                let DagerHealth = SKAction.sequence([redColor, wait])
+                let DagerHealth = SKAction.sequence([redColor])
                 player.runAction(DagerHealth)
+                print ("!!!!!!!!!DangerDanger!!!You are so Close to death ")
 
                 
             }
@@ -811,7 +813,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 emitParticles("CollectNormal", sprite: coin)
                 jumpPlayer()
                 //runAction(soundCoin)
-                scorePoint += 1
+                scorePoint += 50
                 scoreLabel.text = String(scorePoint)
                 print("&&&&&&&&&")
 
@@ -828,7 +830,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let coin = other.node as? SKSpriteNode {
             emitParticles("CollectSpecial", sprite: coin)
             boostPlayer()
-            scorePoint += 1
+            scorePoint += 500
             scoreLabel.text = String(scorePoint)
             //runAction(soundBoost)
         }
