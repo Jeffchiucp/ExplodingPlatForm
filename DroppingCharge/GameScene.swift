@@ -797,9 +797,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print(lives)
             
             if lives <= 2 {
-                //                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
-                //                let HealthYellow = SKAction.sequence([yellowColor, wait])
-                //                player.runAction(HealthYellow)
+//                                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+//                                let HealthYellow = SKAction.sequence([yellowColor, wait])
+//                                player.runAction(HealthYellow)
                 let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 1.50)
                 let HealthDanger = SKAction.sequence([redColor, wait])
                 player.runAction(HealthDanger)
@@ -883,6 +883,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             boostPlayer()
             scorePoint += 500
             scoreLabel.text = String(scorePoint)
+            let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+            let wait = SKAction.waitForDuration(0.5)
+            let whitecolor = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.50)
+
+            let HealthYellow = SKAction.sequence([yellowColor, wait, whitecolor
+                ])
+            player.runAction(HealthYellow)
+
             //runAction(soundBoost)
         }
         
