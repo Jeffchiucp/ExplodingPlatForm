@@ -469,6 +469,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var flipH = false
         let platformPercentage = 60
         
+        // set up different stages and different problems
         if Int.random(min: 1, max: 100) <= platformPercentage {
             if Int.random(min: 1, max: 100) <= 75 {
                 // Create standard platforms 75%
