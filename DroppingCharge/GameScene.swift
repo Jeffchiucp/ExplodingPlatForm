@@ -238,10 +238,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         playerState.enterState(Idle)
         gameState.enterState(WaitingForTap)
         //setupPlayer()
-        animJump = setupAnimWithPrefix("Jump_00", start: 1, end: 7, timePerFrame: 0.1)
-        animFall = setupAnimWithPrefix("Glide_00_", start: 1, end: 7, timePerFrame: 0.1)
-        animSteerLeft = setupAnimWithPrefix("Jump_00", start: 1, end: 9, timePerFrame: 0.2)
-        animSteerRight = setupAnimWithPrefix("Jump_00", start: 1, end: 9, timePerFrame: 0.2)
+        animJump = setupAnimWithPrefix("Jump__00", start: 1, end: 9, timePerFrame: 0.1)
+        animFall = setupAnimWithPrefix("Glide_00", start: 0, end: 9, timePerFrame: 0.1)
+        animSteerLeft = setupAnimWithPrefix("Jump__00", start: 1, end: 9, timePerFrame: 0.1)
+        animSteerRight = setupAnimWithPrefix("Glide_00", start: 1, end: 9, timePerFrame: 0.1)
         /////////////////////
         
         instructions.hidden = true
@@ -274,7 +274,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for i in start...end {
             textures.append(SKTexture(imageNamed: "\(prefix)\(i)"))
         }
-        return SKAction.animateWithTextures(textures, timePerFrame: timePerFrame, resize: false, restore: true)
+        return SKAction.animateWithTextures(textures, timePerFrame: timePerFrame, resize: true, restore: true)
     }
     
 
@@ -294,7 +294,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Set up the Core Motion for the Game Player
     
     func setupCoreMotion() {
-        motionManager.accelerometerUpdateInterval = 0.2
+        motionManager.accelerometerUpdateInterval = 1.0
         let queue = NSOperationQueue()
         motionManager.startAccelerometerUpdatesToQueue(queue, withHandler:
             {
@@ -400,6 +400,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lastUpdateTimeInterval = currentTime
         if paused { return }
         gameState.updateWithDeltaTime(deltaTime)
+        playerState.updateWithDeltaTime(deltaTime)
     }
     
     func setCameraPosition(position: CGPoint) {
@@ -503,22 +504,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         } else {
-            if Int.random(min: 1, max: 100) <= 1 {
+            if Int.random(min: 1, max: 100) <= 100 {
                 // Create standard coins 75%
                 switch Int.random(min: 0, max: 4) {
                 case 0:
-                    overlaySprite = coinCrossScene
+                    overlaySprite = break5Across
                 case 1:
-                    overlaySprite = coin5Across
+                    overlaySprite = break5Across
                 case 2:
-                    overlaySprite = coinDiagonal
+                    overlaySprite = breakDiagonal
                 case 3:
-                    overlaySprite = coinDiagonal
+                    overlaySprite = breakDiagonal
                     flipH = true
-                case 4:
-                    overlaySprite = coinCross
                 default:
-                    overlaySprite = coinArrow
+                    overlaySprite = break5Across
                 }
             } else {
                 // testing it like 99% special coin
@@ -876,21 +875,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case PhysicsCategory.Heart:
             if let heart = other.node as? SKSpriteNode {
                 emitParticles("CollectSpecial", sprite: heart)
+                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+                let wait = SKAction.waitForDuration(0.5)
+                let whitecolor = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.50)
                 
+                let HealthYellow = SKAction.sequence([yellowColor, wait, whitecolor
+                    ])
+                player.runAction(HealthYellow)
             }
         case PhysicsCategory.CoinSpecial:
             if let coin = other.node as? SKSpriteNode {
+
             emitParticles("CollectSpecial", sprite: coin)
             boostPlayer()
             scorePoint += 500
             scoreLabel.text = String(scorePoint)
-            let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
-            let wait = SKAction.waitForDuration(0.5)
-            let whitecolor = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.50)
 
-            let HealthYellow = SKAction.sequence([yellowColor, wait, whitecolor
-                ])
-            player.runAction(HealthYellow)
+            //coinRef.runAction(HealthYellow)
 
             //runAction(soundBoost)
         }

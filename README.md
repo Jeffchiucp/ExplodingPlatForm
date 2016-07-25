@@ -51,11 +51,11 @@ Design Prototype and Game Design
 
 #### Level Design
 Level 1
-Player begins to jump and rescue 1 objects 
+Player begins to jump through platform and and gather high score of 20,000  
 Level 2
-Player rescue all 5 objects 
+Player's goal is to avoid lava and get to the top of platform
 Level 3
-Collect all of the power equipment to upgrade to reach safety
+Collect all of the itesm to upgrade to reach safety 
 [Back to top ^](#)
 
 
@@ -75,8 +75,8 @@ Building up a prototype
 #### Week 2
 * [goals for the week]
 Working on the Game Mechanics and core gameplay:
-- Adding randomized platform 
-- Adding Coins
+- Adding randomized platform and 
+- Adding Coins rotations
 - Implementing touch events to Start the Game.
 - Adding Physics and Collision and Detection so that the marine can jump to platforms collect coins;
 - Implementing code to read the device accelerometer data to steer the Hero;
@@ -86,13 +86,12 @@ Working on the Game Mechanics and core gameplay:
 #### Week 3
 * [goals for the week]
 _finishing a playable build including the following:
-- Adding Levels for various topics
+- Adding Levels
 - Adding randomized platform 
 - Adding Coins
 - Implementing touch events to Start the Game.
 - Adding Physics and Collision and Detection so that the marine can jump to platforms collect coins;
 - Implementing code to read the device accelerometer data to steer the Hero;
-- Creating methods to handle the camera node so that it follows the player sprite;
 
 
 #### Week 4
