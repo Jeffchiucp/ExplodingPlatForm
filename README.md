@@ -82,28 +82,25 @@ Working on the Game Mechanics and core gameplay:
 - Implementing code to read the device accelerometer data to steer the Hero;
 - Creating methods to handle the camera node so that it follows the player sprite;
 - Game State 
+- Player State - Implementing code to read the device accelerometer data to steer the Hero;
+
 
 #### Week 3
 * [goals for the week]
 _finishing a playable build including the following:
-- Adding Levels
-- Adding randomized platform 
-- Adding Coins
+- Adding the Boost and avoid the Coins
+- Adding Hearts and health bar
+- Polishing the Game Fonts
+- Resizing all of the players
+- adding drop and dead character scenes
+- test the Game Play 
 - Implementing touch events to Start the Game.
 - Adding Physics and Collision and Detection so that the marine can jump to platforms collect coins;
-- Implementing code to read the device accelerometer data to steer the Hero;
 
 
 #### Week 4
-* [goals for the week, should be finishing all core gameplay]
-User Testing and review
-
-#### Week 5
-_starting the polish_
-* [goals for the week]
-
-#### Week 6
-_submitting to the App Store_
 * [goals for the week, should be finishing the polish -- demo day on Saturday!]
+User Testing and review 
+Publish the App to the App Store
 
 [Back to top ^](#)
