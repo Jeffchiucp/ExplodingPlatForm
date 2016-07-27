@@ -73,8 +73,9 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "icon-APP-83.5@2x.png",
       "scale" : "2x"
     },
     {
@@ -100,14 +101,12 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
-      "filename" : "87.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "watch",
-      "filename" : "80.png",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"
