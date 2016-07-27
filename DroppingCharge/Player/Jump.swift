@@ -50,14 +50,12 @@ class Jump: GKState {
         if abs(scene.player.physicsBody!.velocity.dx) > 100.0 {
             if scene.player.physicsBody!.velocity.dx > 0 {
                 scene.runAnim(scene.animSteerRight)
-                print("animSteerRight")
             } else {
                 scene.runAnim(scene.animSteerLeft)
-                print("animSteerLeft")
             }
         } else {
             scene.runAnim(scene.animJump)
-
+            print("animJump")
         }
     }
     

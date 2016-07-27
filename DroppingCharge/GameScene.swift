@@ -158,20 +158,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         didSet {
             scoreLabel.text = "\(scorePoint)"
             if scorePoint % 10 == 0 {
-                if scorePoint == 9 {
-                    print("__________1________________")
+                playerScoreUpdate()
+                if scorePoint == 500 {
+                    print("__________Level ________________")
                 }
                 
                 // CHANGE THIS AFTER TESTING
-                if scorePoint == 10 {
-                    print("__________10________________")
+                if scorePoint == 10000 {
+                    print("__________You Won!!!________________")
                 }
             }
         }
         
     }
-    
-    
+
+    //playerScoreUpdate
     
     //added BackgroundMusicNode
     var backgroundMusic: SKAudioNode!
@@ -504,7 +505,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         } else {
-            if Int.random(min: 1, max: 100) <= 100 {
+            print("coin stragtey")
+            if Int.random(min: 1, max: 100) <= 50 {
                 // Create standard coins 75%
                 switch Int.random(min: 0, max: 4) {
                 case 0:
@@ -566,7 +568,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         camera = cameraNode
 
         // Squash and Stretch
-        let squishAction = SKAction.scaleXTo(1.15, y: 0.85, duration: 0.25)
+        let squishAction = SKAction.scaleXTo(1, y: 1.0, duration: 0.25)
         squishAction.timingMode = SKActionTimingMode.EaseInEaseOut
         let stretchAction = SKAction.scaleXTo(0.85, y: 1.15, duration: 0.25)
         stretchAction.timingMode = SKActionTimingMode.EaseInEaseOut
@@ -576,14 +578,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //adding HealthBar // removing it // replacing it with Heart Shape
         // request for Level and different stages
         healthBar.removeFromParent()
-        //camera!.addChild(healthBar)
-        healthBar.anchorPoint.x = 0
-        healthBar.position.x = -300
-        healthBar.position.y = 800
-        healthBar.zPosition = 200
+
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
-        scoreLabel.fontSize = 150
+        scoreLabel.fontSize = 100
         scoreLabel.position.x = -100
         scoreLabel.position.y = 900
         
@@ -595,12 +593,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //added highScoreLabel
         highScoreLabel = childNodeWithName("highScore") as! SKLabelNode
-        highScoreLabel.fontSize = 0
+        highScoreLabel.fontSize = 100
 
-        highScoreLabel.position.x = -100
+        highScoreLabel.position.x = 200
         highScoreLabel.position.y = 700
-        highScoreLabel.fontColor = SKColor.redColor()
-        highScoreLabel.fontName = "Pixel Coleco"
+        highScoreLabel.fontColor = SKColor.whiteColor()
+        highScoreLabel.fontName = "Minercraftory"
 
         highScoreLabel.zPosition = 200
         highScoreLabel.removeFromParent()
@@ -627,6 +625,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinSArrow = loadCoinOverlayNode("CoinSArrow")
         //
     }
+    
+    
+    //Testing the highscore
+    func playerScoreUpdate() {
+        let highScore = NSUserDefaults().integerForKey("highscore")
+        if scorePoint > highScore {
+            NSUserDefaults().setInteger(scorePoint, forKey: "highscore")
+        }
+        
+        highScoreLabel.text = "High Score: " + NSUserDefaults().integerForKey("highscore").description
+    }
+
     
     // load up the coin
     func loadCoinOverlayNode(fileName: String) -> SKSpriteNode {
@@ -793,7 +803,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let lavaDamageColor = SKAction.sequence([redColor, whitecolor])
             player.runAction(lavaDamageColor)
             
-            
+            print("weirdshape")
             print(lives)
             
             if lives <= 2 {
@@ -810,7 +820,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
                 let DagerHealth = SKAction.sequence([redColor])
                 player.runAction(DagerHealth)
-                print ("!!!!!!!!!DangerDanger!!!You are so Close to death ")
+//                print ("!!!!!!!!!DangerDanger!!!You are so Close to death ")
 
                 
             }
@@ -819,6 +829,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 gameState.enterState(GameOver)
             }
         }
+    }
+    
+    
+    func setUpHighScoreLabel() {
+//        highScoreLabel.position = CGPoint(x: 0, y: -15)
+//        highScoreLabel.fontSize = 24
+//        highScoreLabel.zPosition = 5
+//        highScoreLabel.alpha = 0
+        let fadeIn = SKAction.fadeInWithDuration(1.5)
+        let sequence = SKAction.sequence([fadeIn])
+        highScoreLabel.runAction(sequence)
+        addChild(highScoreLabel)
+        
     }
     
     func setUpExplosion(point: CGPoint) {

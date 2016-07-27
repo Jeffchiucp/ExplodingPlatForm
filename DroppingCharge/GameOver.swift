@@ -21,9 +21,13 @@ class GameOver: GKState {
         if previousState is Playing {
             let gameOver = SKSpriteNode(imageNamed: "HighestScore")
             
-            gameOver.position = scene.getCameraPosition() 
+//            scene.playerScoreUpdate()
+//            scene.setUpHighScoreLabel()
+
+            gameOver.position = scene.getCameraPosition()
             gameOver.zPosition = 200
             scene.addChild(gameOver)
+            
         }
     }
     
