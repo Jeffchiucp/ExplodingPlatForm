@@ -294,7 +294,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Set up the Core Motion for the Game Player
     
     func setupCoreMotion() {
-        motionManager.accelerometerUpdateInterval = 1.0
+        motionManager.accelerometerUpdateInterval = 0.1
         let queue = NSOperationQueue()
         motionManager.startAccelerometerUpdatesToQueue(queue, withHandler:
             {
