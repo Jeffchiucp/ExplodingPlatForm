@@ -43,12 +43,10 @@ class Jump: GKState {
         if previousState is Lava {
             return
         }
-        print("JumpState")
         scene.player.runAction(scene.squishAndStretch)
     }
     
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
-        print("_______JumpState____________updateWithDeltaTime")
         if abs(scene.player.physicsBody!.velocity.dx) > 100.0 {
             if scene.player.physicsBody!.velocity.dx > 0 {
                 scene.runAnim(scene.animSteerRight)
@@ -59,7 +57,6 @@ class Jump: GKState {
             }
         } else {
             scene.runAnim(scene.animJump)
-            print("_____________animateJump should Jump_______")
 
         }
     }

@@ -51,8 +51,7 @@ class Lava: GKState {
             ]))
         scene.superBoostPlayer()
         scene.lives -= 1
-//        print(" ******************Super.boostPlayer")
-//        print(" ******************Lives -1 ")
+
 
         
     }

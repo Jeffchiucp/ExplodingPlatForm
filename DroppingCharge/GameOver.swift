@@ -19,7 +19,7 @@ class GameOver: GKState {
     
     override func didEnterWithPreviousState(previousState: GKState?) {
         if previousState is Playing {
-            let gameOver = SKSpriteNode(imageNamed: "Score")
+            let gameOver = SKSpriteNode(imageNamed: "HighestScore")
             
             gameOver.position = scene.getCameraPosition() 
             gameOver.zPosition = 200
