@@ -116,9 +116,20 @@
 		10304DA51D301B98007372D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA41D301B98007372D8 /* Assets.xcassets */; };
 		10304DA81D301B98007372D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA61D301B98007372D8 /* LaunchScreen.storyboard */; };
 		1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1033F07E1D4048B900266DB4 /* SmokeTrail.sks */; };
+		1048D4111D495396006120A3 /* Icon-App-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4051D495396006120A3 /* Icon-App-29x29@1x.png */; };
+		1048D4121D495396006120A3 /* Icon-App-29x29@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4061D495396006120A3 /* Icon-App-29x29@2x-1.png */; };
+		1048D4131D495396006120A3 /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4071D495396006120A3 /* Icon-App-29x29@2x.png */; };
+		1048D4141D495396006120A3 /* Icon-App-29x29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4081D495396006120A3 /* Icon-App-29x29@3x.png */; };
+		1048D4151D495396006120A3 /* Icon-App-40x40@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4091D495396006120A3 /* Icon-App-40x40@1x.png */; };
+		1048D4161D495396006120A3 /* Icon-App-40x40@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D40A1D495396006120A3 /* Icon-App-40x40@2x-1.png */; };
+		1048D4171D495396006120A3 /* Icon-App-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D40B1D495396006120A3 /* Icon-App-40x40@2x.png */; };
+		1048D4181D495396006120A3 /* Icon-App-40x40@3x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D40C1D495396006120A3 /* Icon-App-40x40@3x-1.png */; };
+		1048D4191D495396006120A3 /* Icon-App-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D40D1D495396006120A3 /* Icon-App-40x40@3x.png */; };
+		1048D41A1D495396006120A3 /* Icon-App-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D40E1D495396006120A3 /* Icon-App-60x60@3x.png */; };
+		1048D41B1D495396006120A3 /* Icon-App-76x76@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D40F1D495396006120A3 /* Icon-App-76x76@1x.png */; };
+		1048D41C1D495396006120A3 /* Icon-App-76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4101D495396006120A3 /* Icon-App-76x76@2x.png */; };
 		104D61871D4144E80094737D /* instruction_toRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D61861D4144E80094737D /* instruction_toRight.png */; };
 		104D61891D41465A0094737D /* instruction_toLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D61881D41465A0094737D /* instruction_toLeft.png */; };
-		104D618B1D4149D60094737D /* TestingDirections.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D618A1D4149D60094737D /* TestingDirections.png */; };
 		104D618F1D414D740094737D /* CharacterScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 104D618E1D414D740094737D /* CharacterScene.sks */; };
 		104D61911D414DD20094737D /* CharacterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D61901D414DD20094737D /* CharacterScene.swift */; };
 		104D61981D415C7E0094737D /* Coin_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D61931D415C7E0094737D /* Coin_1.png */; };
@@ -267,9 +278,20 @@
 		10304DA71D301B98007372D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10304DA91D301B98007372D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1033F07E1D4048B900266DB4 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
+		1048D4051D495396006120A3 /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
+		1048D4061D495396006120A3 /* Icon-App-29x29@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x-1.png"; sourceTree = "<group>"; };
+		1048D4071D495396006120A3 /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
+		1048D4081D495396006120A3 /* Icon-App-29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@3x.png"; sourceTree = "<group>"; };
+		1048D4091D495396006120A3 /* Icon-App-40x40@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@1x.png"; sourceTree = "<group>"; };
+		1048D40A1D495396006120A3 /* Icon-App-40x40@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@2x-1.png"; sourceTree = "<group>"; };
+		1048D40B1D495396006120A3 /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
+		1048D40C1D495396006120A3 /* Icon-App-40x40@3x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@3x-1.png"; sourceTree = "<group>"; };
+		1048D40D1D495396006120A3 /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
+		1048D40E1D495396006120A3 /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
+		1048D40F1D495396006120A3 /* Icon-App-76x76@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@1x.png"; sourceTree = "<group>"; };
+		1048D4101D495396006120A3 /* Icon-App-76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@2x.png"; sourceTree = "<group>"; };
 		104D61861D4144E80094737D /* instruction_toRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = instruction_toRight.png; path = Assets.xcassets/instruction_toRight.png; sourceTree = "<group>"; };
 		104D61881D41465A0094737D /* instruction_toLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = instruction_toLeft.png; path = Assets.xcassets/instruction_toLeft.png; sourceTree = "<group>"; };
-		104D618A1D4149D60094737D /* TestingDirections.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TestingDirections.png; sourceTree = "<group>"; };
 		104D618E1D414D740094737D /* CharacterScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CharacterScene.sks; sourceTree = "<group>"; };
 		104D61901D414DD20094737D /* CharacterScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterScene.swift; sourceTree = "<group>"; };
 		104D61931D415C7E0094737D /* Coin_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin_1.png; sourceTree = "<group>"; };
@@ -510,7 +532,6 @@
 				1001B09D1D417735007FDD80 /* restartButton.png */,
 				102AF0621D36B6A700496991 /* GameState */,
 				10F0AE6A1D399548004B287C /* sounds */,
-				104D618A1D4149D60094737D /* TestingDirections.png */,
 				102AF0F01D36F26500496991 /* SKTUtils */,
 				102AF0981D36C16800496991 /* resources */,
 				102AF0951D36BDFB00496991 /* Scene */,
@@ -530,12 +551,32 @@
 				10304DA11D301B98007372D8 /* Main.storyboard */,
 				1094BE1B1D3EE86A00DC8460 /* Kunai.png */,
 				10304DA41D301B98007372D8 /* Assets.xcassets */,
+				1048D4041D495396006120A3 /* icon */,
 				1094BE191D3EE67200DC8460 /* character_male-ninja.png */,
 				1094BE171D3ED96300DC8460 /* new_bg1.png */,
 				10304DA61D301B98007372D8 /* LaunchScreen.storyboard */,
 				10304DA91D301B98007372D8 /* Info.plist */,
 			);
 			path = DroppingCharge;
+			sourceTree = "<group>";
+		};
+		1048D4041D495396006120A3 /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				1048D4051D495396006120A3 /* Icon-App-29x29@1x.png */,
+				1048D4061D495396006120A3 /* Icon-App-29x29@2x-1.png */,
+				1048D4071D495396006120A3 /* Icon-App-29x29@2x.png */,
+				1048D4081D495396006120A3 /* Icon-App-29x29@3x.png */,
+				1048D4091D495396006120A3 /* Icon-App-40x40@1x.png */,
+				1048D40A1D495396006120A3 /* Icon-App-40x40@2x-1.png */,
+				1048D40B1D495396006120A3 /* Icon-App-40x40@2x.png */,
+				1048D40C1D495396006120A3 /* Icon-App-40x40@3x-1.png */,
+				1048D40D1D495396006120A3 /* Icon-App-40x40@3x.png */,
+				1048D40E1D495396006120A3 /* Icon-App-60x60@3x.png */,
+				1048D40F1D495396006120A3 /* Icon-App-76x76@1x.png */,
+				1048D4101D495396006120A3 /* Icon-App-76x76@2x.png */,
+			);
+			path = icon;
 			sourceTree = "<group>";
 		};
 		104D61921D415C7E0094737D /* CoinsImages */ = {
@@ -638,32 +679,36 @@
 			files = (
 				102AF08C1D36BCC800496991 /* CoinSCross.sks in Resources */,
 				1094BE1C1D3EE86A00DC8460 /* Kunai.png in Resources */,
+				1048D4131D495396006120A3 /* Icon-App-29x29@2x.png in Resources */,
 				102AF0B61D36C16800496991 /* Star.png in Resources */,
 				104D619C1D415C7E0094737D /* Coin_5.png in Resources */,
 				102AF0BB1D36C16800496991 /* boost.wav in Resources */,
 				102AF1281D36F56700496991 /* CollectSpecial.sks in Resources */,
+				1048D41B1D495396006120A3 /* Icon-App-76x76@1x.png in Resources */,
 				102AF1211D36F56700496991 /* CoinCross.sks in Resources */,
 				102AF0EC1D36E76500496991 /* Platform5Across.sks in Resources */,
 				104D61991D415C7E0094737D /* Coin_2.png in Resources */,
 				102AF1251D36F56700496991 /* CoinSCross.sks in Resources */,
 				104D61891D41465A0094737D /* instruction_toLeft.png in Resources */,
-				104D618B1D4149D60094737D /* TestingDirections.png in Resources */,
 				1001B0A31D4179CE007FDD80 /* coinCrossScene.sks in Resources */,
 				10F0AE861D399548004B287C /* explosion1.wav in Resources */,
 				102AF08E1D36BCC800496991 /* CollectNormal.sks in Resources */,
 				10F0AE821D399548004B287C /* brick.caf in Resources */,
+				1048D4141D495396006120A3 /* Icon-App-29x29@3x.png in Resources */,
 				10F0AE8A1D399548004B287C /* jump.wav in Resources */,
 				102AF0E61D36E76500496991 /* CoinSArrow.sks in Resources */,
 				102E717F1D42D4F300815790 /* Pixel Coleco.otf in Resources */,
 				102AF0821D36BCC800496991 /* Break5Across.sks in Resources */,
 				10F0AE841D399548004B287C /* coin4.wav in Resources */,
 				102AF0B81D36C16800496991 /* attribution.txt in Resources */,
+				1048D4171D495396006120A3 /* Icon-App-40x40@2x.png in Resources */,
 				102AF0B91D36C16800496991 /* bgMusic.mp3 in Resources */,
 				102AF0EF1D36E76500496991 /* PlayerTrail.sks in Resources */,
 				102AF1241D36F56700496991 /* CoinSArrow.sks in Resources */,
 				102AF0971D36C01700496991 /* GameScene.sks in Resources */,
 				102AF0881D36BCC800496991 /* CoinCross.sks in Resources */,
 				10F0AE7D1D399548004B287C /* alarm.wav in Resources */,
+				1048D41C1D495396006120A3 /* Icon-App-76x76@2x.png in Resources */,
 				104D619A1D415C7E0094737D /* Coin_3.png in Resources */,
 				102AF08A1D36BCC800496991 /* CoinS5Across.sks in Resources */,
 				102AF0C01D36C16800496991 /* explosion1.wav in Resources */,
@@ -671,13 +716,16 @@
 				102AF0E21D36E76500496991 /* CoinArrow.sks in Resources */,
 				102AF1221D36F56700496991 /* CoinDiagonal.sks in Resources */,
 				102AF12D1D36F56700496991 /* PlayerTrail.sks in Resources */,
+				1048D4111D495396006120A3 /* Icon-App-29x29@1x.png in Resources */,
 				10F0AE7F1D399548004B287C /* bgMusic.mp3 in Resources */,
 				102AF0B21D36C16800496991 /* BrokenPlatform.sks in Resources */,
 				102AF0B41D36C16800496991 /* CollectSpecial.sks in Resources */,
 				10F0AE801D399548004B287C /* bombDrop.wav in Resources */,
+				1048D4121D495396006120A3 /* Icon-App-29x29@2x-1.png in Resources */,
 				102AF0C21D36C16800496991 /* explosion3.wav in Resources */,
 				102AF0BC1D36C16800496991 /* brick.caf in Resources */,
 				102AF0891D36BCC800496991 /* CoinDiagonal.sks in Resources */,
+				1048D4161D495396006120A3 /* Icon-App-40x40@2x-1.png in Resources */,
 				102AF0E51D36E76500496991 /* CoinS5Across.sks in Resources */,
 				1094BE161D3ED86C00DC8460 /* platform.png in Resources */,
 				102AF0C71D36C16800496991 /* SpaceGame.caf in Resources */,
@@ -685,6 +733,7 @@
 				102AF0E41D36E76500496991 /* CoinDiagonal.sks in Resources */,
 				1001B09E1D417735007FDD80 /* restartButton.png in Resources */,
 				102AF0C81D36C16800496991 /* tickTock.wav in Resources */,
+				1048D4191D495396006120A3 /* Icon-App-40x40@3x.png in Resources */,
 				102AF0E91D36E76500496991 /* CollectNormal.sks in Resources */,
 				102AF08F1D36BCC800496991 /* CollectSpecial.sks in Resources */,
 				102AF1201D36F56700496991 /* Coin5Across.sks in Resources */,
@@ -693,6 +742,7 @@
 				102AF0DD1D36E76500496991 /* Break5Across.sks in Resources */,
 				1094BE181D3ED96300DC8460 /* new_bg1.png in Resources */,
 				102AF0B31D36C16800496991 /* CollectNormal.sks in Resources */,
+				1048D4151D495396006120A3 /* Icon-App-40x40@1x.png in Resources */,
 				102AF0E11D36E76500496991 /* Coin5Across.sks in Resources */,
 				102AF1231D36F56700496991 /* CoinS5Across.sks in Resources */,
 				102AF0EB1D36E76500496991 /* Lava.sks in Resources */,
@@ -720,6 +770,7 @@
 				102AF0E31D36E76500496991 /* CoinCross.sks in Resources */,
 				102AF0911D36BCC800496991 /* Platform5Across.sks in Resources */,
 				102AF0C31D36C16800496991 /* explosion4.wav in Resources */,
+				1048D4181D495396006120A3 /* Icon-App-40x40@3x-1.png in Resources */,
 				102AF0BF1D36C16800496991 /* DrownFireBug.mp3 in Resources */,
 				104D618F1D414D740094737D /* CharacterScene.sks in Resources */,
 				102AF0841D36BCC800496991 /* BreakDiagonal.sks in Resources */,
@@ -732,6 +783,7 @@
 				102AF12B1D36F56700496991 /* PlatformArrow.sks in Resources */,
 				102AF0E71D36E76500496991 /* CoinSCross.sks in Resources */,
 				104D61871D4144E80094737D /* instruction_toRight.png in Resources */,
+				1048D41A1D495396006120A3 /* Icon-App-60x60@3x.png in Resources */,
 				102AF12A1D36F56700496991 /* Platform5Across.sks in Resources */,
 				102AF1261D36F56700496991 /* CoinSDiagonal.sks in Resources */,
 				1094BE1A1D3EE67200DC8460 /* character_male-ninja.png in Resources */,
@@ -909,7 +961,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DroppingCharge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.DroppingCharge;
+				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.NinjaDroppingGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -921,7 +973,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DroppingCharge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.DroppingCharge;
+				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.NinjaDroppingGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
