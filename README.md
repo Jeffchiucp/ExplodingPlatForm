@@ -22,11 +22,10 @@ Player can have fun, engaging mission to rescue different treasure from differen
 * [Week 6](#week-6)
 
 #### Game Design
-This is ninja jumping game for character to go through lots of obstacles and try to get through the enemy tower. There are epic explosion, and challenges and Rewards as he explores the Enemy Tower.
-
+This is ninja jumping game for character to go through lots of obstacles and try to get through the enemy tower. There are nasty poison gas, and challenges and Rewards as he explores the Enemy Tower.
 
 #### Game Objective
-Player is the hero who is in a mission to rescue different treasure from explosion.
+Ninja hero is in a mission to get different treasure as he jumps out of enemy poison mist..
 
 ###[Gameplay Mechanics](#gameplay-mechanics)
 

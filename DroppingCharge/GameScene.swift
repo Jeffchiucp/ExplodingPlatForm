@@ -581,7 +581,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
-        scoreLabel.fontSize = 100
+        scoreLabel.fontSize = 150
         scoreLabel.position.x = -100
         scoreLabel.position.y = 900
         
@@ -595,7 +595,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         highScoreLabel = childNodeWithName("highScore") as! SKLabelNode
         highScoreLabel.fontSize = 100
 
-        highScoreLabel.position.x = 200
+        highScoreLabel.position.x = 100
         highScoreLabel.position.y = 700
         highScoreLabel.fontColor = SKColor.whiteColor()
         highScoreLabel.fontName = "Minercraftory"
