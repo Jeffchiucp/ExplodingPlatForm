@@ -895,10 +895,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     // Used to test if the scorePoint works
                 
             }
+            
+            //         healthUp.physicsBody = SKPhysicsBody(circleOfRadius:(healthUp.size.width/2))
+
         case PhysicsCategory.Heart:
             if let heart = other.node as? SKSpriteNode {
                 emitParticles("CollectSpecial", sprite: heart)
                 let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+                
                 let wait = SKAction.waitForDuration(0.5)
                 let whitecolor = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.50)
                 
@@ -906,6 +910,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ])
                 player.runAction(HealthYellow)
             }
+            
         case PhysicsCategory.CoinSpecial:
             if let coin = other.node as? SKSpriteNode {
 

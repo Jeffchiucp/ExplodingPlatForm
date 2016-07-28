@@ -37,6 +37,7 @@ Ninja hero is in a mission to get different treasure as he jumps out of enemy po
 
 - Implement code to get the art work flowing;
 - Adding code to continuously repeat the background, platforms and coins;
+
 [Back to top ^](#)
 
 
@@ -48,6 +49,7 @@ Design Prototype and Game Design
 #### Controls/Input
 [describe the control scheme used in the game]
 GamePlay is controlled through Core Motions.
+
 [Back to top ^](#)
 
 #### Level Design
@@ -84,6 +86,7 @@ Working on the Game Mechanics and core gameplay:
 - Creating methods to handle the camera node so that it follows the player sprite;
 - Game State 
 - Player State - Implementing code to read the device accelerometer data to steer the Hero;
+
 [Back to top ^](#)
 
 
