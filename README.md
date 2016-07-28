@@ -18,8 +18,7 @@ Player can have fun, engaging mission to rescue different treasure from differen
 * [Week 2](#week-2)
 * [Week 3](#week-3)
 * [Week 4](#week-4)
-* [Week 5](#week-5)
-* [Week 6](#week-6)
+
 
 #### Game Design
 This is ninja jumping game for character to go through lots of obstacles and try to get through the enemy tower. There are nasty poison gas, and challenges and Rewards as he explores the Enemy Tower.
@@ -36,8 +35,10 @@ Ninja hero is in a mission to get different treasure as he jumps out of enemy po
 - Implementing code to read the device accelerometer data to steer the Hero;
 - Creating methods to handle the camera node so that it follows the player sprite;
 
-- Implement code to get the fire flowing;
+- Implement code to get the art work flowing;
 - Adding code to continuously repeat the background, platforms and coins;
+[Back to top ^](#)
+
 
 #### Scenes
 * [list the different scenes/screens used in the game]
@@ -46,6 +47,8 @@ Design Prototype and Game Design
 
 #### Controls/Input
 [describe the control scheme used in the game]
+GamePlay is controlled through Core Motions.
+[Back to top ^](#)
 
 #### Level Design
 Level 1
@@ -81,6 +84,7 @@ Working on the Game Mechanics and core gameplay:
 - Creating methods to handle the camera node so that it follows the player sprite;
 - Game State 
 - Player State - Implementing code to read the device accelerometer data to steer the Hero;
+[Back to top ^](#)
 
 
 #### Week 3
@@ -95,10 +99,13 @@ _finishing a playable build including the following:
 - Implementing touch events to Start the Game.
 - Adding Physics and Collision and Detection so that the marine can jump to platforms collect coins;
 
+Publish the Game to TestFlight for User Testing and review 
+
+[Back to top ^](#)
+
 
 #### Week 4
 * [goals for the week, should be finishing the polish -- demo day on Saturday!]
-User Testing and review 
 Publish the App to the App Store
 
 [Back to top ^](#)
