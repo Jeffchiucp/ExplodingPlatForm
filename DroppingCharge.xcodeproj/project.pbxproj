@@ -116,6 +116,8 @@
 		10304DA51D301B98007372D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA41D301B98007372D8 /* Assets.xcassets */; };
 		10304DA81D301B98007372D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA61D301B98007372D8 /* LaunchScreen.storyboard */; };
 		1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1033F07E1D4048B900266DB4 /* SmokeTrail.sks */; };
+		104268AF1D4BC1AD000C6057 /* HealthCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104268AE1D4BC1AD000C6057 /* HealthCounter.swift */; };
+		104268B11D4BCDB1000C6057 /* heartRef.sks in Resources */ = {isa = PBXBuildFile; fileRef = 104268B01D4BCDB1000C6057 /* heartRef.sks */; };
 		1048D4111D495396006120A3 /* Icon-App-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4051D495396006120A3 /* Icon-App-29x29@1x.png */; };
 		1048D4121D495396006120A3 /* Icon-App-29x29@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4061D495396006120A3 /* Icon-App-29x29@2x-1.png */; };
 		1048D4131D495396006120A3 /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4071D495396006120A3 /* Icon-App-29x29@2x.png */; };
@@ -278,6 +280,8 @@
 		10304DA71D301B98007372D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10304DA91D301B98007372D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1033F07E1D4048B900266DB4 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
+		104268AE1D4BC1AD000C6057 /* HealthCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthCounter.swift; sourceTree = "<group>"; };
+		104268B01D4BCDB1000C6057 /* heartRef.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = heartRef.sks; sourceTree = "<group>"; };
 		1048D4051D495396006120A3 /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
 		1048D4061D495396006120A3 /* Icon-App-29x29@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x-1.png"; sourceTree = "<group>"; };
 		1048D4071D495396006120A3 /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
@@ -524,6 +528,8 @@
 				104D61901D414DD20094737D /* CharacterScene.swift */,
 				10304D991D301B98007372D8 /* AppDelegate.swift */,
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
+				104268B01D4BCDB1000C6057 /* heartRef.sks */,
+				104268AE1D4BC1AD000C6057 /* HealthCounter.swift */,
 				104D61861D4144E80094737D /* instruction_toRight.png */,
 				104D61881D41465A0094737D /* instruction_toLeft.png */,
 				106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */,
@@ -744,6 +750,7 @@
 				102AF0B31D36C16800496991 /* CollectNormal.sks in Resources */,
 				1048D4151D495396006120A3 /* Icon-App-40x40@1x.png in Resources */,
 				102AF0E11D36E76500496991 /* Coin5Across.sks in Resources */,
+				104268B11D4BCDB1000C6057 /* heartRef.sks in Resources */,
 				102AF1231D36F56700496991 /* CoinS5Across.sks in Resources */,
 				102AF0EB1D36E76500496991 /* Lava.sks in Resources */,
 				106DFE1E1D3D9636004FD9D0 /* Coin.sks in Resources */,
@@ -825,6 +832,7 @@
 				10304DA01D301B98007372D8 /* GameViewController.swift in Sources */,
 				102AF1071D36F26500496991 /* SKTTimingFunctions.swift in Sources */,
 				10304D9A1D301B98007372D8 /* AppDelegate.swift in Sources */,
+				104268AF1D4BC1AD000C6057 /* HealthCounter.swift in Sources */,
 				102AF1031D36F26500496991 /* SKColor+Extensions.swift in Sources */,
 				102AF1001D36F26500496991 /* Int+Extensions.swift in Sources */,
 				102AF0FF1D36F26500496991 /* CGVector+Extensions.swift in Sources */,

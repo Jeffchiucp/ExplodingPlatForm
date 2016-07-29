@@ -99,7 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var animSteerRight: SKAction! = nil
     var curAnim: SKAction? = nil
     var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 1000, height: 40))
-
+    var healthCounter: HealthCounter!
     //var coin = SKSpriteNode
     var playerTrail: SKEmitterNode!
 
@@ -214,17 +214,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        return coinNode
 //    }
 //    
+    func setUpHealthCounter(){
+        healthCounter = HealthCounter()
+        cameraNode.addChild(healthCounter)
+        healthCounter.position.x = -200
+        healthCounter.position.y = -700
+        healthCounter.zPosition = 300
+
+    }
+    
     override func didMoveToView(view: SKView) {
-        
-//        for i in 1...4 {
-//            coinTextures.append(SKTexture(imageNamed: "Coin_\(i)"))
-//        }
-//        
-//        let block = makeCoinBlock()
-//        addChild(block)
-//        block.position.x = 100
-//        block.position.y = 300
-        
         
         setupNodes()
         setupLevel()
@@ -234,6 +233,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupCoreMotion()
         physicsWorld.contactDelegate = self
         
+        // update the healthcounter after setcamera
+        setUpHealthCounter()
+
         playBackgroundMusic("SpaceGame.caf")
         
         playerState.enterState(Idle)
@@ -266,6 +268,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
+
 
     func setupAnimWithPrefix(prefix: String,
                              start: Int,
