@@ -608,7 +608,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         camera!.addChild(highScoreLabel)
 
 
-//        heartRef = loadOverlayNode("heart")
+        //heartRef = loadOverlayNode("heartRef")
         coinArrow = loadOverlayNode("CoinArrow")
         platformArrow = loadOverlayNode("PlatformArrow")
         platform5Across = loadOverlayNode("Platform5Across")
@@ -902,6 +902,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //         healthUp.physicsBody = SKPhysicsBody(circleOfRadius:(healthUp.size.width/2))
 
         case PhysicsCategory.Heart:
+            print("heartRefheartRefheartRefheartRefheartRefheartRefheartRef")
             if let heart = other.node as? SKSpriteNode {
                 emitParticles("CollectSpecial", sprite: heart)
                 let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
