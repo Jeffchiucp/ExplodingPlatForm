@@ -47,7 +47,7 @@ struct PhysicsCategory {
     
 }
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     // MARK: - Properties
     let cameraNode = SKCameraNode()
@@ -147,7 +147,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Dead(scene: self)
         ])
     
-    var lives = 4
+//    var lives = 3
     // added instruction
     var shouldShowInstructions = true
     let instructions = SKSpriteNode(imageNamed: "instruction_ToRight")
@@ -222,6 +222,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         healthCounter.zPosition = 300
 
     }
+    
+    func decreaseHealthCounter(){
+        healthCounter.decreaseHealth()
+//        lives -= 1
+    }
+    
     
     override func didMoveToView(view: SKView) {
         
@@ -787,13 +793,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateCollisionLava() {
         if player.position.y < lava.position.y + 200 {
             playerState.enterState(Lava)
-            reduceHealthBar()
-            print ("!!!!!!!!!Contact lava")
-
+            
             //changing the player color
             //player.runAction()
-            print ("!!!!!!!!!Red")
-
+            
             player.runAction(SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50))
             print ("!!!!!!!!!Red ")
 
@@ -807,9 +810,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.runAction(lavaDamageColor)
             
             print("weirdshape")
-            print(lives)
             
-            if lives <= 2 {
+            if healthCounter.isDead(){
+            print ("Testing-------")
+            playerState.enterState(Dead)
+            gameState.enterState(GameOver)
+            
+            }else if healthCounter.life <= 2 {
 //                                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
 //                                let HealthYellow = SKAction.sequence([yellowColor, wait])
 //                                player.runAction(HealthYellow)
@@ -819,17 +826,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 print ("!!!!!!!!!You are so Close ")
 
 
-            } else if lives == 1 {
+            } else if healthCounter.life == 1 {
                 let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
                 let DagerHealth = SKAction.sequence([redColor])
                 player.runAction(DagerHealth)
 //                print ("!!!!!!!!!DangerDanger!!!You are so Close to death ")
 
-                
-            }
-            if lives <= 0 {
-                playerState.enterState(Dead)
-                gameState.enterState(GameOver)
             }
         }
     }
@@ -957,6 +959,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return trail
     }
     
+    func reactToLava() {
+        let smokeTrail = addTrail("SmokeTrail")
+        self.runAction(SKAction.sequence([
+            SKAction.waitForDuration(1.0),
+            SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50),
+            SKAction.runBlock() {
+                self.removeTrail(smokeTrail)
+            }
+            ]))
+        superBoostPlayer()
+        decreaseHealthCounter()
+        gameState.enterState(Jump)
+        
+    }
     func removeTrail(trail: SKEmitterNode) {
         trail.numParticlesToEmit = 1
         trail.runAction(SKAction.removeFromParentAfterDelay(1.0))

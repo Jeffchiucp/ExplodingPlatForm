@@ -32,27 +32,15 @@ import SpriteKit
 import GameplayKit
 
 class Lava: GKState {
-    unowned let scene: GameScene
+    weak var scene: GameProtocol!
     
-    init(scene: SKScene) {
-        self.scene = scene as! GameScene
+    init(scene: GameProtocol) {
+        self.scene = scene
         super.init()
     }
     
     override func didEnterWithPreviousState(previousState: GKState?) {
-        
-       let smokeTrail = scene.addTrail("SmokeTrail")
-        scene.runAction(SKAction.sequence([
-            SKAction.waitForDuration(1.0),
-            SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50),
-            SKAction.runBlock() {
-               self.scene.removeTrail(smokeTrail)
-            }
-            ]))
-        scene.superBoostPlayer()
-        scene.lives -= 1
-        print("LavaState")
-
+        scene.reactToLava()
         
     }
     

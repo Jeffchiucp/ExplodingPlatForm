@@ -118,6 +118,7 @@
 		1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1033F07E1D4048B900266DB4 /* SmokeTrail.sks */; };
 		104268AF1D4BC1AD000C6057 /* HealthCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104268AE1D4BC1AD000C6057 /* HealthCounter.swift */; };
 		104268B11D4BCDB1000C6057 /* heartRef.sks in Resources */ = {isa = PBXBuildFile; fileRef = 104268B01D4BCDB1000C6057 /* heartRef.sks */; };
+		104268B31D4C17B1000C6057 /* GameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104268B21D4C17B1000C6057 /* GameProtocol.swift */; };
 		1048D4111D495396006120A3 /* Icon-App-29x29@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4051D495396006120A3 /* Icon-App-29x29@1x.png */; };
 		1048D4121D495396006120A3 /* Icon-App-29x29@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4061D495396006120A3 /* Icon-App-29x29@2x-1.png */; };
 		1048D4131D495396006120A3 /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1048D4071D495396006120A3 /* Icon-App-29x29@2x.png */; };
@@ -282,6 +283,7 @@
 		1033F07E1D4048B900266DB4 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
 		104268AE1D4BC1AD000C6057 /* HealthCounter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthCounter.swift; sourceTree = "<group>"; };
 		104268B01D4BCDB1000C6057 /* heartRef.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = heartRef.sks; sourceTree = "<group>"; };
+		104268B21D4C17B1000C6057 /* GameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameProtocol.swift; path = ../GameProtocol.swift; sourceTree = "<group>"; };
 		1048D4051D495396006120A3 /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
 		1048D4061D495396006120A3 /* Icon-App-29x29@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x-1.png"; sourceTree = "<group>"; };
 		1048D4071D495396006120A3 /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 		10304D981D301B98007372D8 /* DroppingCharge */ = {
 			isa = PBXGroup;
 			children = (
+				104268B21D4C17B1000C6057 /* GameProtocol.swift */,
 				104D61901D414DD20094737D /* CharacterScene.swift */,
 				10304D991D301B98007372D8 /* AppDelegate.swift */,
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
@@ -848,6 +851,7 @@
 				102AF1041D36F26500496991 /* SKNode+Extensions.swift in Sources */,
 				102AF1051D36F26500496991 /* SKTAudio.swift in Sources */,
 				102AF1061D36F26500496991 /* SKTEffects.swift in Sources */,
+				104268B31D4C17B1000C6057 /* GameProtocol.swift in Sources */,
 				102AF06C1D36BB8D00496991 /* Lava.swift in Sources */,
 				102AF1081D36F26500496991 /* Vector3.swift in Sources */,
 				102AF05F1D36B5BA00496991 /* Play.swift in Sources */,
@@ -969,7 +973,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DroppingCharge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.NinjaDroppingGame;
+				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.NinjaQuestGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -981,7 +985,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = DroppingCharge/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.NinjaDroppingGame;
+				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.NinjaQuestGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -55,7 +55,6 @@ class Jump: GKState {
             }
         } else {
             scene.runAnim(scene.animJump)
-            print("animJump")
         }
     }
     
