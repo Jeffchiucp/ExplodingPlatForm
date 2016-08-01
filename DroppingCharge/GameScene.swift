@@ -93,6 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var timeSinceLastExplosion: NSTimeInterval = 0
     var timeForNextExplosion: NSTimeInterval = 1.0
     
+    var animDead: SKAction! = nil
     var animJump: SKAction! = nil
     var animFall: SKAction! = nil
     var animSteerLeft: SKAction! = nil
@@ -150,7 +151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 //    var lives = 3
     // added instruction
     var shouldShowInstructions = true
-    let instructions = SKSpriteNode(imageNamed: "instruction_ToRight")
+//    let instructions = SKSpriteNode(imageNamed: "instruction_ToRight")
     
     var squishAndStretch: SKAction! = nil
 
@@ -245,29 +246,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         playerState.enterState(Idle)
         gameState.enterState(WaitingForTap)
         //setupPlayer()
-        animJump = setupAnimWithPrefix("Jump__00", start: 1, end: 9, timePerFrame: 0.1)
-        animFall = setupAnimWithPrefix("Glide_00", start: 0, end: 9, timePerFrame: 0.1)
-        animSteerLeft = setupAnimWithPrefix("Jump__00", start: 1, end: 9, timePerFrame: 0.1)
-        animSteerRight = setupAnimWithPrefix("Glide_00", start: 1, end: 9, timePerFrame: 0.1)
+        animDead = setupAnimWithPrefix("Dead__00", start: 0, end: 3, timePerFrame: 0.5)
+        animJump = setupAnimWithPrefix("Jump__00", start: 1, end: 9, timePerFrame: 0.2)
+        animFall = setupAnimWithPrefix("Glide_00", start: 0, end: 9, timePerFrame: 0.2)
+        animSteerLeft = setupAnimWithPrefix("Jump__00", start: 1, end: 9, timePerFrame: 0.2)
+        animSteerRight = setupAnimWithPrefix("Glide_00", start: 1, end: 9, timePerFrame: 0.2)
         /////////////////////
         
-        instructions.hidden = true
-        
-        instructions.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        instructions.size = CGSize(width: frame.size.width, height: 650)
-        instructions.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        instructions.zPosition = 100
-        addChild(instructions)
-        
-        if shouldShowInstructions {
-            shouldShowInstructions = false
-            let instructionSpawn = SKAction.runBlock({
-                self.instructions.hidden = false
-            })
-//            let instructionDisapper = SKAction.runBlock({
-//                self.instructions.hidden = true
-//            })
-        }
+
         
     }
     
@@ -807,10 +793,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             let lavaDamageColor = SKAction.sequence([redColor, whitecolor])
             player.runAction(lavaDamageColor)
             
-            print("weirdshape")
-            
+            //FixMe
             if healthCounter.isDead(){
-            print ("Testing-------")
+            print ("Testing------- ")
             playerState.enterState(Dead)
             gameState.enterState(GameOver)
             
