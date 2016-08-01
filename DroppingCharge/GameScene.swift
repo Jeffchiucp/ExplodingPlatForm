@@ -221,9 +221,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 
     }
     
+    /// lives - 1
     func decreaseHealthCounter(){
         healthCounter.decreaseHealth()
-//        lives -= 1
     }
     
     
