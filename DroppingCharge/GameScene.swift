@@ -171,8 +171,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         }
         
     }
-
-    //playerScoreUpdate
     
     //added BackgroundMusicNode
     var backgroundMusic: SKAudioNode!
