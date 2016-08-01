@@ -47,11 +47,13 @@ class Dead: GKState {
             
             let moveUpAction = SKAction.moveByX(0, y: scene.size.height/2, duration: 0.5)
             moveUpAction.timingMode = .EaseOut
-            let moveDownAction = SKAction.moveByX(0, y: -(scene.size.height * 1.0), duration: 1.0)
+            let moveDownAction = SKAction.moveByX(0, y: -(scene.size.height * 1.0), duration: 1.5)
             moveDownAction.timingMode = .EaseIn
-            let sequence = SKAction.sequence([moveUpAction, moveDownAction])
+            let hiddenAction = SKAction.hide()
+            let sequence = SKAction.sequence([moveUpAction, moveDownAction, hiddenAction])
             scene.player.runAction(sequence)
             scene.runAnim(scene.animDead)
+
 
         }
     }
