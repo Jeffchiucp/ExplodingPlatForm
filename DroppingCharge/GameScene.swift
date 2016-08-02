@@ -62,6 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     //testing
     var scoreLabel: SKLabelNode!
     var highScoreLabel : SKLabelNode!
+    var gameOverLabel : SKLabelNode!
     
     var platform5Across: SKSpriteNode! = nil
     var coinArrow: SKSpriteNode!
@@ -578,7 +579,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         scoreLabel.position.x = -100
         scoreLabel.position.y = 900
         
-        scoreLabel.fontName = "Minercraftory"
+        scoreLabel.fontName = "Pixel Coleco"
         scoreLabel.fontColor = SKColor.yellowColor()
         scoreLabel.zPosition = 200
         scoreLabel.removeFromParent()
@@ -597,6 +598,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         highScoreLabel.removeFromParent()
         camera!.addChild(highScoreLabel)
         highScoreLabel.hidden = true
+        
+        //gameOverLabel
+        gameOverLabel = childNodeWithName("gameOver") as! SKLabelNode
+        gameOverLabel.fontSize = 100
+        
+        gameOverLabel.position.x = 100
+        gameOverLabel.position.y = 100
+        gameOverLabel.fontColor = SKColor.whiteColor()
+        gameOverLabel.fontName = "Pixel Coleco"
+        
+        gameOverLabel.zPosition = 200
+        gameOverLabel.removeFromParent()
+        camera!.addChild(gameOverLabel)
+        gameOverLabel.hidden = false
+        
 
         //heartRef = loadOverlayNode("heartRef")
         coinArrow = loadOverlayNode("CoinArrow")
@@ -813,18 +829,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
                 let DagerHealth = SKAction.sequence([redColor])
                 player.runAction(DagerHealth)
-//                print ("!!!!!!!!!DangerDanger!!!You are so Close to death ")
-
             }
         }
     }
     
     
     func setUpHighScoreLabel() {
-//        highScoreLabel.position = CGPoint(x: 0, y: -15)
-//        highScoreLabel.fontSize = 24
-//        highScoreLabel.zPosition = 5
-//        highScoreLabel.alpha = 0
         let fadeIn = SKAction.fadeInWithDuration(1.5)
         let sequence = SKAction.sequence([fadeIn])
         highScoreLabel.runAction(sequence)
@@ -875,13 +885,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 scoreLabel.text = String(scorePoint)
                 print("&&&&&&&&&")
 
-//                if ((firstBody.categoryBitMask == PhysicsCategory.Enemy) && (secondBody.categoryBitMask == PhysicsCategory.Bullet) || (firstBody.categoryBitMask == PhysicsCategory.Bullet) && (secondBody.categoryBitMask == PhysicsCategory.Enemy)) {
-//                    
-//                    collisionWithBullet(firstBody.node as! SKSpriteNode, Bullet: secondBody.node as! SKSpriteNode)
-//                    
-                
-                    // Used to test if the scorePoint works
-                
+
             }
             
             //         healthUp.physicsBody = SKPhysicsBody(circleOfRadius:(healthUp.size.width/2))

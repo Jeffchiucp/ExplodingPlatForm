@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DroppingCharge/GameScene.swift"
-            timestampString = "491864672.325089"
+            timestampString = "491866919.198396"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "784"
-            endingLineNumber = "784"
+            startingLineNumber = "800"
+            endingLineNumber = "800"
             landmarkName = "updateCollisionLava()"
             landmarkType = "5">
          </BreakpointContent>
