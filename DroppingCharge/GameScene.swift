@@ -591,12 +591,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         highScoreLabel.position.x = 100
         highScoreLabel.position.y = 700
         highScoreLabel.fontColor = SKColor.whiteColor()
-        highScoreLabel.fontName = "Minercraftory"
+        highScoreLabel.fontName = "Pixel Coleco"
 
         highScoreLabel.zPosition = 200
         highScoreLabel.removeFromParent()
         camera!.addChild(highScoreLabel)
-
+        highScoreLabel.hidden = false
 
         //heartRef = loadOverlayNode("heartRef")
         coinArrow = loadOverlayNode("CoinArrow")
