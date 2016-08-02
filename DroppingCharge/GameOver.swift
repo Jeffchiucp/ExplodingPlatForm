@@ -42,7 +42,7 @@ class GameOver: GKState {
     override func didEnterWithPreviousState(previousState: GKState?) {
         if previousState is Playing {
             let gameOver = SKSpriteNode(imageNamed: "HighestScore")
-            
+
 //            scene.playerScoreUpdate()
 //            scene.setUpHighScoreLabel()
 
@@ -52,6 +52,9 @@ class GameOver: GKState {
             
         }
     }
+    
+
+    
     
     override func isValidNextState(stateClass: AnyClass) -> Bool {
         return stateClass is WaitingForTap.Type

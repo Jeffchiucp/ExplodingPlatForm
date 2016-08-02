@@ -148,10 +148,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         Dead(scene: self)
         ])
     
-//    var lives = 3
     // added instruction
     var shouldShowInstructions = true
-//    let instructions = SKSpriteNode(imageNamed: "instruction_ToRight")
     
     var squishAndStretch: SKAction! = nil
 
@@ -316,6 +314,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             
         case is GameOver:
             let newScene = GameScene(fileNamed:"GameScene")
+            let fadeIn = SKAction.fadeInWithDuration(1.5)
+            let sequence = SKAction.sequence([fadeIn])
             newScene!.scaleMode = .AspectFill
             let reveal = SKTransition.flipHorizontalWithDuration(0.5)
             self.view?.presentScene(newScene!, transition: reveal)

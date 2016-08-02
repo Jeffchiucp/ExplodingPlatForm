@@ -37,7 +37,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         //        if let scene = CharacterScene(fileNamed:"CharacterScene") {
-
+        // MainScene
+        
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
             let skView = self.view as! SKView
