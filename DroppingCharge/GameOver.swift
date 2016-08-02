@@ -41,20 +41,13 @@ class GameOver: GKState {
     
     override func didEnterWithPreviousState(previousState: GKState?) {
         if previousState is Playing {
-            let gameOver = SKSpriteNode(imageNamed: "HighestScore")
+//            let gameOver = SKSpriteNode(imageNamed: "HighestScore")
             scene.highScoreLabel.hidden = false
-
-//            let hiddenAction = SKAction.hide()
-//            let sequence = SKAction.sequence([hiddenAction])
-//            scene.highScoreLabel.runAction(sequence)
-            
+            scene.gameOverLabel.hidden = false
 
 //            scene.playerScoreUpdate()
 //            scene.setUpHighScoreLabel()
 
-            gameOver.position = scene.getCameraPosition()
-            gameOver.zPosition = 200
-            scene.addChild(gameOver)
             
         }
     }

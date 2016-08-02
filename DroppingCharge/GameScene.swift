@@ -500,7 +500,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             }
         } else {
             print("coin stragtey")
-            if Int.random(min: 1, max: 100) <= 50 {
+            if Int.random(min: 1, max: 100) <= 99 {
                 // Create standard coins 75%
                 switch Int.random(min: 0, max: 4) {
                 case 0:
@@ -575,7 +575,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
+        
         scoreLabel.fontSize = 150
+        scoreLabel.horizontalAlignmentMode = .Left
+        scoreLabel.verticalAlignmentMode = .Top
         scoreLabel.position.x = -100
         scoreLabel.position.y = 900
         
@@ -588,10 +591,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         //added highScoreLabel
         highScoreLabel = childNodeWithName("highScore") as! SKLabelNode
         highScoreLabel.fontSize = 100
-
-        highScoreLabel.position.x = 100
-        highScoreLabel.position.y = 700
-        highScoreLabel.fontColor = SKColor.whiteColor()
+        highScoreLabel.horizontalAlignmentMode = .Left
+        highScoreLabel.verticalAlignmentMode = .Top
+        highScoreLabel.position.x = 50
+        highScoreLabel.position.y = 2048 - 50
+        highScoreLabel.fontColor = SKColor.blueColor()
         highScoreLabel.fontName = "Pixel Coleco"
 
         highScoreLabel.zPosition = 200
@@ -601,17 +605,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         
         //gameOverLabel
         gameOverLabel = childNodeWithName("gameOver") as! SKLabelNode
-        gameOverLabel.fontSize = 100
+        gameOverLabel.fontSize = 200
         
-        gameOverLabel.position.x = 100
+        gameOverLabel.position.x = 150
         gameOverLabel.position.y = 100
-        gameOverLabel.fontColor = SKColor.whiteColor()
+        gameOverLabel.fontColor = SKColor.blueColor()
         gameOverLabel.fontName = "Pixel Coleco"
         
         gameOverLabel.zPosition = 200
         gameOverLabel.removeFromParent()
         camera!.addChild(gameOverLabel)
-        gameOverLabel.hidden = false
+        gameOverLabel.hidden = true
         
 
         //heartRef = loadOverlayNode("heartRef")
@@ -639,7 +643,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     //Testing the highscore
     func playerScoreUpdate() {
         let highScore = NSUserDefaults().integerForKey("highscore")
-        if scorePoint > highScore {
+        if scorePoint == 0 {
+            highScoreLabel.text = " No High Score: "
+        } else {
             NSUserDefaults().setInteger(scorePoint, forKey: "highscore")
         }
         
