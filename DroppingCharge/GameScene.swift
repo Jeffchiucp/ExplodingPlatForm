@@ -470,11 +470,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 // Create standard platforms 75%
                 switch Int.random(min: 0, max: 3) {
                 case 0:
-                    overlaySprite = platform5Across
+                    overlaySprite = break5Across
                 case 1:
-                    overlaySprite = platform5Across
+                    overlaySprite = break5Across
                 case 2:
-                    overlaySprite = platform5Across
+                    overlaySprite = break5Across
                 case 3:
                     overlaySprite = platformDiagonal
                     flipH = false
@@ -596,7 +596,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         highScoreLabel.zPosition = 200
         highScoreLabel.removeFromParent()
         camera!.addChild(highScoreLabel)
-        highScoreLabel.hidden = false
+        highScoreLabel.hidden = true
 
         //heartRef = loadOverlayNode("heartRef")
         coinArrow = loadOverlayNode("CoinArrow")
