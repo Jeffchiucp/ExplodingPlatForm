@@ -891,7 +891,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             print("Kunai!!!!")
             if let kunai = other.node as? SKSpriteNode {
                 emitParticles("CollectSpecial", sprite: kunai)
-                
+                jumpPlayer()
+                boostPlayer()
             }
             
             
