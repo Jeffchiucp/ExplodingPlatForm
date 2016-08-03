@@ -26,6 +26,7 @@ class HealthCounter: SKNode{
 //            }
 //       }
 //    }
+    
     private var _life: Int = 0
     /// return read only
     var life: Int {
@@ -52,6 +53,9 @@ class HealthCounter: SKNode{
     }
     
     func addHeart(){
+        if _life >= HealthCounter.maxHeartCount {
+            return
+        }
         _life += 1
         let heartTexture = SKTexture(imageNamed: "life_power_up_1")
 
@@ -65,18 +69,23 @@ class HealthCounter: SKNode{
     // set up the array that counts the number of health and hearts */
 
     func heartGenerator(){
-//        life = HealthCounter.maxHeartCount
-        
-        if life > HealthCounter.maxHeartCount {
-            print("hello")
+        if isMaxHealth() {
+            self.removeHeart()
+            print("what about removing \(life) ")
+
         }
         else {
 
         for _ in 0..<HealthCounter.maxHeartCount {
            self.addHeart()
+            print("life \(life) ")
         }
 
     }
+    }
+    
+    func isMaxHealth()-> Bool {
+        return life > HealthCounter.maxHeartCount
     }
     
     func isDead()-> Bool {

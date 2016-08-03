@@ -462,11 +462,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 // Create standard platforms 75%
                 switch Int.random(min: 0, max: 3) {
                 case 0:
-                    overlaySprite = break5Across
+                    overlaySprite = platformArrow
                 case 1:
-                    overlaySprite = break5Across
+                    overlaySprite = platform5Across
                 case 2:
-                    overlaySprite = break5Across
+                    overlaySprite = platform5Across
                 case 3:
                     overlaySprite = platformDiagonal
                     flipH = false
@@ -582,10 +582,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         //added highScoreLabel
         highScoreLabel = childNodeWithName("highScore") as! SKLabelNode
         highScoreLabel.fontSize = 100
-        highScoreLabel.horizontalAlignmentMode = .Left
-        highScoreLabel.verticalAlignmentMode = .Top
-        highScoreLabel.position.x = 50
-        highScoreLabel.position.y = 2048 - 50
+//        highScoreLabel.horizontalAlignmentMode = .Left
+//        highScoreLabel.verticalAlignmentMode = .Top
+        highScoreLabel.position.x = 150
+        highScoreLabel.position.y = 100
         highScoreLabel.fontColor = SKColor.brownColor()
         highScoreLabel.fontName = "Pixel Coleco"
 
