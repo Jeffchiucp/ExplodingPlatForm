@@ -18,13 +18,18 @@ class HealthCounter: SKNode{
     
     static let maxHeartCount: Int = 4
     
-    var life : Int = maxHeartCount {
-        didSet {
-            print("life \(life) ")
-            if isDead() {
-                print("Dead")
-            }
-       }
+//    var life : Int = maxHeartCount {
+//        didSet {
+//            print("life \(life) ")
+//            if isDead() {
+//                print("Dead")
+//            }
+//       }
+//    }
+    private var _life: Int = 0
+    /// return read only
+    var life: Int {
+            return _life
     }
     /// Max Helath is 5  heart is the Sprit */
     var hearts = [SKSpriteNode]()
@@ -41,28 +46,29 @@ class HealthCounter: SKNode{
     
     /// - remove 1 heart  */
     func removeHeart(){
-        life -= 1
+        _life -= 1
         hearts.last!.removeFromParent()
         hearts.removeLast()
     }
     
     func addHeart(){
-        life += 1
+        _life += 1
+        let heartTexture = SKTexture(imageNamed: "life_power_up_1")
+
         let heart = SKSpriteNode(texture: heartTexture)
+        let i = hearts.count
         hearts.append(heart)
         
         addChild(heart)
         heart.position.x = CGFloat(i) * heart.size.width
-//        hearts.last!.removeFromParent()
     }
     // set up the array that counts the number of health and hearts */
 
     func heartGenerator(){
-        life = HealthCounter.maxHeartCount
-        let heartTexture = SKTexture(imageNamed: "life_power_up_1")
+//        life = HealthCounter.maxHeartCount
         
-        for i in 0..< HealthCounter.maxHeartCount {
-            
+        for _ in 0..<HealthCounter.maxHeartCount {
+           self.addHeart()
         }
 
     }
