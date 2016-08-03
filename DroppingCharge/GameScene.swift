@@ -603,7 +603,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         gameOverLabel.fontColor = SKColor.blueColor()
         gameOverLabel.fontName = "Pixel Coleco"
         
-        gameOverLabel.zPosition = 200
+        gameOverLabel.zPosition = 300
         gameOverLabel.removeFromParent()
         camera!.addChild(gameOverLabel)
         gameOverLabel.hidden = true

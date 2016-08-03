@@ -67,10 +67,16 @@ class HealthCounter: SKNode{
     func heartGenerator(){
 //        life = HealthCounter.maxHeartCount
         
+        if life > HealthCounter.maxHeartCount {
+            print("hello")
+        }
+        else {
+
         for _ in 0..<HealthCounter.maxHeartCount {
            self.addHeart()
         }
 
+    }
     }
     
     func isDead()-> Bool {
