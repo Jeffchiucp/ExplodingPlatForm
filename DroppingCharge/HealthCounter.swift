@@ -11,11 +11,14 @@ import SpriteKit
 
 class HealthCounter: SKNode{
 
-    // synch up the life and heartCount
+    // synch up the life and Heart
     // isDead should also check the array is empty
     // when to remove my array
     // remove it out of array, then it's good
-    var life : Int = 3 {
+    
+    static let maxHeartCount: Int = 4
+    
+    var life : Int = maxHeartCount {
         didSet {
             print("life \(life) ")
             if isDead() {
@@ -23,46 +26,43 @@ class HealthCounter: SKNode{
             }
        }
     }
-    
-    
-
-    // heart is the Sprit */
+    /// Max Helath is 5  heart is the Sprit */
     var hearts = [SKSpriteNode]()
-    let startingHeartCount: Int = 3
-        
+    
     override init() {
         super.init()
-        
         //caling the heartGenerator
         heartGenerator()
-        
-        
     }
         
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// - remove heart and life for player */
-    func decreaseHealth(){
+    /// - remove 1 heart  */
+    func removeHeart(){
         life -= 1
         hearts.last!.removeFromParent()
         hearts.removeLast()
-        print ("decrease Health !!!!!!")
     }
     
+    func addHeart(){
+        life += 1
+        let heart = SKSpriteNode(texture: heartTexture)
+        hearts.append(heart)
+        
+        addChild(heart)
+        heart.position.x = CGFloat(i) * heart.size.width
+//        hearts.last!.removeFromParent()
+    }
     // set up the array that counts the number of health and hearts */
 
     func heartGenerator(){
-        life = startingHeartCount
+        life = HealthCounter.maxHeartCount
         let heartTexture = SKTexture(imageNamed: "life_power_up_1")
         
-        for i in 0..<startingHeartCount {
-            let heart = SKSpriteNode(texture: heartTexture)
-            hearts.append(heart)
+        for i in 0..< HealthCounter.maxHeartCount {
             
-            addChild(heart)
-            heart.position.x = CGFloat(i) * heart.size.width
         }
 
     }

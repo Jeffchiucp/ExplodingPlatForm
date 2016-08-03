@@ -44,6 +44,7 @@ struct PhysicsCategory {
     static let CoinSpecial: UInt32       = 0b10000  // 16
     static let Edges: UInt32             = 0b100000 // 32
     static let Heart: UInt32             = 0b1000000 // 64
+    static let Kunai: UInt32             = 0b10000000 // 128
     
 }
 
@@ -195,23 +196,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     
     
-//    func makeCoinBlock() -> SKNode {
-//        let coinNode = SKNode()
-//        for row in 0 ..< coinBlock.count {
-//            for col in 0 ..< coinBlock[row].count {
-//                if coinBlock[row][col] == 1 {
-//                    let coin = makeCoin()
-//                    coinNode.addChild(coin)
-//                    coin.position.x = CGFloat(col) * coinSize.width
-//                    coin.position.y = CGFloat(-row) * coinSize.height
-//                    
-//                }
-//            }
-//        }
-//    
-//        return coinNode
-//    }
-//    
+ 
+    /// set up the heart on GameScene
     func setUpHealthCounter(){
         healthCounter = HealthCounter()
         cameraNode.addChild(healthCounter)
@@ -221,9 +207,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 
     }
     
-    /// lives - 1
-    func decreaseHealthCounter(){
-        healthCounter.decreaseHealth()
+    /// lives - 1, heart -1 
+    func removeHeartCounter(){
+        healthCounter.removeHeart()
+    }
+    
+    /// lives + 1
+    func increaseHealthCounter(){
+        healthCounter.addHeart()
     }
     
     
@@ -595,7 +586,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         highScoreLabel.verticalAlignmentMode = .Top
         highScoreLabel.position.x = 50
         highScoreLabel.position.y = 2048 - 50
-        highScoreLabel.fontColor = SKColor.blueColor()
+        highScoreLabel.fontColor = SKColor.brownColor()
         highScoreLabel.fontName = "Pixel Coleco"
 
         highScoreLabel.zPosition = 200
@@ -896,8 +887,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             
             //         healthUp.physicsBody = SKPhysicsBody(circleOfRadius:(healthUp.size.width/2))
 
+        case PhysicsCategory.Kunai:
+            print("Kunai!!!!")
+            if let kunai = other.node as? SKSpriteNode {
+                emitParticles("CollectSpecial", sprite: kunai)
+                
+            }
+            
+            
         case PhysicsCategory.Heart:
-            print("heartRefheartRefheartRefheartRefheartRefheartRefheartRef")
             if let heart = other.node as? SKSpriteNode {
                 emitParticles("CollectSpecial", sprite: heart)
                 let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
@@ -908,6 +906,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 let HealthYellow = SKAction.sequence([yellowColor, wait, whitecolor
                     ])
                 player.runAction(HealthYellow)
+                increaseHealthCounter()
             }
             
         case PhysicsCategory.CoinSpecial:
@@ -962,7 +961,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             }
             ]))
         superBoostPlayer()
-        decreaseHealthCounter()
+        removeHeartCounter()
         gameState.enterState(Jump)
         
     }

@@ -141,6 +141,7 @@
 		104D619A1D415C7E0094737D /* Coin_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D61951D415C7E0094737D /* Coin_3.png */; };
 		104D619B1D415C7E0094737D /* Coin_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D61961D415C7E0094737D /* Coin_4.png */; };
 		104D619C1D415C7E0094737D /* Coin_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 104D61971D415C7E0094737D /* Coin_5.png */; };
+		1052278A1D5164B400279F99 /* kunai.sks in Resources */ = {isa = PBXBuildFile; fileRef = 105227891D5164B400279F99 /* kunai.sks */; };
 		106DFE181D3D83A1004FD9D0 /* bigger_platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE171D3D83A1004FD9D0 /* bigger_platform.png */; };
 		106DFE1E1D3D9636004FD9D0 /* Coin.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1D1D3D9636004FD9D0 /* Coin.sks */; };
 		106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */; };
@@ -307,6 +308,7 @@
 		104D61951D415C7E0094737D /* Coin_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin_3.png; sourceTree = "<group>"; };
 		104D61961D415C7E0094737D /* Coin_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin_4.png; sourceTree = "<group>"; };
 		104D61971D415C7E0094737D /* Coin_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin_5.png; sourceTree = "<group>"; };
+		105227891D5164B400279F99 /* kunai.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = kunai.sks; path = Scene/kunai.sks; sourceTree = "<group>"; };
 		106DFE171D3D83A1004FD9D0 /* bigger_platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigger_platform.png; sourceTree = "<group>"; };
 		106DFE1D1D3D9636004FD9D0 /* Coin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Coin.sks; path = Scene/Coin.sks; sourceTree = "<group>"; };
 		106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = CoinSpecial.sks; path = Scene/CoinSpecial.sks; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				102FBA2A1D501629002CB7C8 /* MainScene.swift */,
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
 				104268B01D4BCDB1000C6057 /* heartRef.sks */,
+				105227891D5164B400279F99 /* kunai.sks */,
 				104268AE1D4BC1AD000C6057 /* HealthCounter.swift */,
 				104D61861D4144E80094737D /* instruction_toRight.png */,
 				104D61881D41465A0094737D /* instruction_toLeft.png */,
@@ -797,6 +800,7 @@
 				102AF0E71D36E76500496991 /* CoinSCross.sks in Resources */,
 				104D61871D4144E80094737D /* instruction_toRight.png in Resources */,
 				1048D41A1D495396006120A3 /* Icon-App-60x60@3x.png in Resources */,
+				1052278A1D5164B400279F99 /* kunai.sks in Resources */,
 				102AF12A1D36F56700496991 /* Platform5Across.sks in Resources */,
 				102AF1261D36F56700496991 /* CoinSDiagonal.sks in Resources */,
 				1094BE1A1D3EE67200DC8460 /* character_male-ninja.png in Resources */,
