@@ -43,7 +43,7 @@ class Jump: GKState {
         if previousState is Lava {
             return
         }
-        scene.player.runAction(scene.squishAndStretch)
+        scene.player.runAction(scene.animDead)
     }
     
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
