@@ -52,7 +52,9 @@ class Dead: GKState {
             let moveDownAction = SKAction.moveByX(0, y: -(scene.size.height * 1.0), duration: 1.5)
             moveDownAction.timingMode = .EaseIn
             let hiddenAction = SKAction.hide()
-            let sequence = SKAction.sequence([moveUpAction, moveDownAction, hiddenAction])
+            
+            //FixMe up and down
+            let sequence = SKAction.sequence([ moveUpAction,moveDownAction])
             scene.player.runAction(sequence)
             scene.runAnim(scene.animDead)
 

@@ -160,8 +160,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             scoreLabel.text = "\(scorePoint)"
             if scorePoint % 10 == 0 {
                 playerScoreUpdate()
-                if scorePoint == 500 {
-                    print("__________Level ________________")
+                if scorePoint == 5000 {
+                    print("__________Level 1________________")
                 }
                 
                 // CHANGE THIS AFTER TESTING
@@ -458,7 +458,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         
         // set up different stages and different problems
         if Int.random(min: 1, max: 100) <= platformPercentage {
-            if Int.random(min: 1, max: 100) <= 75 {
+            if Int.random(min: 1, max: 100) <= 85 {
                 // Create standard platforms 75%
                 switch Int.random(min: 0, max: 3) {
                 case 0:
@@ -477,6 +477,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 // Create breakable platforms 25%
                 switch Int.random(min: 1, max: 3) {
                 case 0:
+                    //fixMe
                     overlaySprite = breakArrow
                 case 1:
                     overlaySprite = break5Across
@@ -553,15 +554,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         camera = cameraNode
 
         // Squash and Stretch
-        // FixMe
-//        let squishAction = SKAction.scaleXTo(1, y: 1.0, duration: 0.25)
-//        squishAction.timingMode = SKActionTimingMode.EaseInEaseOut
-//        let stretchAction = SKAction.scaleXTo(0.85, y: 1.15, duration: 0.25)
-//        stretchAction.timingMode = SKActionTimingMode.EaseInEaseOut
-//        
-//        squishAndStretch = SKAction.sequence([squishAction, stretchAction])
+        let squishAction = SKAction.scaleXTo(1, y: 1.0, duration: 0.25)
+        squishAction.timingMode = SKActionTimingMode.EaseInEaseOut
+        let stretchAction = SKAction.scaleXTo(0.85, y: 1.15, duration: 0.25)
+        stretchAction.timingMode = SKActionTimingMode.EaseInEaseOut
         
-        //fixMe
+        squishAndStretch = SKAction.sequence([squishAction, stretchAction])
+        
         //adding HealthBar // removing it // replacing it with Heart Shape
         // request for Level and different stages
         healthBar.removeFromParent()
@@ -588,7 +587,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 //        highScoreLabel.verticalAlignmentMode = .Top
         highScoreLabel.position.x = 150
         highScoreLabel.position.y = 100
-        highScoreLabel.fontColor = SKColor.brownColor()
+        highScoreLabel.fontColor = SKColor.blackColor()
         highScoreLabel.fontName = "Pixel Coleco"
 
         highScoreLabel.zPosition = 200
