@@ -598,9 +598,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         gameOverLabel = childNodeWithName("gameOver") as! SKLabelNode
         gameOverLabel.fontSize = 200
         
-        gameOverLabel.position.x = 150
+        gameOverLabel.position.x = 160
         gameOverLabel.position.y = 100
-        gameOverLabel.fontColor = SKColor.blueColor()
+        gameOverLabel.fontColor = SKColor.blackColor()
         gameOverLabel.fontName = "Pixel Coleco"
         
         gameOverLabel.zPosition = 300
@@ -893,6 +893,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 emitParticles("CollectSpecial", sprite: kunai)
                 jumpPlayer()
                 boostPlayer()
+                scorePoint += 500
+                scoreLabel.text = String(scorePoint)
             }
             
             
@@ -903,7 +905,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 
                 let wait = SKAction.waitForDuration(0.5)
                 let whitecolor = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.50)
-                
+                scorePoint += 1000
+                scoreLabel.text = String(scorePoint)
                 let HealthYellow = SKAction.sequence([yellowColor, wait, whitecolor
                     ])
                 player.runAction(HealthYellow)
