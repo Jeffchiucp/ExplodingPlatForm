@@ -553,13 +553,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         camera = cameraNode
 
         // Squash and Stretch
-        let squishAction = SKAction.scaleXTo(1, y: 1.0, duration: 0.25)
-        squishAction.timingMode = SKActionTimingMode.EaseInEaseOut
-        let stretchAction = SKAction.scaleXTo(0.85, y: 1.15, duration: 0.25)
-        stretchAction.timingMode = SKActionTimingMode.EaseInEaseOut
+        // FixMe
+//        let squishAction = SKAction.scaleXTo(1, y: 1.0, duration: 0.25)
+//        squishAction.timingMode = SKActionTimingMode.EaseInEaseOut
+//        let stretchAction = SKAction.scaleXTo(0.85, y: 1.15, duration: 0.25)
+//        stretchAction.timingMode = SKActionTimingMode.EaseInEaseOut
+//        
+//        squishAndStretch = SKAction.sequence([squishAction, stretchAction])
         
-        squishAndStretch = SKAction.sequence([squishAction, stretchAction])
-        
+        //fixMe
         //adding HealthBar // removing it // replacing it with Heart Shape
         // request for Level and different stages
         healthBar.removeFromParent()

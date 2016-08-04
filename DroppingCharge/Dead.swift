@@ -40,6 +40,8 @@ class Dead: GKState {
         super.init()
     }
     
+    //fixme when enter dead
+    
     override func didEnterWithPreviousState(previousState: GKState?) {
         if previousState is Lava {
             scene.physicsWorld.contactDelegate = nil
