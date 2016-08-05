@@ -173,6 +173,19 @@
 		10F0AE8E1D399548004B287C /* tickTock.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE7C1D399548004B287C /* tickTock.wav */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		106599CF1D54002B00462D76 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = sourcecode.metal;
+			isEditable = 1;
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/myfile",
+			);
+			script = "# <com.apple.compilers.metal.osx>";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		1001B09D1D417735007FDD80 /* restartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = restartButton.png; path = Assets.xcassets/restartButton.imageset/restartButton.png; sourceTree = "<group>"; };
 		1001B0A21D4179CE007FDD80 /* coinCrossScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = coinCrossScene.sks; sourceTree = "<group>"; };
@@ -660,6 +673,7 @@
 				10304D941D301B98007372D8 /* Resources */,
 			);
 			buildRules = (
+				106599CF1D54002B00462D76 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -1012,6 +1026,7 @@
 				INFOPLIST_FILE = DroppingCharge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"MTL_ENABLE_DEBUG_INFO[arch=*]" = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.NinjaQuestGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
