@@ -60,10 +60,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var background: SKNode!
     var backHeight: CGFloat = 0.0
     
-    //testing
+    //implement feature
     var scoreLabel: SKLabelNode!
     var highScoreLabel : SKLabelNode!
     var gameOverLabel : SKLabelNode!
+    var collectGoal: SKLabelNode!
     
     var platform5Across: SKSpriteNode! = nil
     var coinArrow: SKSpriteNode!
@@ -101,7 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var animSteerLeft: SKAction! = nil
     var animSteerRight: SKAction! = nil
     var curAnim: SKAction? = nil
-    var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 1000, height: 40))
+//    var healthBar = SKSpriteNode(color: SKColor.redColor(), size: CGSize(width: 1000, height: 40))
     var healthCounter: HealthCounter!
     //var coin = SKSpriteNode
     var playerTrail: SKEmitterNode!
@@ -563,11 +564,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         
         //adding HealthBar // removing it // replacing it with Heart Shape
         // request for Level and different stages
-        healthBar.removeFromParent()
+//        healthBar.removeFromParent()
 
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
-        
         scoreLabel.fontSize = 150
         scoreLabel.horizontalAlignmentMode = .Left
         scoreLabel.verticalAlignmentMode = .Top
@@ -586,8 +586,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 //        highScoreLabel.horizontalAlignmentMode = .Left
 //        highScoreLabel.verticalAlignmentMode = .Top
         highScoreLabel.position.x = 150
-        highScoreLabel.position.y = 100
-        highScoreLabel.fontColor = SKColor.blackColor()
+        highScoreLabel.position.y = 300
+        highScoreLabel.fontColor = SKColor.yellowColor()
         highScoreLabel.fontName = "Pixel Coleco"
 
         highScoreLabel.zPosition = 200
@@ -633,6 +633,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     
     //Testing the highscore
+    
+    
     func playerScoreUpdate() {
         let highScore = NSUserDefaults().integerForKey("highscore")
         if scorePoint == 0 {
@@ -679,23 +681,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     }
     
     
-    func reduceHealthBar(){
-        if currentHealth > 0 {
-            currentHealth -= 25
-            //let healthBarReduce = SKAction.scaleXTo(currentHealth / maxHealth, duration: 0.5)
-            //healthBar.runAction(healthBarReduce)
-            
-        }
-    }
+
     
-    
-    
-    func improveHealthBar(){
-        if currentHealth < 100 {
-            currentHealth += 25
-            
-        }
-    }
+
     
     //falling off the platform like that.
     func setPlayerVelocity(amount:CGFloat) {
