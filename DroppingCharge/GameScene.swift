@@ -64,8 +64,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var scoreLabel: SKLabelNode!
     var highScoreLabel : SKLabelNode!
     var gameOverLabel : SKLabelNode!
-    var collectGoal: SKLabelNode!
-    
+    var collectGoalLabel: SKLabelNode!
+    var KunaiCount: SKSpriteNode!
     var platform5Across: SKSpriteNode! = nil
     var coinArrow: SKSpriteNode!
     var platformArrow: SKSpriteNode!
@@ -167,6 +167,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 
                 // CHANGE THIS AFTER TESTING
                 if scorePoint == 10000 {
+                    print("__________You Won!!!________________")
+                }
+            }
+        }
+        
+    }
+    
+    var collectGoal: Int = 0 {
+        didSet {
+            collectGoalLabel.text = "\(collectGoal)"
+            if collectGoal % 10 == 0 {
+                ()
+                if collectGoal == 5000 {
+                    print("__________Level 1________________")
+                }
+                
+                // CHANGE THIS AFTER TESTING
+                if collectGoal == 10000 {
                     print("__________You Won!!!________________")
                 }
             }
@@ -566,6 +584,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         // request for Level and different stages
 //        healthBar.removeFromParent()
 
+        func collectGoalUpdate() {
+            let collectGoal = NSUserDefaults().integerForKey("collectGoal")
+            if collectGoal == 0 {
+                collectGoalLabel.text = "No collection "
+            } else {
+                NSUserDefaults().setInteger(collectGoal, forKey: "collectGoal")
+            }
+            
+            collectGoalLabel.text = "You have: " + NSUserDefaults().integerForKey("collectGoal").description
+        }
+        
+        // KunaiCount
+        KunaiCount = childNodeWithName("KunaiCount") as! SKSpriteNode
+
+        KunaiCount.position.x = 0
+        KunaiCount.position.y = 650
+        KunaiCount.zPosition = 500
+        KunaiCount.removeFromParent()
+        camera!.addChild(KunaiCount)
+        KunaiCount.hidden = true
+        
+        collectGoalLabel = childNodeWithName("collectGoal") as! SKLabelNode
+        collectGoalLabel.fontSize = 150
+        collectGoalLabel.horizontalAlignmentMode = .Left
+        collectGoalLabel.verticalAlignmentMode = .Top
+        collectGoalLabel.position.x = -100
+        collectGoalLabel.position.y = 700
+        
+        collectGoalLabel.fontName = "Pixel Coleco"
+        collectGoalLabel.fontColor = SKColor.yellowColor()
+        collectGoalLabel.zPosition = 500
+        collectGoalLabel.removeFromParent()
+        camera!.addChild(collectGoalLabel)
+        collectGoalLabel.hidden = false
+
         
         scoreLabel = childNodeWithName("score1") as! SKLabelNode
         scoreLabel.fontSize = 150
@@ -576,7 +629,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         
         scoreLabel.fontName = "Pixel Coleco"
         scoreLabel.fontColor = SKColor.yellowColor()
-        scoreLabel.zPosition = 200
+        scoreLabel.zPosition = 500
         scoreLabel.removeFromParent()
         camera!.addChild(scoreLabel)
         
@@ -883,6 +936,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 jumpPlayer()
                 boostPlayer()
                 scorePoint += 500
+                collectGoal += 1
                 scoreLabel.text = String(scorePoint)
             }
             
