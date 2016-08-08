@@ -72,7 +72,7 @@ class WaitingForBomb: GKState {
     override func willExitWithNextState(nextState: GKState) {
         if nextState is Playing {
             let bomb = scene.fgNode.childNodeWithName("Bomb")!
-            let explosion = scene.explosion(2.0)
+            let explosion = scene.explosion(4.0)
             explosion.position = bomb.position
             scene.fgNode.addChild(explosion)
             bomb.removeFromParent()

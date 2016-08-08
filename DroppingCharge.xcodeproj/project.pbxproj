@@ -20,21 +20,10 @@
 		102AF06C1D36BB8D00496991 /* Lava.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF06B1D36BB8D00496991 /* Lava.swift */; };
 		102AF06E1D36BB9900496991 /* Dead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF06D1D36BB9900496991 /* Dead.swift */; };
 		102AF0821D36BCC800496991 /* Break5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF06F1D36BCC800496991 /* Break5Across.sks */; };
-		102AF0831D36BCC800496991 /* BreakArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0701D36BCC800496991 /* BreakArrow.sks */; };
-		102AF0841D36BCC800496991 /* BreakDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0711D36BCC800496991 /* BreakDiagonal.sks */; };
-		102AF0851D36BCC800496991 /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0721D36BCC800496991 /* BrokenPlatform.sks */; };
-		102AF0881D36BCC800496991 /* CoinCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0751D36BCC800496991 /* CoinCross.sks */; };
-		102AF0891D36BCC800496991 /* CoinDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0761D36BCC800496991 /* CoinDiagonal.sks */; };
 		102AF08A1D36BCC800496991 /* CoinS5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0771D36BCC800496991 /* CoinS5Across.sks */; };
 		102AF08C1D36BCC800496991 /* CoinSCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0791D36BCC800496991 /* CoinSCross.sks */; };
-		102AF08D1D36BCC800496991 /* CoinSDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07A1D36BCC800496991 /* CoinSDiagonal.sks */; };
 		102AF08E1D36BCC800496991 /* CollectNormal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07B1D36BCC800496991 /* CollectNormal.sks */; };
-		102AF08F1D36BCC800496991 /* CollectSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07C1D36BCC800496991 /* CollectSpecial.sks */; };
-		102AF0901D36BCC800496991 /* Lava.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07D1D36BCC800496991 /* Lava.sks */; };
-		102AF0911D36BCC800496991 /* Platform5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07E1D36BCC800496991 /* Platform5Across.sks */; };
 		102AF0921D36BCC800496991 /* PlatformArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF07F1D36BCC800496991 /* PlatformArrow.sks */; };
-		102AF0931D36BCC800496991 /* PlatformDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0801D36BCC800496991 /* PlatformDiagonal.sks */; };
-		102AF0941D36BCC800496991 /* PlayerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0811D36BCC800496991 /* PlayerTrail.sks */; };
 		102AF0971D36C01700496991 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0961D36C01700496991 /* GameScene.sks */; };
 		102AF0B21D36C16800496991 /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF09A1D36C16800496991 /* BrokenPlatform.sks */; };
 		102AF0B31D36C16800496991 /* CollectNormal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF09B1D36C16800496991 /* CollectNormal.sks */; };
@@ -59,24 +48,12 @@
 		102AF0C61D36C16800496991 /* player_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0AF1D36C16800496991 /* player_die.wav */; };
 		102AF0C71D36C16800496991 /* SpaceGame.caf in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0B01D36C16800496991 /* SpaceGame.caf */; };
 		102AF0C81D36C16800496991 /* tickTock.wav in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0B11D36C16800496991 /* tickTock.wav */; };
-		102AF0DD1D36E76500496991 /* Break5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0CA1D36E76500496991 /* Break5Across.sks */; };
 		102AF0DE1D36E76500496991 /* BreakArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0CB1D36E76500496991 /* BreakArrow.sks */; };
-		102AF0DF1D36E76500496991 /* BreakDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0CC1D36E76500496991 /* BreakDiagonal.sks */; };
-		102AF0E01D36E76500496991 /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0CD1D36E76500496991 /* BrokenPlatform.sks */; };
-		102AF0E11D36E76500496991 /* Coin5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0CE1D36E76500496991 /* Coin5Across.sks */; };
 		102AF0E21D36E76500496991 /* CoinArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0CF1D36E76500496991 /* CoinArrow.sks */; };
-		102AF0E31D36E76500496991 /* CoinCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D01D36E76500496991 /* CoinCross.sks */; };
-		102AF0E41D36E76500496991 /* CoinDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D11D36E76500496991 /* CoinDiagonal.sks */; };
-		102AF0E51D36E76500496991 /* CoinS5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D21D36E76500496991 /* CoinS5Across.sks */; };
 		102AF0E61D36E76500496991 /* CoinSArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D31D36E76500496991 /* CoinSArrow.sks */; };
-		102AF0E71D36E76500496991 /* CoinSCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D41D36E76500496991 /* CoinSCross.sks */; };
 		102AF0E81D36E76500496991 /* CoinSDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D51D36E76500496991 /* CoinSDiagonal.sks */; };
-		102AF0E91D36E76500496991 /* CollectNormal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D61D36E76500496991 /* CollectNormal.sks */; };
-		102AF0EA1D36E76500496991 /* CollectSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D71D36E76500496991 /* CollectSpecial.sks */; };
 		102AF0EB1D36E76500496991 /* Lava.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D81D36E76500496991 /* Lava.sks */; };
 		102AF0EC1D36E76500496991 /* Platform5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0D91D36E76500496991 /* Platform5Across.sks */; };
-		102AF0ED1D36E76500496991 /* PlatformArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0DA1D36E76500496991 /* PlatformArrow.sks */; };
-		102AF0EE1D36E76500496991 /* PlatformDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0DB1D36E76500496991 /* PlatformDiagonal.sks */; };
 		102AF0EF1D36E76500496991 /* PlayerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF0DC1D36E76500496991 /* PlayerTrail.sks */; };
 		102AF0FD1D36F26500496991 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0F11D36F26500496991 /* CGFloat+Extensions.swift */; };
 		102AF0FE1D36F26500496991 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0F21D36F26500496991 /* CGPoint+Extensions.swift */; };
@@ -90,24 +67,13 @@
 		102AF1061D36F26500496991 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0FA1D36F26500496991 /* SKTEffects.swift */; };
 		102AF1071D36F26500496991 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0FB1D36F26500496991 /* SKTTimingFunctions.swift */; };
 		102AF1081D36F26500496991 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF0FC1D36F26500496991 /* Vector3.swift */; };
-		102AF11C1D36F56700496991 /* Break5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF10A1D36F56700496991 /* Break5Across.sks */; };
-		102AF11D1D36F56700496991 /* BreakArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF10B1D36F56700496991 /* BreakArrow.sks */; };
 		102AF11E1D36F56700496991 /* BreakDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF10C1D36F56700496991 /* BreakDiagonal.sks */; };
 		102AF11F1D36F56700496991 /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF10D1D36F56700496991 /* BrokenPlatform.sks */; };
 		102AF1201D36F56700496991 /* Coin5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF10E1D36F56700496991 /* Coin5Across.sks */; };
 		102AF1211D36F56700496991 /* CoinCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF10F1D36F56700496991 /* CoinCross.sks */; };
 		102AF1221D36F56700496991 /* CoinDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1101D36F56700496991 /* CoinDiagonal.sks */; };
-		102AF1231D36F56700496991 /* CoinS5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1111D36F56700496991 /* CoinS5Across.sks */; };
-		102AF1241D36F56700496991 /* CoinSArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1121D36F56700496991 /* CoinSArrow.sks */; };
-		102AF1251D36F56700496991 /* CoinSCross.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1131D36F56700496991 /* CoinSCross.sks */; };
-		102AF1261D36F56700496991 /* CoinSDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1141D36F56700496991 /* CoinSDiagonal.sks */; };
-		102AF1271D36F56700496991 /* CollectNormal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1151D36F56700496991 /* CollectNormal.sks */; };
 		102AF1281D36F56700496991 /* CollectSpecial.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1161D36F56700496991 /* CollectSpecial.sks */; };
-		102AF1291D36F56700496991 /* Lava.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1171D36F56700496991 /* Lava.sks */; };
-		102AF12A1D36F56700496991 /* Platform5Across.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1181D36F56700496991 /* Platform5Across.sks */; };
-		102AF12B1D36F56700496991 /* PlatformArrow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF1191D36F56700496991 /* PlatformArrow.sks */; };
 		102AF12C1D36F56700496991 /* PlatformDiagonal.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF11A1D36F56700496991 /* PlatformDiagonal.sks */; };
-		102AF12D1D36F56700496991 /* PlayerTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 102AF11B1D36F56700496991 /* PlayerTrail.sks */; };
 		102E717D1D42D2FA00815790 /* Minercraftory.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 102E717C1D42D2FA00815790 /* Minercraftory.ttf */; };
 		102E717F1D42D4F300815790 /* Pixel Coleco.otf in Resources */ = {isa = PBXBuildFile; fileRef = 102E717E1D42D4F300815790 /* Pixel Coleco.otf */; };
 		102FBA2B1D501629002CB7C8 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102FBA2A1D501629002CB7C8 /* MainScene.swift */; };
@@ -814,7 +780,6 @@
 				102AF1211D36F56700496991 /* CoinCross.sks in Resources */,
 				102AF0EC1D36E76500496991 /* Platform5Across.sks in Resources */,
 				104D61991D415C7E0094737D /* Coin_2.png in Resources */,
-				102AF1251D36F56700496991 /* CoinSCross.sks in Resources */,
 				104D61891D41465A0094737D /* instruction_toLeft.png in Resources */,
 				1001B0A31D4179CE007FDD80 /* coinCrossScene.sks in Resources */,
 				10F0AE861D399548004B287C /* explosion1.wav in Resources */,
@@ -831,9 +796,7 @@
 				1048D4171D495396006120A3 /* Icon-App-40x40@2x.png in Resources */,
 				102AF0B91D36C16800496991 /* bgMusic.mp3 in Resources */,
 				102AF0EF1D36E76500496991 /* PlayerTrail.sks in Resources */,
-				102AF1241D36F56700496991 /* CoinSArrow.sks in Resources */,
 				102AF0971D36C01700496991 /* GameScene.sks in Resources */,
-				102AF0881D36BCC800496991 /* CoinCross.sks in Resources */,
 				10F0AE7D1D399548004B287C /* alarm.wav in Resources */,
 				1048D41C1D495396006120A3 /* Icon-App-76x76@2x.png in Resources */,
 				104D619A1D415C7E0094737D /* Coin_3.png in Resources */,
@@ -843,7 +806,6 @@
 				104D61981D415C7E0094737D /* Coin_1.png in Resources */,
 				102AF0E21D36E76500496991 /* CoinArrow.sks in Resources */,
 				102AF1221D36F56700496991 /* CoinDiagonal.sks in Resources */,
-				102AF12D1D36F56700496991 /* PlayerTrail.sks in Resources */,
 				1048D4111D495396006120A3 /* Icon-App-29x29@1x.png in Resources */,
 				10F0AE7F1D399548004B287C /* bgMusic.mp3 in Resources */,
 				102AF0B21D36C16800496991 /* BrokenPlatform.sks in Resources */,
@@ -852,31 +814,22 @@
 				1048D4121D495396006120A3 /* Icon-App-29x29@2x-1.png in Resources */,
 				102AF0C21D36C16800496991 /* explosion3.wav in Resources */,
 				102AF0BC1D36C16800496991 /* brick.caf in Resources */,
-				102AF0891D36BCC800496991 /* CoinDiagonal.sks in Resources */,
 				1048D4161D495396006120A3 /* Icon-App-40x40@2x-1.png in Resources */,
-				102AF0E51D36E76500496991 /* CoinS5Across.sks in Resources */,
 				1094BE161D3ED86C00DC8460 /* platform.png in Resources */,
 				102AF0C71D36C16800496991 /* SpaceGame.caf in Resources */,
 				10F0AE891D399548004B287C /* explosion4.wav in Resources */,
-				102AF0E41D36E76500496991 /* CoinDiagonal.sks in Resources */,
 				1001B09E1D417735007FDD80 /* restartButton.png in Resources */,
 				102AF0C81D36C16800496991 /* tickTock.wav in Resources */,
 				1048D4191D495396006120A3 /* Icon-App-40x40@3x.png in Resources */,
-				102AF0E91D36E76500496991 /* CollectNormal.sks in Resources */,
-				102AF08F1D36BCC800496991 /* CollectSpecial.sks in Resources */,
 				102AF1201D36F56700496991 /* Coin5Across.sks in Resources */,
 				102AF0BE1D36C16800496991 /* coin4.wav in Resources */,
 				10F0AE831D399548004B287C /* coin1.wav in Resources */,
-				102AF0DD1D36E76500496991 /* Break5Across.sks in Resources */,
 				1094BE181D3ED96300DC8460 /* new_bg1.png in Resources */,
 				102AF0B31D36C16800496991 /* CollectNormal.sks in Resources */,
 				1048D4151D495396006120A3 /* Icon-App-40x40@1x.png in Resources */,
-				102AF0E11D36E76500496991 /* Coin5Across.sks in Resources */,
 				104268B11D4BCDB1000C6057 /* heartRef.sks in Resources */,
-				102AF1231D36F56700496991 /* CoinS5Across.sks in Resources */,
 				102AF0EB1D36E76500496991 /* Lava.sks in Resources */,
 				106DFE1E1D3D9636004FD9D0 /* Coin.sks in Resources */,
-				102AF1271D36F56700496991 /* CollectNormal.sks in Resources */,
 				102AF0B71D36C16800496991 /* alarm.wav in Resources */,
 				104D619B1D415C7E0094737D /* Coin_4.png in Resources */,
 				102AF0B51D36C16800496991 /* PlayerTrail.sks in Resources */,
@@ -888,52 +841,31 @@
 				102AF11E1D36F56700496991 /* BreakDiagonal.sks in Resources */,
 				10304DA51D301B98007372D8 /* Assets.xcassets in Resources */,
 				102AF0BD1D36C16800496991 /* coin1.wav in Resources */,
-				102AF0931D36BCC800496991 /* PlatformDiagonal.sks in Resources */,
 				1030E2E71D58227400740C66 /* README.txt in Resources */,
 				1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */,
 				102E717D1D42D2FA00815790 /* Minercraftory.ttf in Resources */,
 				10F0AE851D399548004B287C /* DrownFireBug.mp3 in Resources */,
-				102AF0EA1D36E76500496991 /* CollectSpecial.sks in Resources */,
 				106DFE201D3D9684004FD9D0 /* CoinSpecial.sks in Resources */,
-				102AF08D1D36BCC800496991 /* CoinSDiagonal.sks in Resources */,
 				10304DA31D301B98007372D8 /* Main.storyboard in Resources */,
-				102AF0E31D36E76500496991 /* CoinCross.sks in Resources */,
-				102AF0911D36BCC800496991 /* Platform5Across.sks in Resources */,
 				102AF0C31D36C16800496991 /* explosion4.wav in Resources */,
 				1048D4181D495396006120A3 /* Icon-App-40x40@3x-1.png in Resources */,
 				102AF0BF1D36C16800496991 /* DrownFireBug.mp3 in Resources */,
 				104D618F1D414D740094737D /* CharacterScene.sks in Resources */,
-				102AF0841D36BCC800496991 /* BreakDiagonal.sks in Resources */,
 				10F0AE7E1D399548004B287C /* attribution.txt in Resources */,
 				102AF11F1D36F56700496991 /* BrokenPlatform.sks in Resources */,
-				102AF11C1D36F56700496991 /* Break5Across.sks in Resources */,
-				102AF0831D36BCC800496991 /* BreakArrow.sks in Resources */,
 				102AF0921D36BCC800496991 /* PlatformArrow.sks in Resources */,
-				102AF0941D36BCC800496991 /* PlayerTrail.sks in Resources */,
-				102AF12B1D36F56700496991 /* PlatformArrow.sks in Resources */,
-				102AF0E71D36E76500496991 /* CoinSCross.sks in Resources */,
 				104D61871D4144E80094737D /* instruction_toRight.png in Resources */,
 				1048D41A1D495396006120A3 /* Icon-App-60x60@3x.png in Resources */,
 				1052278A1D5164B400279F99 /* kunai.sks in Resources */,
-				102AF12A1D36F56700496991 /* Platform5Across.sks in Resources */,
-				102AF1261D36F56700496991 /* CoinSDiagonal.sks in Resources */,
 				1094BE1A1D3EE67200DC8460 /* character_male-ninja.png in Resources */,
 				102AF0C11D36C16800496991 /* explosion2.wav in Resources */,
 				10F0AE8B1D399548004B287C /* nitro.wav in Resources */,
 				106DFE181D3D83A1004FD9D0 /* bigger_platform.png in Resources */,
-				102AF0EE1D36E76500496991 /* PlatformDiagonal.sks in Resources */,
 				102AF0BA1D36C16800496991 /* bombDrop.wav in Resources */,
-				102AF1291D36F56700496991 /* Lava.sks in Resources */,
 				102AF0C61D36C16800496991 /* player_die.wav in Resources */,
-				102AF11D1D36F56700496991 /* BreakArrow.sks in Resources */,
-				102AF0851D36BCC800496991 /* BrokenPlatform.sks in Resources */,
-				102AF0901D36BCC800496991 /* Lava.sks in Resources */,
 				10F0AE8D1D399548004B287C /* SpaceGame.caf in Resources */,
-				102AF0E01D36E76500496991 /* BrokenPlatform.sks in Resources */,
-				102AF0ED1D36E76500496991 /* PlatformArrow.sks in Resources */,
 				10F0AE8C1D399548004B287C /* player_die.wav in Resources */,
 				10F0AE881D399548004B287C /* explosion3.wav in Resources */,
-				102AF0DF1D36E76500496991 /* BreakDiagonal.sks in Resources */,
 				10F0AE871D399548004B287C /* explosion2.wav in Resources */,
 				10F0AE811D399548004B287C /* boost.wav in Resources */,
 				102AF0C51D36C16800496991 /* nitro.wav in Resources */,

@@ -15,6 +15,8 @@ class StartScene: SKScene {
     var soundsOn: MSButtonNode!
     var soundsOff: MSButtonNode!
     var bgNode = SKNode()
+    var Sprite1 = SKNode()
+    var background = SKNode()
     
     var backgroundMusic: SKAudioNode!
     
@@ -112,7 +114,7 @@ class StartScene: SKScene {
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .Fill
+            scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
         }

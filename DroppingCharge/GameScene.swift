@@ -394,7 +394,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     }
     func getCameraPosition() -> CGPoint {
         return CGPoint(
-            x: cameraNode.position.x + overlapAmount()/2,
+            //x: cameraNode.position.x + overlapAmount()/2,
+            x: cameraNode.position.x - 500,
             y: cameraNode.position.y)
     }
     override func update(currentTime: NSTimeInterval) {
