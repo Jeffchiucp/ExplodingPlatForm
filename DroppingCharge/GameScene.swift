@@ -30,6 +30,7 @@
 import SpriteKit
 import CoreMotion
 import GameplayKit
+import Firebase
 
 
 let debugFlag = false

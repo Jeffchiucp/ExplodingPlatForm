@@ -30,16 +30,20 @@
 
 import UIKit
 import SpriteKit
+import GoogleMobileAds
+
 
 class GameViewController: UIViewController {
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
         //        if let scene = CharacterScene(fileNamed:"CharacterScene") {
         // MainScene
         
-        if let scene = GameScene(fileNamed:"GameScene") {
+        if let scene = StartScene(fileNamed:"StartScene") {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = false
