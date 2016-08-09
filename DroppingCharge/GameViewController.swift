@@ -35,11 +35,19 @@ import GoogleMobileAds
 
 class GameViewController: UIViewController {
     
+
+
+    
+    @IBOutlet weak var bannerView: GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
+        print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
+        bannerView.adUnitID = "ca-app-pub-9213470812256501/3639736473"
+        bannerView.rootViewController = self
+        bannerView.loadRequest(GADRequest())
+
         //        if let scene = CharacterScene(fileNamed:"CharacterScene") {
         // MainScene
         

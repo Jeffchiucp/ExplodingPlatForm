@@ -82,7 +82,6 @@
 		10304DA01D301B98007372D8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10304D9F1D301B98007372D8 /* GameViewController.swift */; };
 		10304DA31D301B98007372D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA11D301B98007372D8 /* Main.storyboard */; };
 		10304DA51D301B98007372D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA41D301B98007372D8 /* Assets.xcassets */; };
-		10304DA81D301B98007372D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10304DA61D301B98007372D8 /* LaunchScreen.storyboard */; };
 		1030E2E61D58227400740C66 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1030E2DC1D58227400740C66 /* GoogleMobileAds.framework */; };
 		1030E2E71D58227400740C66 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2E41D58227400740C66 /* README.txt */; };
 		1030E2E81D58227400740C66 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2E51D58227400740C66 /* README.txt */; };
@@ -272,7 +271,6 @@
 		10304D9F1D301B98007372D8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = ../GameViewController.swift; sourceTree = "<group>"; };
 		10304DA21D301B98007372D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10304DA41D301B98007372D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		10304DA71D301B98007372D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10304DA91D301B98007372D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1030E2DC1D58227400740C66 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		1030E2DE1D58227400740C66 /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
@@ -597,7 +595,6 @@
 				1048D4041D495396006120A3 /* icon */,
 				1094BE191D3EE67200DC8460 /* character_male-ninja.png */,
 				1094BE171D3ED96300DC8460 /* new_bg1.png */,
-				10304DA61D301B98007372D8 /* LaunchScreen.storyboard */,
 				10304DA91D301B98007372D8 /* Info.plist */,
 			);
 			path = DroppingCharge;
@@ -834,7 +831,6 @@
 				104D619B1D415C7E0094737D /* Coin_4.png in Resources */,
 				102AF0B51D36C16800496991 /* PlayerTrail.sks in Resources */,
 				102AF0C41D36C16800496991 /* jump.wav in Resources */,
-				10304DA81D301B98007372D8 /* LaunchScreen.storyboard in Resources */,
 				102AF0DE1D36E76500496991 /* BreakArrow.sks in Resources */,
 				102AF0E81D36E76500496991 /* CoinSDiagonal.sks in Resources */,
 				102AF12C1D36F56700496991 /* PlatformDiagonal.sks in Resources */,
@@ -974,14 +970,6 @@
 				10304DA21D301B98007372D8 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		10304DA61D301B98007372D8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				10304DA71D301B98007372D8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

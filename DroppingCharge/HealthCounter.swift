@@ -64,8 +64,10 @@ class HealthCounter: SKNode{
         hearts.append(heart)
         
         addChild(heart)
+        heart.position.y = CGFloat(0.5) * heart.size.width
         heart.position.x = CGFloat(i) * heart.size.width
     }
+    
     // set up the array that counts the number of health and hearts */
 
     func heartGenerator(){

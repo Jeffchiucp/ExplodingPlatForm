@@ -74,6 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var breakArrow: SKSpriteNode!
     var break5Across: SKSpriteNode!
     var breakDiagonal: SKSpriteNode!
+//    var playAgainButton: SKSpriteNode!
     //adding Coin
     var coin5Across: SKSpriteNode!
     var coinDiagonal: SKSpriteNode!
@@ -180,9 +181,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             collectGoalLabel.text = "\(collectGoal)"
             if collectGoal % 10 == 0 {
                 ()
-                if collectGoal == 5000 {
-                    print("__________Level 1________________")
-                }
+                if collectGoal == 1 {
+                    print("__________You Won!!!________________")
+            }
                 
                 // CHANGE THIS AFTER TESTING
                 if collectGoal == 10000 {
@@ -533,18 +534,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 // Create special coins 25%
                 switch Int.random(min: 0, max: 4) {
                 case 0:
-                    overlaySprite = coinSArrow
+                    overlaySprite = breakDiagonal
                 case 1:
-                    overlaySprite = coinS5Across
+                    overlaySprite = breakDiagonal
                 case 2:
-                    overlaySprite = coinSDiagonal
+                    overlaySprite = breakDiagonal
                 case 3:
-                    overlaySprite = coinSDiagonal
+                    overlaySprite = breakDiagonal
                     flipH = true
                 case 4:
-                    overlaySprite = coinSCross
+                    overlaySprite = breakDiagonal
                 default:
-                    overlaySprite = coinSArrow
+                    overlaySprite = breakDiagonal
                 }
             }
         }
