@@ -136,7 +136,6 @@
 		10F0AE841D399548004B287C /* coin4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE721D399548004B287C /* coin4.wav */; };
 		10F0AE851D399548004B287C /* DrownFireBug.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE731D399548004B287C /* DrownFireBug.mp3 */; };
 		10F0AE861D399548004B287C /* explosion1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE741D399548004B287C /* explosion1.wav */; };
-		10F0AE871D399548004B287C /* explosion2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE751D399548004B287C /* explosion2.wav */; };
 		10F0AE881D399548004B287C /* explosion3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE761D399548004B287C /* explosion3.wav */; };
 		10F0AE891D399548004B287C /* explosion4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE771D399548004B287C /* explosion4.wav */; };
 		10F0AE8A1D399548004B287C /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10F0AE781D399548004B287C /* jump.wav */; };
@@ -862,7 +861,6 @@
 				10F0AE8D1D399548004B287C /* SpaceGame.caf in Resources */,
 				10F0AE8C1D399548004B287C /* player_die.wav in Resources */,
 				10F0AE881D399548004B287C /* explosion3.wav in Resources */,
-				10F0AE871D399548004B287C /* explosion2.wav in Resources */,
 				10F0AE811D399548004B287C /* boost.wav in Resources */,
 				102AF0C51D36C16800496991 /* nitro.wav in Resources */,
 				10F0AE8E1D399548004B287C /* tickTock.wav in Resources */,
