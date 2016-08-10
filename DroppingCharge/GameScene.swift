@@ -500,7 +500,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 switch Int.random(min: 1, max: 3) {
                 case 0:
                     //fixMe
-                    overlaySprite = breakArrow
+                    overlaySprite = breakDiagonal
                 case 1:
                     overlaySprite = break5Across
                 case 2:
