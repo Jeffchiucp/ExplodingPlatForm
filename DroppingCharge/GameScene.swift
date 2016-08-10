@@ -142,7 +142,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         WaitingForTap(scene: self),
         WaitingForBomb(scene: self),
         Playing(scene: self),
-        GameOver(scene: self)
+        GameOver(scene: self),
+        GameWon(scene: self),
         ])
     
     lazy var playerState: GKStateMachine = GKStateMachine(states: [
@@ -179,16 +180,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var collectGoal: Int = 0 {
         didSet {
             collectGoalLabel.text = "\(collectGoal)"
-            if collectGoal % 10 == 0 {
-                ()
                 if collectGoal == 1 {
-                    print("__________You Won!!!________________")
+//                    playerState.enterState(Dead)
+//                    gameState.enterState(GameOver)
+                    print("__________Way to Go!!!________________")
             }
                 
                 // CHANGE THIS AFTER TESTING
                 if collectGoal == 10000 {
-                    print("__________You Won!!!________________")
-                }
+                    playerState.enterState(Dead)
+                    gameState.enterState(GameOver)
             }
         }
         
@@ -484,16 +485,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 // Create standard platforms 75%
                 switch Int.random(min: 0, max: 3) {
                 case 0:
-                    overlaySprite = platformArrow
+                    overlaySprite = platform5Across
                 case 1:
                     overlaySprite = platform5Across
                 case 2:
                     overlaySprite = platform5Across
                 case 3:
-                    overlaySprite = platformDiagonal
+                    overlaySprite = breakDiagonal
                     flipH = false
                 default:
-                    overlaySprite = platformDiagonal
+                    overlaySprite = breakDiagonal
                 }
             } else {
                 // Create breakable platforms 25%
@@ -501,15 +502,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 case 0:
                     //fixMe
                     overlaySprite = breakDiagonal
+                    flipH = false
+
                 case 1:
-                    overlaySprite = break5Across
+                    overlaySprite = platform5Across
                 case 2:
-                    overlaySprite = breakDiagonal
+                    overlaySprite = platform5Across
                 case 3:
-                    overlaySprite = breakDiagonal
+                    overlaySprite = platformDiagonal
                     flipH = true
                 default:
-                    overlaySprite = breakArrow
+                    overlaySprite = platform5Across
                 }
             }
         } else {
@@ -518,16 +521,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 // Create standard coins 75%
                 switch Int.random(min: 0, max: 4) {
                 case 0:
-                    overlaySprite = break5Across
+                    overlaySprite = breakDiagonal
                 case 1:
-                    overlaySprite = break5Across
+                    overlaySprite = breakDiagonal
                 case 2:
                     overlaySprite = breakDiagonal
                 case 3:
                     overlaySprite = breakDiagonal
                     flipH = true
                 default:
-                    overlaySprite = break5Across
+                    overlaySprite = platformDiagonal
                 }
             } else {
                 // testing it like 99% special coin
@@ -540,7 +543,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 case 2:
                     overlaySprite = breakDiagonal
                 case 3:
-                    overlaySprite = breakDiagonal
+                    overlaySprite = break5Across
                     flipH = true
                 case 4:
                     overlaySprite = breakDiagonal

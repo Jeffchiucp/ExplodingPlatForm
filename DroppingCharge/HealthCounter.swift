@@ -58,14 +58,14 @@ class HealthCounter: SKNode{
         }
         _life += 1
         let heartTexture = SKTexture(imageNamed: "life_power_up_1")
-
+        
         let heart = SKSpriteNode(texture: heartTexture)
         let i = hearts.count
         hearts.append(heart)
-        
+        heart.setScale(CGFloat(0.5))
         addChild(heart)
-        heart.position.y = CGFloat(0.5) * heart.size.width
-        heart.position.x = CGFloat(i) * heart.size.width
+        heart.position.y = CGFloat(0.3) * heart.size.width
+        heart.position.x = CGFloat(i) * heart.size.width - 100
     }
     
     // set up the array that counts the number of health and hearts */

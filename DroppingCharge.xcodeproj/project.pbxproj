@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1001B09E1D417735007FDD80 /* restartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1001B09D1D417735007FDD80 /* restartButton.png */; };
 		1001B0A31D4179CE007FDD80 /* coinCrossScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1001B0A21D4179CE007FDD80 /* coinCrossScene.sks */; };
+		10151E041D5BB50700264FC9 /* GameWon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10151E031D5BB50700264FC9 /* GameWon.swift */; };
 		102879F11D5530050033BB12 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 102879F01D5530050033BB12 /* Launch Screen.storyboard */; };
 		102AF05D1D36B52000496991 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF05C1D36B52000496991 /* GameOver.swift */; };
 		102AF05F1D36B5BA00496991 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AF05E1D36B5BA00496991 /* Play.swift */; };
@@ -162,6 +163,7 @@
 /* Begin PBXFileReference section */
 		1001B09D1D417735007FDD80 /* restartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = restartButton.png; path = Assets.xcassets/restartButton.imageset/restartButton.png; sourceTree = "<group>"; };
 		1001B0A21D4179CE007FDD80 /* coinCrossScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = coinCrossScene.sks; sourceTree = "<group>"; };
+		10151E031D5BB50700264FC9 /* GameWon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameWon.swift; sourceTree = "<group>"; };
 		102879F01D5530050033BB12 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		102AF05C1D36B52000496991 /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOver.swift; path = ../GameOver.swift; sourceTree = "<group>"; };
 		102AF05E1D36B5BA00496991 /* Play.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Play.swift; path = ../Play.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				102AF05C1D36B52000496991 /* GameOver.swift */,
+				10151E031D5BB50700264FC9 /* GameWon.swift */,
 				102AF0631D36B6C500496991 /* WaitingForTap.swift */,
 				102AF05E1D36B5BA00496991 /* Play.swift */,
 				102AF0601D36B5D800496991 /* WaitingForBomb.swift */,
@@ -938,6 +941,7 @@
 				102AF1031D36F26500496991 /* SKColor+Extensions.swift in Sources */,
 				102AF1001D36F26500496991 /* Int+Extensions.swift in Sources */,
 				102AF0FF1D36F26500496991 /* CGVector+Extensions.swift in Sources */,
+				10151E041D5BB50700264FC9 /* GameWon.swift in Sources */,
 				102AF06E1D36BB9900496991 /* Dead.swift in Sources */,
 				102AF0681D36BB5100496991 /* Jump.swift in Sources */,
 				102AF0661D36BB1700496991 /* Idle.swift in Sources */,
