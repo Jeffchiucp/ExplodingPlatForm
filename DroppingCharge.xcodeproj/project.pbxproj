@@ -87,7 +87,6 @@
 		1030E2E71D58227400740C66 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2E41D58227400740C66 /* README.txt */; };
 		1030E2E81D58227400740C66 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2E51D58227400740C66 /* README.txt */; };
 		1030E2EC1D58286700740C66 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2EB1D58286700740C66 /* Storyboard.storyboard */; };
-		1030E2EE1D5840CF00740C66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030E2ED1D5840CF00740C66 /* ViewController.swift */; };
 		1030E2F01D5843A300740C66 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030E2EF1D5843A300740C66 /* StartScene.swift */; };
 		1030E2F21D5844A600740C66 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2F11D5844A600740C66 /* StartScene.sks */; };
 		1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1033F07E1D4048B900266DB4 /* SmokeTrail.sks */; };
@@ -283,7 +282,6 @@
 		1030E2E41D58227400740C66 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		1030E2E51D58227400740C66 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		1030E2EB1D58286700740C66 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		1030E2ED1D5840CF00740C66 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1030E2EF1D5843A300740C66 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		1030E2F11D5844A600740C66 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		1033F07E1D4048B900266DB4 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
@@ -384,7 +382,6 @@
 				102AF05E1D36B5BA00496991 /* Play.swift */,
 				102AF0601D36B5D800496991 /* WaitingForBomb.swift */,
 				10304D9F1D301B98007372D8 /* GameViewController.swift */,
-				1030E2ED1D5840CF00740C66 /* ViewController.swift */,
 				1030E2DB1D58227400740C66 /* GoogleMobileAdsSdkiOS-7.9.1 */,
 				102AF0961D36C01700496991 /* GameScene.sks */,
 			);
@@ -937,7 +934,6 @@
 				1030E2F01D5843A300740C66 /* StartScene.swift in Sources */,
 				10304D9A1D301B98007372D8 /* AppDelegate.swift in Sources */,
 				104268AF1D4BC1AD000C6057 /* HealthCounter.swift in Sources */,
-				1030E2EE1D5840CF00740C66 /* ViewController.swift in Sources */,
 				102AF1031D36F26500496991 /* SKColor+Extensions.swift in Sources */,
 				102AF1001D36F26500496991 /* Int+Extensions.swift in Sources */,
 				102AF0FF1D36F26500496991 /* CGVector+Extensions.swift in Sources */,

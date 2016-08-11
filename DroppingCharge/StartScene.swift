@@ -10,6 +10,9 @@ import SpriteKit
 import GameplayKit
 
 class StartScene: SKScene {
+    
+    
+    var socialDelegate: GameSceneSocialDelegate?
     var musicOn: MSButtonNode!
     var musicOff: MSButtonNode!
     var soundsOn: MSButtonNode!
@@ -106,6 +109,8 @@ class StartScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let scene = GameScene(fileNamed:"GameScene") {
+            //passing the delegate to the user
+            scene.socialDelegate = self.socialDelegate
             let skView = self.view!
             skView.showsFPS = false
             skView.showsNodeCount = false

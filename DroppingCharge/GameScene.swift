@@ -49,7 +49,15 @@ struct PhysicsCategory {
     
 }
 
+protocol GameSceneSocialDelegate {
+    func postToTwitter()
+    func sendMessage()
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
+    
+    var socialDelegate: GameSceneSocialDelegate? 
+    
     
     // MARK: - Properties
     let cameraNode = SKCameraNode()
@@ -66,6 +74,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var highScoreLabel : SKLabelNode!
     var gameOverLabel : SKLabelNode!
     var collectGoalLabel: SKLabelNode!
+    var socialFeatureButton: SKLabelNode!
+    var twitterFeatureButton: SKLabelNode!
     var KunaiCount: SKSpriteNode!
     var platform5Across: SKSpriteNode! = nil
     var coinArrow: SKSpriteNode!
@@ -75,7 +85,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var break5Across: SKSpriteNode!
     var breakDiagonal: SKSpriteNode!
 //    var playAgainButton: SKSpriteNode!
-    //adding Coin
     var coin5Across: SKSpriteNode!
     var coinDiagonal: SKSpriteNode!
     var coinCross: SKSpriteNode!
@@ -265,12 +274,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         animSteerRight = setupAnimWithPrefix("Glide_00", start: 1, end: 9, timePerFrame: 0.2)
         /////////////////////
         
-
         
     }
     
     
-
+    
 
     func setupAnimWithPrefix(prefix: String,
                              start: Int,
@@ -328,13 +336,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             
         case is GameOver:
             let newScene = GameScene(fileNamed:"GameScene")
+            newScene?.socialDelegate = self.socialDelegate
             let fadeIn = SKAction.fadeInWithDuration(1.5)
+            
             let sequence = SKAction.sequence([fadeIn])
             newScene!.scaleMode = .AspectFill
             let reveal = SKTransition.flipHorizontalWithDuration(0.5)
             self.view?.presentScene(newScene!, transition: reveal)
             
-            
+//
+//            
         default:
             break
         } }
@@ -655,6 +666,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         highScoreLabel.hidden = true
         
         //gameOverLabel
+        //twitterFeatureLabel
+        twitterFeatureButton = self.childNodeWithName("twitterFeatureButton") as! SKLabelNode!
+        socialFeatureButton = self.childNodeWithName("socialFeatureButton") as! SKLabelNode!
+
+        print( "Twitter Feature Button ________")
+        
+//        gameOverLabel.position.x = 160
+//        gameOverLabel.position.y = 100
+//        gameOverLabel.fontColor = SKColor.blackColor()
+//        gameOverLabel.fontName = "Pixel Coleco"
+        
         gameOverLabel = childNodeWithName("gameOver") as! SKLabelNode
         gameOverLabel.fontSize = 200
         

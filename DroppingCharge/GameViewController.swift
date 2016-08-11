@@ -31,12 +31,10 @@
 import UIKit
 import SpriteKit
 import GoogleMobileAds
+import Social
+import MessageUI
 
-
-class GameViewController: UIViewController {
-    
-
-
+class GameViewController: UIViewController, MFMessageComposeViewControllerDelegate, GameSceneSocialDelegate {
     
     @IBOutlet weak var bannerView: GADBannerView!
     
@@ -52,6 +50,8 @@ class GameViewController: UIViewController {
         // MainScene
         
         if let scene = StartScene(fileNamed:"StartScene") {
+            scene.socialDelegate = self
+            
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = false
@@ -87,4 +87,29 @@ class GameViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    
+    func postToTwitter() {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        vc.setInitialText("Posting to Twitter")
+        // vc.addImage(UIImage!) // Add an image
+        // vc.addURL(NSURL!) // Add a URL
+        presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func sendMessage() {
+        let messageVC = MFMessageComposeViewController()
+        messageVC.body = "Your message string"
+        messageVC.recipients = []
+        messageVC.messageComposeDelegate = self
+        
+        presentViewController(messageVC, animated: true, completion: nil)
+        
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        
+        
+    }
+
 }
