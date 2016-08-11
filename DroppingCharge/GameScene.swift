@@ -187,11 +187,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         
     }
     
+    
+    // Mark: KunaiCount
     var collectGoal: Int = 0 {
         didSet {
             collectGoalLabel.text = "\(collectGoal)"
             if collectGoal == 50 {
-                playerState.enterState(Dead)
+//                playerState.enterState(Dead)
 //                gameState.enterState(GameWon)
                 print("__________Way to Go!!!________________")
             }
@@ -207,6 +209,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     //added BackgroundMusicNode
     var backgroundMusic: SKAudioNode!
     var bgMusicAlarm: SKAudioNode!
+    
+    
+    func lavaSpeed (number: Double) -> Double {
+        return sqrt(number)
+    }
     
     func updateLevel() {
         let cameraPos = getCameraPosition()
@@ -688,8 +695,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         //twitterFeatureLabel
         twitterFeatureButton = self.childNodeWithName("twitterFeatureButton") as! SKLabelNode!
         socialFeatureButton = self.childNodeWithName("socialFeatureButton") as! SKLabelNode!
-//        socialFeatureButton.hidden = true
-//        twitterFeatureButton.hidden = true
+        socialFeatureButton.hidden = true
+        twitterFeatureButton.hidden = true
         print( "Twitter Feature Button ________")
         
 
