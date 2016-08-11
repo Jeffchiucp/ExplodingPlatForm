@@ -28,29 +28,27 @@
  * THE SOFTWARE.
  */
 
+
 import UIKit
 import SpriteKit
 import GoogleMobileAds
 import Social
 import MessageUI
 
-class GameViewController: UIViewController, MFMessageComposeViewControllerDelegate, GameSceneSocialDelegate {
+
+
+protocol ControlSceneProtocol: class  {
+    
+    
+    
+}
+
+class GameViewController: UIViewController, MFMessageComposeViewControllerDelegate, GameSceneSocialDelegate  {
     
     @IBOutlet weak var bannerView: GADBannerView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
-        bannerView.adUnitID = "ca-app-pub-9213470812256501/3639736473"
-        bannerView.rootViewController = self
-        bannerView.loadRequest(GADRequest())
-
-        //        if let scene = CharacterScene(fileNamed:"CharacterScene") {
-        // MainScene
-        
-        if let scene = StartScene(fileNamed:"StartScene") {
-            scene.socialDelegate = self
+    func loadScene(inScene:SKScene?) -> SKScene? {
+        if let scene = inScene {
             
             // Configure the view.
             let skView = self.view as! SKView
@@ -64,6 +62,23 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
+            return scene
+        }
+        return nil
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
+        bannerView.adUnitID = "ca-app-pub-9213470812256501/3639736473"
+        bannerView.rootViewController = self
+        bannerView.loadRequest(GADRequest())
+
+        //        if let scene = CharacterScene(fileNamed:"CharacterScene") {
+        // MainScene
+        
+        if let scene = loadScene(StartScene(fileNamed:"StartScene")) as? StartScene {
+            scene.socialDelegate = self
         }
     }
 

@@ -58,7 +58,8 @@ class Playing: GKState {
     }
     
     override func isValidNextState(stateClass: AnyClass) -> Bool {
-        return stateClass is GameOver.Type
+        return stateClass is GameOver.Type || stateClass is GameWon.Type
+        
     }
     
 }

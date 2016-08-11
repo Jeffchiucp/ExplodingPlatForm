@@ -68,7 +68,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var health: SKSpriteNode!
     var background: SKNode!
     var backHeight: CGFloat = 0.0
-    
+    var playAgainButton: MSButtonNode!
+
     //implement feature
     var scoreLabel: SKLabelNode!
     var highScoreLabel : SKLabelNode!
@@ -189,16 +190,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var collectGoal: Int = 0 {
         didSet {
             collectGoalLabel.text = "\(collectGoal)"
-                if collectGoal == 1 {
-//                    playerState.enterState(Dead)
-//                    gameState.enterState(GameOver)
-                    print("__________Way to Go!!!________________")
+            if collectGoal == 50 {
+                playerState.enterState(Dead)
+//                gameState.enterState(GameWon)
+                print("__________Way to Go!!!________________")
             }
-                
-                // CHANGE THIS AFTER TESTING
-                if collectGoal == 10000 {
-                    playerState.enterState(Dead)
-                    gameState.enterState(GameOver)
+            
+            if collectGoal == 100 {
+                playerState.enterState(Dead)
+                gameState.enterState(GameWon)
             }
         }
         
@@ -273,8 +273,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         animSteerLeft = setupAnimWithPrefix("Jump__00", start: 1, end: 9, timePerFrame: 0.2)
         animSteerRight = setupAnimWithPrefix("Glide_00", start: 1, end: 9, timePerFrame: 0.2)
         /////////////////////
-        
-        
+        playAgainButton.state = .Active
+        playAgainButton.selectedHandler = {
+            if let scene = GameScene(fileNamed:"GameScene") {
+                let skView = self.view!
+                skView.showsFPS = false
+                skView.showsNodeCount = false
+                
+                /* Sprite Kit applies additional optimizations to improve rendering performance */
+                skView.ignoresSiblingOrder = true
+                /* Set the scale mode to scale to fit the window */
+                scene.scaleMode = .AspectFill
+                
+                skView.presentScene(scene)
+            }
+        }
     }
     
     
@@ -325,6 +338,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event:
         UIEvent?) {
+        
+        
         switch gameState.currentState {
         case is WaitingForTap:
             gameState.enterState(WaitingForBomb)
@@ -339,16 +354,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             newScene?.socialDelegate = self.socialDelegate
             let fadeIn = SKAction.fadeInWithDuration(1.5)
             
+        
             let sequence = SKAction.sequence([fadeIn])
             newScene!.scaleMode = .AspectFill
             let reveal = SKTransition.flipHorizontalWithDuration(0.5)
             self.view?.presentScene(newScene!, transition: reveal)
             
-//
-//            
         default:
             break
         } }
+    
+    
+    
+    
+    
     
     
     func bombDrop() {
@@ -669,8 +688,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         //twitterFeatureLabel
         twitterFeatureButton = self.childNodeWithName("twitterFeatureButton") as! SKLabelNode!
         socialFeatureButton = self.childNodeWithName("socialFeatureButton") as! SKLabelNode!
-
+//        socialFeatureButton.hidden = true
+//        twitterFeatureButton.hidden = true
         print( "Twitter Feature Button ________")
+        
+
+        playAgainButton = self.childNodeWithName("//playAgainButton") as! MSButtonNode
+        playAgainButton.zPosition = 200
+        playAgainButton.removeFromParent()
+        camera!.addChild(playAgainButton)
+        playAgainButton.hidden = true
+
         
 //        gameOverLabel.position.x = 160
 //        gameOverLabel.position.y = 100
@@ -878,18 +906,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             
             //FixMe
             if healthCounter.isDead(){
-            print ("Testing------- ")
-            playerState.enterState(Dead)
-            gameState.enterState(GameOver)
+                print ("Testing------- ")
+                playerState.enterState(Dead)
+                gameState.enterState(GameOver)
             
-            }else if healthCounter.life <= 2 {
-//                                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
-//                                let HealthYellow = SKAction.sequence([yellowColor, wait])
-//                                player.runAction(HealthYellow)
-                let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 1.50)
-                let HealthDanger = SKAction.sequence([redColor, wait])
-                player.runAction(HealthDanger)
-                print ("!!!!!!!!!You are so Close ")
+//            }else if healthCounter.life <= 2 {
+////                                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+////                                let HealthYellow = SKAction.sequence([yellowColor, wait])
+////                                player.runAction(HealthYellow)
+//                let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 1.50)
+//                let HealthDanger = SKAction.sequence([redColor, wait])
+//                player.runAction(HealthDanger)
+//                print ("!!!!!!!!!You are so Close ")
 
 
             } else if healthCounter.life == 1 {

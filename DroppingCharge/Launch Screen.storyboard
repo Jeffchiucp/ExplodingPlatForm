@@ -22,8 +22,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="Icon-App-40x40@3x-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cqd-CZ-Jtu">
-                                <rect key="frame" x="150.5" y="149.5" width="300" height="300"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="Icon-App-40x40@3x-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cqd-CZ-Jtu">
+                                <rect key="frame" x="151" y="150" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="AxS-uq-7jO"/>
                                     <constraint firstAttribute="height" constant="300" id="FMd-gf-Zyj"/>

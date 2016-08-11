@@ -42,8 +42,10 @@ class WaitingForTap: GKState {
     
     override func didEnterWithPreviousState(previousState: GKState?) {
         let scale = SKAction.scaleTo(1.0, duration: 0.5)
-        scene.fgNode.childNodeWithName("Ready")!.runAction(scale)
-        scene.fgNode.childNodeWithName("Ready")?.zPosition = 400
+//        scene.fgNode.childNodeWithName("Ready")!.runAction(scale)
+//        scene.fgNode.childNodeWithName("Ready")?.zPosition = 400
+        print("previous")
+
 
     }
     
