@@ -75,6 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var highScoreLabel : SKLabelNode!
     var gameOverLabel : SKLabelNode!
     var collectGoalLabel: SKLabelNode!
+    var ShareFeatureLabel : SKLabelNode!
     var socialFeatureButton: MSButtonNode!
     var twitterFeatureButton: MSButtonNode!
     var KunaiCount: SKSpriteNode!
@@ -193,13 +194,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         didSet {
             collectGoalLabel.text = "\(collectGoal)"
             if collectGoal == 10 {
-                playerState.enterState(Jump)
-                gameState.enterState(GameOver)
+//                playerState.enterState(Jump)
+//                gameState.enterState(GameOver)
                 print("__________Way to Go!!!________________")
             }
             
             if collectGoal == 100 {
-                playerState.enterState(Dead)
+                playerState.enterState(Jump)
                 gameState.enterState(GameWon)
             }
         }
@@ -697,9 +698,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         socialFeatureButton.zPosition = 200
         socialFeatureButton.removeFromParent()
         camera!.addChild(socialFeatureButton)
-        socialFeatureButton.hidden = true
+        socialFeatureButton.hidden = false
         
-        twitterFeatureButton.hidden = true
+        twitterFeatureButton.hidden = false
         print( "Twitter Feature Button ________")
         
         
@@ -719,11 +720,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         playAgainButton.hidden = true
         playAgainButton.position.x = 200
 
-        
-//        gameOverLabel.position.x = 160
-//        gameOverLabel.position.y = 100
-//        gameOverLabel.fontColor = SKColor.blackColor()
-//        gameOverLabel.fontName = "Pixel Coleco"
+        ShareFeatureLabel = childNodeWithName("ShareFeatureLabel") as! SKLabelNode
+        ShareFeatureLabel.fontSize = 100
+        ShareFeatureLabel.position.x = 160
+        ShareFeatureLabel.position.y = -100
+        ShareFeatureLabel.fontColor = SKColor.whiteColor()
+        ShareFeatureLabel.fontName = "Pixel Coleco"
+        ShareFeatureLabel.zPosition = 300
+        ShareFeatureLabel.removeFromParent()
+        camera!.addChild(ShareFeatureLabel)
         
         gameOverLabel = childNodeWithName("gameOver") as! SKLabelNode
         gameOverLabel.fontSize = 200

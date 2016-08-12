@@ -86,7 +86,6 @@
 		1030E2E61D58227400740C66 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1030E2DC1D58227400740C66 /* GoogleMobileAds.framework */; };
 		1030E2E71D58227400740C66 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2E41D58227400740C66 /* README.txt */; };
 		1030E2E81D58227400740C66 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2E51D58227400740C66 /* README.txt */; };
-		1030E2EC1D58286700740C66 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2EB1D58286700740C66 /* Storyboard.storyboard */; };
 		1030E2F01D5843A300740C66 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1030E2EF1D5843A300740C66 /* StartScene.swift */; };
 		1030E2F21D5844A600740C66 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1030E2F11D5844A600740C66 /* StartScene.sks */; };
 		1033F07F1D4048B900266DB4 /* SmokeTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1033F07E1D4048B900266DB4 /* SmokeTrail.sks */; };
@@ -281,7 +280,6 @@
 		1030E2E31D58227400740C66 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
 		1030E2E41D58227400740C66 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		1030E2E51D58227400740C66 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		1030E2EB1D58286700740C66 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		1030E2EF1D5843A300740C66 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		1030E2F11D5844A600740C66 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		1033F07E1D4048B900266DB4 /* SmokeTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeTrail.sks; sourceTree = "<group>"; };
@@ -560,7 +558,6 @@
 				10304D9D1D301B98007372D8 /* GameScene.swift */,
 				1030E2EF1D5843A300740C66 /* StartScene.swift */,
 				1030E2F11D5844A600740C66 /* StartScene.sks */,
-				1030E2EB1D58286700740C66 /* Storyboard.storyboard */,
 				102879F01D5530050033BB12 /* Launch Screen.storyboard */,
 				104268AE1D4BC1AD000C6057 /* HealthCounter.swift */,
 				104D61861D4144E80094737D /* instruction_toRight.png */,
@@ -768,7 +765,6 @@
 				1048D4131D495396006120A3 /* Icon-App-29x29@2x.png in Resources */,
 				102879F11D5530050033BB12 /* Launch Screen.storyboard in Resources */,
 				102AF0B61D36C16800496991 /* Star.png in Resources */,
-				1030E2EC1D58286700740C66 /* Storyboard.storyboard in Resources */,
 				104D619C1D415C7E0094737D /* Coin_5.png in Resources */,
 				102AF0BB1D36C16800496991 /* boost.wav in Resources */,
 				102AF1281D36F56700496991 /* CollectSpecial.sks in Resources */,

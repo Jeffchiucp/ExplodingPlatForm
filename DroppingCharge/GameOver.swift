@@ -43,12 +43,12 @@ class GameOver: GKState {
         if previousState is Playing {
             _ = SKSpriteNode(imageNamed: "HighestScore")
             if scene.scorePoint == 0 {
-            scene.highScoreLabel.hidden = false
+            scene.highScoreLabel.hidden = true
             }
+            scene.highScoreLabel.hidden = false
+
             scene.playAgainButton.hidden = false
             scene.gameOverLabel.hidden = false
-//            scene.playerScoreUpdate()
-//            scene.setUpHighScoreLabel()
             
             scene.socialFeatureButton.hidden = false
             scene.twitterFeatureButton.hidden = false
