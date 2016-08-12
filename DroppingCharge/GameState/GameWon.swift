@@ -24,16 +24,16 @@ class GameWon: GKState {
         if previousState is Playing {
         
             scene.highScoreLabel.hidden = false
-//            scene.gameOverLabel.hidden = false
             scene.playAgainButton.hidden = false
 
+            scene.socialFeatureButton.hidden = false
+            scene.twitterFeatureButton.hidden = false
             print( scene.playAgainButton.position.x)
             print( scene.playAgainButton.position.y)
             print( scene.playAgainButton.parent)
             print( scene.playAgainButton.zPosition)
             
 
-//                        scene.playerScoreUpdate()
 //                        scene.setUpHighScoreLabel()
             
             

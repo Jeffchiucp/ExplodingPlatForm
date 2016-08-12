@@ -75,8 +75,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var highScoreLabel : SKLabelNode!
     var gameOverLabel : SKLabelNode!
     var collectGoalLabel: SKLabelNode!
-    var socialFeatureButton: SKLabelNode!
-    var twitterFeatureButton: SKLabelNode!
+    var socialFeatureButton: MSButtonNode!
+    var twitterFeatureButton: MSButtonNode!
     var KunaiCount: SKSpriteNode!
     var platform5Across: SKSpriteNode! = nil
     var coinArrow: SKSpriteNode!
@@ -192,9 +192,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var collectGoal: Int = 0 {
         didSet {
             collectGoalLabel.text = "\(collectGoal)"
-            if collectGoal == 50 {
-//                playerState.enterState(Dead)
-//                gameState.enterState(GameWon)
+            if collectGoal == 10 {
+                playerState.enterState(Jump)
+                gameState.enterState(GameOver)
                 print("__________Way to Go!!!________________")
             }
             
@@ -279,17 +279,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         animFall = setupAnimWithPrefix("Glide_00", start: 0, end: 9, timePerFrame: 0.2)
         animSteerLeft = setupAnimWithPrefix("Jump__00", start: 1, end: 9, timePerFrame: 0.2)
         animSteerRight = setupAnimWithPrefix("Glide_00", start: 1, end: 9, timePerFrame: 0.2)
-        /////////////////////
+
+        
         playAgainButton.state = .Active
+        socialFeatureButton.state = .Active
+        twitterFeatureButton.state = .Active
         playAgainButton.selectedHandler = {
             if let scene = GameScene(fileNamed:"GameScene") {
                 let skView = self.view!
                 skView.showsFPS = false
                 skView.showsNodeCount = false
-                
-                /* Sprite Kit applies additional optimizations to improve rendering performance */
                 skView.ignoresSiblingOrder = true
-                /* Set the scale mode to scale to fit the window */
                 scene.scaleMode = .AspectFill
                 
                 skView.presentScene(scene)
@@ -360,12 +360,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             let newScene = GameScene(fileNamed:"GameScene")
             newScene?.socialDelegate = self.socialDelegate
             let fadeIn = SKAction.fadeInWithDuration(1.5)
-            
-        
-            let sequence = SKAction.sequence([fadeIn])
-            newScene!.scaleMode = .AspectFill
-            let reveal = SKTransition.flipHorizontalWithDuration(0.5)
-            self.view?.presentScene(newScene!, transition: reveal)
             
         default:
             break
@@ -692,19 +686,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         highScoreLabel.hidden = true
         
         //gameOverLabel
-        //twitterFeatureLabel
-        twitterFeatureButton = self.childNodeWithName("twitterFeatureButton") as! SKLabelNode!
-        socialFeatureButton = self.childNodeWithName("socialFeatureButton") as! SKLabelNode!
+        //Twitter Button
+        twitterFeatureButton = self.childNodeWithName("//twitterFeatureButton") as! MSButtonNode
+        twitterFeatureButton.zPosition = 300
+        twitterFeatureButton.removeFromParent()
+        camera!.addChild(twitterFeatureButton)
+        
+        /// Facebook Button
+        socialFeatureButton = self.childNodeWithName("//socialFeatureButton") as! MSButtonNode
+        socialFeatureButton.zPosition = 200
+        socialFeatureButton.removeFromParent()
+        camera!.addChild(socialFeatureButton)
         socialFeatureButton.hidden = true
+        
         twitterFeatureButton.hidden = true
         print( "Twitter Feature Button ________")
         
+        
+        socialFeatureButton.selectedHandler = {
+
+        }
+        
+        twitterFeatureButton.selectedHandler = {
+            self.socialDelegate
+            
+        }
 
         playAgainButton = self.childNodeWithName("//playAgainButton") as! MSButtonNode
         playAgainButton.zPosition = 200
         playAgainButton.removeFromParent()
         camera!.addChild(playAgainButton)
         playAgainButton.hidden = true
+        playAgainButton.position.x = 200
 
         
 //        gameOverLabel.position.x = 160
@@ -864,6 +877,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         
         
     }
+/// track the time interval  - gameStart
+/// NSDate(0.timeIntervalSince1970 - gameStart
+    
     func updateLava(dt: NSTimeInterval) {
         // 1
         let lowerLeft = CGPoint(x: 0, y: cameraNode.position.y -
@@ -902,7 +918,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             player.runAction(SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50))
             print ("!!!!!!!!!Red ")
 
-            let wait = SKAction.waitForDuration(0.5)
+            _ = SKAction.waitForDuration(0.5)
             //let fadeAway = SKAction.fadeOutWithDuration(1)
             //let remove = SKAction.removeFromParent()
             let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)

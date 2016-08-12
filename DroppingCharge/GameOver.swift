@@ -41,14 +41,17 @@ class GameOver: GKState {
     
     override func didEnterWithPreviousState(previousState: GKState?) {
         if previousState is Playing {
-//            let gameOver = SKSpriteNode(imageNamed: "HighestScore")
+            _ = SKSpriteNode(imageNamed: "HighestScore")
             if scene.scorePoint == 0 {
-            scene.highScoreLabel.hidden = true
+            scene.highScoreLabel.hidden = false
             }
-//            scene.playAgainButton.hidden = false
+            scene.playAgainButton.hidden = false
             scene.gameOverLabel.hidden = false
 //            scene.playerScoreUpdate()
 //            scene.setUpHighScoreLabel()
+            
+            scene.socialFeatureButton.hidden = false
+            scene.twitterFeatureButton.hidden = false
             print("GameOver")
 
             
