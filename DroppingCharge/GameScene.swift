@@ -52,6 +52,7 @@ struct PhysicsCategory {
 protocol GameSceneSocialDelegate {
     func postToTwitter()
     func sendMessage()
+    func postToFaceBook()
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
@@ -695,21 +696,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         
         /// Facebook Button
         socialFeatureButton = self.childNodeWithName("//socialFeatureButton") as! MSButtonNode
-        socialFeatureButton.zPosition = 200
+        socialFeatureButton.zPosition = 300
         socialFeatureButton.removeFromParent()
         camera!.addChild(socialFeatureButton)
-        socialFeatureButton.hidden = false
+        socialFeatureButton.hidden = true
         
-        twitterFeatureButton.hidden = false
+        twitterFeatureButton.hidden = true
         print( "Twitter Feature Button ________")
         
         
         socialFeatureButton.selectedHandler = {
-
+            if let socialDelegate = self.socialDelegate{
+                socialDelegate.postToFaceBook()
+            }
         }
         
         twitterFeatureButton.selectedHandler = {
-            self.socialDelegate
+            print("Hi From Twitter _________________")
+            if let socialDelegate = self.socialDelegate{
+                socialDelegate.postToTwitter()
+            }
+            //self.socialDelegate
             
         }
 
@@ -729,6 +736,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         ShareFeatureLabel.zPosition = 300
         ShareFeatureLabel.removeFromParent()
         camera!.addChild(ShareFeatureLabel)
+        ShareFeatureLabel.hidden = true
         
         gameOverLabel = childNodeWithName("gameOver") as! SKLabelNode
         gameOverLabel.fontSize = 200

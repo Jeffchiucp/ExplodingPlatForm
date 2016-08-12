@@ -112,12 +112,24 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
         presentViewController(vc, animated: true, completion: nil)
     }
     
+    func postToFaceBook() {
+        let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        vc.setInitialText("Posting to FaceBook")
+        UIGraphicsBeginImageContext(view.frame.size)
+        let context = UIGraphicsGetCurrentContext()!
+        view.layer.drawInContext(context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        vc.addImage(image) // Add an image
+//        let NSURL = "https://itunes.apple.com/us/app/ninja-jumping-quest/id1139367120"
+//        vc.addURL(NSURL!) // Add a URL
+        presentViewController(vc, animated: true, completion: nil)
+    }
+    
     func sendMessage() {
         let messageVC = MFMessageComposeViewController()
         messageVC.body = "Your message string"
         messageVC.recipients = []
         messageVC.messageComposeDelegate = self
-        
         presentViewController(messageVC, animated: true, completion: nil)
         
     }

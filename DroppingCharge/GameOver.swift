@@ -50,8 +50,8 @@ class GameOver: GKState {
             scene.playAgainButton.hidden = false
             scene.gameOverLabel.hidden = false
             
-            scene.socialFeatureButton.hidden = false
-            scene.twitterFeatureButton.hidden = false
+            scene.socialFeatureButton.hidden = true
+            scene.twitterFeatureButton.hidden = true
             print("GameOver")
 
             
