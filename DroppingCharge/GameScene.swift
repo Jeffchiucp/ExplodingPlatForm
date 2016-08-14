@@ -469,7 +469,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         let lerpValue = CGFloat(0.2)
         let lerpDiff = diff * lerpValue
         let newPosition = getCameraPosition() + lerpDiff
-        let cameraPosition = getCameraPosition() + lerpDiff
+        _ = getCameraPosition() + lerpDiff
         // 5
         setCameraPosition(CGPoint(x: size.width/2, y: newPosition.y))
     }
@@ -552,15 +552,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             }
         } else {
             print("coin stragtey")
-            if Int.random(min: 1, max: 100) <= 99 {
-                // Create standard coins 75%
+            if Int.random(min: 1, max: 100) <= 80 {
+                // Create standard coins 80%
                 switch Int.random(min: 0, max: 4) {
                 case 0:
                     overlaySprite = breakDiagonal
+                    flipH = false
                 case 1:
                     overlaySprite = breakDiagonal
+                    flipH = true
                 case 2:
                     overlaySprite = breakDiagonal
+                    flipH = false
                 case 3:
                     overlaySprite = breakDiagonal
                     flipH = true
@@ -575,8 +578,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                     overlaySprite = coinSpecialRef
                 case 1:
                     overlaySprite = breakDiagonal
+                    flipH = false
                 case 2:
-                    overlaySprite = breakDiagonal
+                    overlaySprite = break5Across
                 case 3:
                     overlaySprite = break5Across
                     flipH = true
@@ -1035,7 +1039,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 scorePoint += 500
                 collectGoal += 1
                 scoreLabel.text = String(scorePoint)
-                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+//                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
 //                let wait = SKAction.waitForDuration(0.5)
 //                let HealthYellow = SKAction.sequence([yellowColor, wait
 //                    ])
@@ -1082,15 +1086,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         case PhysicsCategory.PlatformBreakable:
             if let platform = other.node as? SKSpriteNode {
                 if player.physicsBody!.velocity.dy < 0 {
-                    //platformAction(platform, breakable: true)
+                    platformAction(platform, breakable: true)
                     jumpPlayer()
-                    //runAction(soundBrick)
+//                    runAction(soundBrick)
                     scoreLabel.text = String(scorePoint)
                     
                 }
+                
             }
         default:
             break; }
+    }
+    
+    func platformAction(sprite: SKSpriteNode, breakable: Bool) {
+        let amount = CGPoint(x: 0, y: -75.0)
+        let action = SKAction.screenShakeWithNode(sprite, amount: amount, oscillations: 10, duration: 2.0)
+        sprite.runAction(action)
+        
+        if breakable == true {
+            emitParticles("BrokenPlatform", sprite: sprite)
+        }
     }
     
     func addTrail(name: String) -> SKEmitterNode {
