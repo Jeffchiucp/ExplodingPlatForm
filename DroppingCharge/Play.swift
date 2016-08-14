@@ -44,6 +44,7 @@ class Playing: GKState {
             scene.player.physicsBody!.dynamic = true
             scene.superBoostPlayer()
             print("playState")
+            scene.tapAnyWhereLabel.hidden = true
 
         }
     }

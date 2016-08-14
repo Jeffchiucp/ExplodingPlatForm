@@ -106,7 +106,7 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
     
     func postToTwitter() {
         let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        vc.setInitialText("Posting to Twitter")
+        vc.setInitialText("Posting to Twitter. My Highests Score at Ninja Jumping Quest")
         // vc.addImage(UIImage!) // Add an image
         // vc.addURL(NSURL!) // Add a URL
         presentViewController(vc, animated: true, completion: nil)
@@ -114,11 +114,11 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
     
     func postToFaceBook() {
         let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-        vc.setInitialText("Posting to FaceBook")
-        UIGraphicsBeginImageContext(view.frame.size)
-        let context = UIGraphicsGetCurrentContext()!
-        view.layer.drawInContext(context)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        vc.setInitialText("Posting to FaceBook. My Highests Score at Ninja Jumping Quest")
+//        UIGraphicsBeginImageContext(view.frame.size)
+//        let context = UIGraphicsGetCurrentContext()!
+//        view.layer.drawInContext(context)
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
 //        vc.addImage(image) // Add an image
 //        let NSURL = "https://itunes.apple.com/us/app/ninja-jumping-quest/id1139367120"
 //        vc.addURL(NSURL!) // Add a URL

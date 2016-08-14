@@ -25,6 +25,7 @@ class GameWon: GKState {
         
             scene.highScoreLabel.hidden = false
             scene.playAgainButton.hidden = false
+            scene.tapAnyWhereLabel.hidden = true
 
             scene.socialFeatureButton.hidden = false
             scene.twitterFeatureButton.hidden = false

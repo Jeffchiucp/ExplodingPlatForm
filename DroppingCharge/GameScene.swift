@@ -67,11 +67,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var player: SKSpriteNode!
     var lava: SKSpriteNode!
     var health: SKSpriteNode!
+    var kunai: SKSpriteNode?
     var background: SKNode!
     var backHeight: CGFloat = 0.0
     var playAgainButton: MSButtonNode!
 
     //implement feature
+    var tapAnyWhereLabel: SKLabelNode!
     var scoreLabel: SKLabelNode!
     var highScoreLabel : SKLabelNode!
     var gameOverLabel : SKLabelNode!
@@ -361,7 +363,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         case is GameOver:
             let newScene = GameScene(fileNamed:"GameScene")
             newScene?.socialDelegate = self.socialDelegate
-            let fadeIn = SKAction.fadeInWithDuration(1.5)
+            _ = SKAction.fadeInWithDuration(1.5)
             
         default:
             break
@@ -522,12 +524,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 case 1:
                     overlaySprite = platform5Across
                 case 2:
-                    overlaySprite = platform5Across
+                    overlaySprite = coinSpecialRef
                 case 3:
                     overlaySprite = breakDiagonal
                     flipH = false
                 default:
-                    overlaySprite = breakDiagonal
+                    overlaySprite = coinSpecialRef
                 }
             } else {
                 // Create breakable platforms 25%
@@ -570,7 +572,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 // Create special coins 25%
                 switch Int.random(min: 0, max: 4) {
                 case 0:
-                    overlaySprite = breakDiagonal
+                    overlaySprite = coinSpecialRef
                 case 1:
                     overlaySprite = breakDiagonal
                 case 2:
@@ -738,6 +740,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         camera!.addChild(ShareFeatureLabel)
         ShareFeatureLabel.hidden = true
         
+        tapAnyWhereLabel = childNodeWithName("TapAnyWhere") as! SKLabelNode
+        tapAnyWhereLabel.fontSize = 60
+        
+        tapAnyWhereLabel.position.x = 160
+        tapAnyWhereLabel.position.y = 100
+        tapAnyWhereLabel.fontColor = SKColor.whiteColor()
+        tapAnyWhereLabel.fontName = "Pixel Coleco"
+        
+        tapAnyWhereLabel.zPosition = 300
+        tapAnyWhereLabel.removeFromParent()
+        camera!.addChild(tapAnyWhereLabel)
+        tapAnyWhereLabel.hidden = false
+        
         gameOverLabel = childNodeWithName("gameOver") as! SKLabelNode
         gameOverLabel.fontSize = 200
         
@@ -778,7 +793,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     
     func playerScoreUpdate() {
-        let highScore = NSUserDefaults().integerForKey("highscore")
+        _ = NSUserDefaults().integerForKey("highscore")
         if scorePoint == 0 {
             highScoreLabel.text = " No High Score: "
         } else {
@@ -941,20 +956,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             player.runAction(lavaDamageColor)
             
             //FixMe
+            /// Calling protcol
             if healthCounter.isDead(){
-                print ("Testing------- ")
                 playerState.enterState(Dead)
                 gameState.enterState(GameOver)
-            
-//            }else if healthCounter.life <= 2 {
-////                                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
-////                                let HealthYellow = SKAction.sequence([yellowColor, wait])
-////                                player.runAction(HealthYellow)
-//                let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 1.50)
-//                let HealthDanger = SKAction.sequence([redColor, wait])
-//                player.runAction(HealthDanger)
-//                print ("!!!!!!!!!You are so Close ")
-
 
             } else if healthCounter.life == 1 {
                 let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
@@ -1030,6 +1035,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
                 scorePoint += 500
                 collectGoal += 1
                 scoreLabel.text = String(scorePoint)
+                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+//                let wait = SKAction.waitForDuration(0.5)
+//                let HealthYellow = SKAction.sequence([yellowColor, wait
+//                    ])
+//                kunai.runAction(HealthYellow)
             }
             
             
