@@ -188,7 +188,7 @@
 		102AF07F1D36BCC800496991 /* PlatformArrow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = PlatformArrow.sks; path = Scene/PlatformArrow.sks; sourceTree = "<group>"; };
 		102AF0801D36BCC800496991 /* PlatformDiagonal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = PlatformDiagonal.sks; path = Scene/PlatformDiagonal.sks; sourceTree = "<group>"; };
 		102AF0811D36BCC800496991 /* PlayerTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = PlayerTrail.sks; path = Scene/PlayerTrail.sks; sourceTree = "<group>"; };
-		102AF0961D36C01700496991 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../GameScene.sks; sourceTree = "<group>"; };
+		102AF0961D36C01700496991 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		102AF09A1D36C16800496991 /* BrokenPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrokenPlatform.sks; sourceTree = "<group>"; };
 		102AF09B1D36C16800496991 /* CollectNormal.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectNormal.sks; sourceTree = "<group>"; };
 		102AF09C1D36C16800496991 /* CollectSpecial.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectSpecial.sks; sourceTree = "<group>"; };
@@ -381,7 +381,6 @@
 				102AF0601D36B5D800496991 /* WaitingForBomb.swift */,
 				10304D9F1D301B98007372D8 /* GameViewController.swift */,
 				1030E2DB1D58227400740C66 /* GoogleMobileAdsSdkiOS-7.9.1 */,
-				102AF0961D36C01700496991 /* GameScene.sks */,
 			);
 			path = GameState;
 			sourceTree = "<group>";
@@ -563,6 +562,7 @@
 				104D61861D4144E80094737D /* instruction_toRight.png */,
 				104D61881D41465A0094737D /* instruction_toLeft.png */,
 				106DFE1F1D3D9684004FD9D0 /* CoinSpecial.sks */,
+				102AF0961D36C01700496991 /* GameScene.sks */,
 				104D61921D415C7E0094737D /* CoinsImages */,
 				106DFE1D1D3D9636004FD9D0 /* Coin.sks */,
 				1001B09D1D417735007FDD80 /* restartButton.png */,
@@ -710,6 +710,8 @@
 				10304D941D301B98007372D8 /* Resources */,
 				98DB4DD60997C7A31D87266B /* [CP] Embed Pods Frameworks */,
 				8B4086DD6282B2210F125725 /* [CP] Copy Pods Resources */,
+				10DCB4FE1D662FA600D02556 /* ShellScript */,
+				10DCB4FF1D662FB100D02556 /* ShellScript */,
 			);
 			buildRules = (
 				106599CF1D54002B00462D76 /* PBXBuildRule */,
@@ -728,12 +730,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = JeffChiu;
 				TargetAttributes = {
 					10304D951D301B98007372D8 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = U9S79YC4L6;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -868,9 +871,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		708C76731A00DC5A065DD17C /* [CP] Check Pods Manifest.lock */ = {
+		10DCB4FE1D662FA600D02556 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		10DCB4FF1D662FB100D02556 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		708C76731A00DC5A065DD17C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -881,7 +910,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
 		};
 		8B4086DD6282B2210F125725 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -983,8 +1011,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1029,8 +1059,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1049,6 +1081,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1060,15 +1093,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DroppingCharge/GameState/GoogleMobileAdsSdkiOS-7.9.1",
 				);
 				INFOPLIST_FILE = DroppingCharge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.NinjaQuestGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1078,16 +1113,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DroppingCharge/GameState/GoogleMobileAdsSdkiOS-7.9.1",
 				);
 				INFOPLIST_FILE = DroppingCharge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"MTL_ENABLE_DEBUG_INFO[arch=*]" = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = JeffChiu.NinjaQuestGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

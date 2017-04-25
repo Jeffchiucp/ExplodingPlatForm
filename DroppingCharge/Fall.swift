@@ -39,7 +39,7 @@ class Fall: GKState {
         super.init()
     }
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         scene.runAnim(scene.animFall)
         //scene.player.runAction(scene.squishAndStretch)
         print("FallState")
@@ -47,7 +47,7 @@ class Fall: GKState {
     }
     
     // testing my GameState and making sure that I have the Game State to Jump or Lava State
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is Jump.Type || stateClass is Lava.Type
     }
     

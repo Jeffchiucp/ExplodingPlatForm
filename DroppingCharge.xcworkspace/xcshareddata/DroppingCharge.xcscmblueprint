@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "23760B038183B7B74C4D567F8DBAD3D7F55D3744",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F3C6B84E56C0FAC259F376D3B150C2E8088BE609" : 9223372036854775807,
+    "23760B038183B7B74C4D567F8DBAD3D7F55D3744" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "29C87CF0-110C-472E-8878-A91F01960E94",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F3C6B84E56C0FAC259F376D3B150C2E8088BE609" : "DroppingCharge\/DroppingCharge\/",
+    "23760B038183B7B74C4D567F8DBAD3D7F55D3744" : "DroppingCharge\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DroppingCharge",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DroppingCharge.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Jeffchiucp\/ExplodingPlatForm.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "23760B038183B7B74C4D567F8DBAD3D7F55D3744"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Jeffchiucp\/PltaformJumpingGame.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F3C6B84E56C0FAC259F376D3B150C2E8088BE609"
+    }
+  ]
+}

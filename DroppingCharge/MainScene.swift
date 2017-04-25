@@ -30,7 +30,7 @@ class MainScene: SKScene {
     
     
     
-    func makeColor(red: Int, green: Int, blue: Int, alpha: CGFloat) -> SKColor {
+    func makeColor(_ red: Int, green: Int, blue: Int, alpha: CGFloat) -> SKColor {
         return SKColor(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: CGFloat(alpha))
     }
     
@@ -77,20 +77,20 @@ class MainScene: SKScene {
     }
     
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         /* Setup your scene here */
         setUpTitleLabel()
-        backgroundColor = SKColor.blackColor()
+        backgroundColor = SKColor.black
 
 //        setUpMainBackground()
         setUpVolume()
         setUpVolume2()
         
         /* Set UI connections */
-        playButton = self.childNodeWithName("playButton") as! MSButtonNode
+        playButton = self.childNode(withName: "playButton") as! MSButtonNode
         playButton.zPosition = 10
         
-        insaneModeButton = self.childNodeWithName("insaneModeButton") as! MSButtonNode
+        insaneModeButton = self.childNode(withName: "insaneModeButton") as! MSButtonNode
         insaneModeButton.zPosition = 10
         
         /* Setup restart button selection handler */
@@ -104,18 +104,18 @@ class MainScene: SKScene {
             
             
             /* Ensure correct aspect mode */
-            scene.scaleMode = .AspectFit
+            scene?.scaleMode = .aspectFit
             
             /* Show debug */
-            skView.showsPhysics = true
-            skView.showsDrawCount = false
-            skView.showsFPS = false
-            skView.showsNodeCount = false
+            skView?.showsPhysics = true
+            skView?.showsDrawCount = false
+            skView?.showsFPS = false
+            skView?.showsNodeCount = false
             
             
             /* Start game scene */
-            let reveal: SKTransition = SKTransition.fadeWithDuration(2)
-            skView.presentScene(scene, transition: reveal)
+            let reveal: SKTransition = SKTransition.fade(withDuration: 2)
+            skView?.presentScene(scene!, transition: reveal)
         }
 //        
 //        insaneModeButton.selectedHandler = {
@@ -144,12 +144,12 @@ class MainScene: SKScene {
         
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         //when touching the ufo
         let touch = touches.first
-        let location = touch!.locationInNode(self)
+        let location = touch!.location(in: self)
         
-        let node = nodeAtPoint(location)
+        let node = atPoint(location)
         
         if node.name == "volume" {
             isFingerOnVolume = true
@@ -168,7 +168,7 @@ class MainScene: SKScene {
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?){
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?){
         isFingerOnVolume = false
         isFingerOnVolume2 = false
     }

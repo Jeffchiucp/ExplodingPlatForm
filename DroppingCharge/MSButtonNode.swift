@@ -9,7 +9,7 @@
 import SpriteKit
 
 enum MSButtonNodeState {
-    case Active, Selected, Hidden
+    case active, selected, hidden
 }
 
 class MSButtonNode: SKSpriteNode {
@@ -18,23 +18,23 @@ class MSButtonNode: SKSpriteNode {
     var selectedHandler: () -> Void = { print("No button action set") }
     
     /* Button state management */
-    var state: MSButtonNodeState = .Active {
+    var state: MSButtonNodeState = .active {
         didSet {
             switch state {
-            case .Active:
+            case .active:
                 /* Enable touch */
-                self.userInteractionEnabled = true
+                self.isUserInteractionEnabled = true
                 
                 /* Visible */
                 self.alpha = 1
                 break
-            case .Selected:
+            case .selected:
                 /* Semi transparent */
                 self.alpha = 0.7
                 break
-            case .Hidden:
+            case .hidden:
                 /* Disable touch */
-                self.userInteractionEnabled = false
+                self.isUserInteractionEnabled = false
                 
                 /* Hide */
                 self.alpha = 0
@@ -50,7 +50,7 @@ class MSButtonNode: SKSpriteNode {
         super.init(coder: aDecoder)
         
         /* Enable touch on button node */
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
     }
     
     // Allows user to add a rectangle
@@ -66,13 +66,13 @@ class MSButtonNode: SKSpriteNode {
     }
     
     // MARK: - Touch handling
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        state = .Selected
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        state = .selected
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         selectedHandler()
-        state = .Active
+        state = .active
     }
     
 }

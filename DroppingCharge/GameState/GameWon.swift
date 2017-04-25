@@ -18,20 +18,18 @@ class GameWon: GKState {
     }
     
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         print( "Entering Game Won State   Entering Game Won State")
-        print( previousState)
         if previousState is Playing {
         
-            scene.highScoreLabel.hidden = false
-            scene.playAgainButton.hidden = false
-            scene.tapAnyWhereLabel.hidden = true
+            scene.highScoreLabel.isHidden = false
+            scene.playAgainButton.isHidden = false
+            scene.tapAnyWhereLabel.isHidden = true
 
-            scene.socialFeatureButton.hidden = false
-            scene.twitterFeatureButton.hidden = false
+            scene.socialFeatureButton.isHidden = false
+            scene.twitterFeatureButton.isHidden = false
             print( scene.playAgainButton.position.x)
             print( scene.playAgainButton.position.y)
-            print( scene.playAgainButton.parent)
             print( scene.playAgainButton.zPosition)
             
 
@@ -44,7 +42,7 @@ class GameWon: GKState {
     
     
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return true // stateClass is WaitingForTap.Type
     }
 }

@@ -43,12 +43,12 @@ class MenuScene: SKScene {
     //    let backgroundMusic = SKAction.playSoundFileNamed("backgroundMusic.mp3", waitForCompletion: false)
     var backgroundMusic = SKAudioNode()
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         
-        backgroundColor = SKColor.blackColor()
+        backgroundColor = SKColor.black
         
-        if let musicURL = NSBundle.mainBundle().URLForResource("backgroundMusic", withExtension: "mp3") {
-            backgroundMusic = SKAudioNode(URL: musicURL)
+        if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "mp3") {
+            backgroundMusic = SKAudioNode(url: musicURL)
             addChild(backgroundMusic)
         }
         
@@ -82,20 +82,20 @@ class MenuScene: SKScene {
         playButton.selectedHandler = {
             
             let scene = GameScene(size: self.size)
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .aspectFill
             self.view?.presentScene(scene)
             
         }
         
-        playButton.state = .Active
+        playButton.state = .active
         
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         
     }    
 }

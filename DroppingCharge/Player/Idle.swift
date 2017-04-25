@@ -39,15 +39,15 @@ class Idle: GKState {
         super.init()
     }
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         scene.player.physicsBody = SKPhysicsBody(circleOfRadius: scene.player.size.width * 0.3)
-        scene.player.physicsBody!.dynamic = false
+        scene.player.physicsBody!.isDynamic = false
         scene.player.physicsBody!.allowsRotation = false
         scene.player.physicsBody!.categoryBitMask = PhysicsCategory.Player
         scene.player.physicsBody!.collisionBitMask = 0
     }
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is Jump.Type
     }
 }

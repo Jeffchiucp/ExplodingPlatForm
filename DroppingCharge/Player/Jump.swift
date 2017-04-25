@@ -39,14 +39,14 @@ class Jump: GKState {
         super.init()
     }
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         if previousState is Lava {
             return
         }
-        scene.player.runAction(scene.animDead)
+        scene.player.run(scene.animDead)
     }
     
-    override func updateWithDeltaTime(seconds: NSTimeInterval) {
+    override func update(deltaTime seconds: TimeInterval) {
         if abs(scene.player.physicsBody!.velocity.dx) > 100.0 {
             if scene.player.physicsBody!.velocity.dx > 0 {
                 scene.runAnim(scene.animSteerRight)
@@ -58,7 +58,7 @@ class Jump: GKState {
         }
     }
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is Fall.Type
     }
 }

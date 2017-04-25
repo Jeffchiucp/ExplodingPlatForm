@@ -11,7 +11,7 @@ import SpriteKit
 
 protocol GameProtocol: class  {
     
-    func addTrail(name: String) -> SKEmitterNode 
+    func addTrail(_ name: String) -> SKEmitterNode 
     func reactToLava()
 
 

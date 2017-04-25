@@ -39,12 +39,12 @@ class Lava: GKState {
         super.init()
     }
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         scene.reactToLava()
         
     }
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is Jump.Type || stateClass is Fall.Type || stateClass is Dead.Type
     }
 }

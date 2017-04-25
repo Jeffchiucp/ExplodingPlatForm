@@ -100,17 +100,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var coinRef: SKSpriteNode!
     var coinCrossScene: SKSpriteNode!
     
-    var lastItemPosition = CGPointZero
+    var lastItemPosition = CGPoint.zero
     var lastItemHeight: CGFloat = 0.0
     var levelY: CGFloat = 0.0
     let motionManager = CMMotionManager()
     var xAcceleration = CGFloat(0)
-    var lastUpdateTimeInterval: NSTimeInterval = 0
-    var deltaTime: NSTimeInterval = 0
+    var lastUpdateTimeInterval: TimeInterval = 0
+    var deltaTime: TimeInterval = 0
     var isPlaying: Bool = false
     
-    var timeSinceLastExplosion: NSTimeInterval = 0
-    var timeForNextExplosion: NSTimeInterval = 1.0
+    //var timeSinceLastExplosion: TimeInterval = 0
+    //var timeForNextExplosion: TimeInterval = 1.0
     
     var animDead: SKAction! = nil
     var animJump: SKAction! = nil
@@ -145,9 +145,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     func makeCoin() -> SKNode {
         
         
-        let animate = SKAction.animateWithTextures(coinTextures, timePerFrame: 0.2, resize: true, restore: false)
-        let forever = SKAction.repeatActionForever(animate)
-        coin.runAction(forever)
+        let animate = SKAction.animate(with: coinTextures, timePerFrame: 0.2, resize: true, restore: false)
+        let forever = SKAction.repeatForever(animate)
+        coin.run(forever)
         
         return coin
     }
@@ -203,8 +203,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             }
             
             if collectGoal == 100 {
-                playerState.enterState(Jump)
-                gameState.enterState(GameWon)
+                playerState.enter(Jump.self)
+                gameState.enter(GameWon.self)
             }
         }
         
@@ -215,7 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     var bgMusicAlarm: SKAudioNode!
     
     
-    func lavaSpeed (number: Double) -> Double {
+    func lavaSpeed (_ number: Double) -> Double {
         return sqrt(number)
     }
     
@@ -260,7 +260,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     }
     
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         
         setupNodes()
         setupLevel()
@@ -275,8 +275,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 
         playBackgroundMusic("SpaceGame.caf")
         
-        playerState.enterState(Idle)
-        gameState.enterState(WaitingForTap)
+        playerState.enter(Idle.self)
+        gameState.enter(WaitingForTap.self)
         //setupPlayer()
         animDead = setupAnimWithPrefix("Dead__00", start: 0, end: 3, timePerFrame: 0.5)
         animJump = setupAnimWithPrefix("Jump__00", start: 1, end: 9, timePerFrame: 0.2)
@@ -285,16 +285,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         animSteerRight = setupAnimWithPrefix("Glide_00", start: 1, end: 9, timePerFrame: 0.2)
 
         
-        playAgainButton.state = .Active
-        socialFeatureButton.state = .Active
-        twitterFeatureButton.state = .Active
+        playAgainButton.state = .active
+        socialFeatureButton.state = .active
+        twitterFeatureButton.state = .active
         playAgainButton.selectedHandler = {
             if let scene = GameScene(fileNamed:"GameScene") {
                 let skView = self.view!
                 skView.showsFPS = false
                 skView.showsNodeCount = false
                 skView.ignoresSiblingOrder = true
-                scene.scaleMode = .AspectFill
+                scene.scaleMode = .aspectFill
                 
                 skView.presentScene(scene)
             }
@@ -304,15 +304,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     
 
-    func setupAnimWithPrefix(prefix: String,
+    func setupAnimWithPrefix(_ prefix: String,
                              start: Int,
                              end: Int,
-                             timePerFrame: NSTimeInterval) -> SKAction {
+                             timePerFrame: TimeInterval) -> SKAction {
         var textures = [SKTexture]()
         for i in start...end {
             textures.append(SKTexture(imageNamed: "\(prefix)\(i)"))
         }
-        return SKAction.animateWithTextures(textures, timePerFrame: timePerFrame, resize: true, restore: true)
+        return SKAction.animate(with: textures, timePerFrame: timePerFrame, resize: true, restore: true)
     }
     
 
@@ -322,7 +322,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         player.physicsBody = SKPhysicsBody(circleOfRadius:
             player.size.width * 0.1)
         player.anchorPoint.y = -0.1
-        player.physicsBody!.dynamic = false
+        player.physicsBody!.isDynamic = false
         player.physicsBody!.allowsRotation = false
         player.physicsBody!.categoryBitMask = PhysicsCategory.Player
         player.physicsBody!.categoryBitMask = 0
@@ -333,8 +333,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     func setupCoreMotion() {
         motionManager.accelerometerUpdateInterval = 0.1
-        let queue = NSOperationQueue()
-        motionManager.startAccelerometerUpdatesToQueue(queue, withHandler:
+        let queue = OperationQueue()
+        motionManager.startAccelerometerUpdates(to: queue, withHandler:
             {
                 accelerometerData, error in
                 guard let accelerometerData = accelerometerData else {
@@ -347,23 +347,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     }
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event:
+    override func touchesBegan(_ touches: Set<UITouch>, with event:
         UIEvent?) {
         
         
         switch gameState.currentState {
         case is WaitingForTap:
-            gameState.enterState(WaitingForBomb)
+            gameState.enter(WaitingForBomb.self)
             // Switch to playing state
-            self.runAction(SKAction.waitForDuration(2.0),
+            self.run(SKAction.wait(forDuration: 2.0),
                            completion:{
-                            self.gameState.enterState(Playing)
+                            self.gameState.enter(Playing.self)
             })
             
         case is GameOver:
             let newScene = GameScene(fileNamed:"GameScene")
             newScene?.socialDelegate = self.socialDelegate
-            _ = SKAction.fadeInWithDuration(1.5)
+            _ = SKAction.fadeIn(withDuration: 1.5)
             
         default:
             break
@@ -376,22 +376,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     
     func bombDrop() {
-        let scaleUp = SKAction.scaleTo(1.8, duration: 0.25)
-        let scaleDown = SKAction.scaleTo(1.8, duration: 0.25)
+        let scaleUp = SKAction.scale(to: 1.8, duration: 0.25)
+        let scaleDown = SKAction.scale(to: 1.8, duration: 0.25)
         let sequence = SKAction.sequence([scaleUp, scaleDown])
-        let repeatSeq = SKAction.repeatActionForever(sequence)
-        fgNode.childNodeWithName("Bomb")!.runAction(SKAction.unhide())
-        fgNode.childNodeWithName("Bomb")!.runAction(repeatSeq)
-        runAction(SKAction.sequence([
-            SKAction.waitForDuration(2.0),
-            SKAction.runBlock(startGame)
+        let repeatSeq = SKAction.repeatForever(sequence)
+        fgNode.childNode(withName: "Bomb")!.run(SKAction.unhide())
+        fgNode.childNode(withName: "Bomb")!.run(repeatSeq)
+        run(SKAction.sequence([
+            SKAction.wait(forDuration: 2.0),
+            SKAction.run(startGame)
             ]))
     }
     func startGame() {
         //fgNode.childNodeWithName("Title")!.removeFromParent()
-        fgNode.childNodeWithName("Bomb")!.removeFromParent()
+        fgNode.childNode(withName: "Bomb")!.removeFromParent()
         isPlaying = true
-        player.physicsBody!.dynamic = true
+        player.physicsBody!.isDynamic = true
         superBoostPlayer()
     }
     
@@ -399,25 +399,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         // Set velocity based on core motion
         player.physicsBody?.velocity.dx = xAcceleration * 1000.0
         // Wrap player around edges of screen
-        var playerPosition = convertPoint(player.position,
-                                          fromNode: fgNode)
+        var playerPosition = convert(player.position,
+                                          from: fgNode)
         if playerPosition.x < -player.size.width/2 {
-            playerPosition = convertPoint(CGPoint(x: size.width +
-                player.size.width/2, y: 0.0), toNode: fgNode)
+            playerPosition = convert(CGPoint(x: size.width +
+                player.size.width/2, y: 0.0), to: fgNode)
             player.position.x = playerPosition.x
         }
         else if playerPosition.x > size.width + player.size.width/2 {
-            playerPosition = convertPoint(CGPoint(x:
-                -player.size.width/2, y: 0.0), toNode: fgNode)
+            playerPosition = convert(CGPoint(x:
+                -player.size.width/2, y: 0.0), to: fgNode)
             player.position.x = playerPosition.x
         }
         
         // Set Player State
-        if player.physicsBody?.velocity.dy < 0 {
-            playerState.enterState(Fall)
-            
+        if player.physicsBody!.velocity.dy < CGFloat(0.0){
+            playerState.enter(Fall.self)
         } else {
-            playerState.enterState(Jump)
+            playerState.enter(Jump.self)
         }
     }
     
@@ -435,31 +434,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             x: cameraNode.position.x - 500,
             y: cameraNode.position.y)
     }
-    override func update(currentTime: NSTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         if lastUpdateTimeInterval > 0 {
             deltaTime = currentTime - lastUpdateTimeInterval
         } else {
             deltaTime = 0
         }
         lastUpdateTimeInterval = currentTime
-        if paused { return }
-        gameState.updateWithDeltaTime(deltaTime)
-        playerState.updateWithDeltaTime(deltaTime)
+        if isPaused { return }
+        gameState.update(deltaTime: deltaTime)
+        playerState.update(deltaTime: deltaTime)
     }
     
-    func setCameraPosition(position: CGPoint) {
+    func setCameraPosition(_ position: CGPoint) {
         cameraNode.position = CGPoint(
             x: position.x - overlapAmount()/2,
             y: position.y)
     }
     func updateCamera() {
         // 1
-        let cameraTarget = convertPoint(player.position,
-                                        fromNode: fgNode)
+        let cameraTarget = convert(player.position,
+                                        from: fgNode)
         // 2
         var targetPosition = CGPoint(x: getCameraPosition().x,
                                      y: cameraTarget.y - (scene!.view!.bounds.height * 0.40))
-        let lavaPos = convertPoint(lava.position, fromNode: fgNode)
+        let lavaPos = convert(lava.position, from: fgNode)
         targetPosition.y = max(targetPosition.y, lavaPos.y)
         
         //Lerp Camera
@@ -476,13 +475,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     //    adOverlayNode() takes the name of a scene file (such as Platform5Across) and looks for a node called "Overlay" inside, and then returns that node. Remember that you created an "Overlay" node in both of your scenes so far, and all the platforms/coins were children of this.
     
-    func loadOverlayNode(fileName: String) -> SKSpriteNode {
+    func loadOverlayNode(_ fileName: String) -> SKSpriteNode {
         let overlayScene = SKScene(fileNamed: fileName)!
         let contentTemplateNode =
-            overlayScene.childNodeWithName("Overlay")
+            overlayScene.childNode(withName: "Overlay")
         return contentTemplateNode as! SKSpriteNode
     }
-    func createOverlayNode(nodeType: SKSpriteNode, flipX: Bool) {
+    func createOverlayNode(_ nodeType: SKSpriteNode, flipX: Bool) {
         let platform = nodeType.copy() as! SKSpriteNode
         lastItemPosition.y = lastItemPosition.y +
             (lastItemHeight + (platform.size.height / 2.0))
@@ -605,23 +604,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     
     func setupNodes() {
-        let worldNode = childNodeWithName("World")!
-        bgNode = worldNode.childNodeWithName("Background")!
-        background = bgNode.childNodeWithName("Overlay")!.copy() as! SKNode
+        let worldNode = childNode(withName: "World")!
+        bgNode = worldNode.childNode(withName: "Background")!
+        background = bgNode.childNode(withName: "Overlay")!.copy() as! SKNode
         backHeight = background.calculateAccumulatedFrame().height
-        fgNode = worldNode.childNodeWithName("Foreground")!
-        player = fgNode.childNodeWithName("Player") as! SKSpriteNode
-        lava = fgNode.childNodeWithName("Lava") as! SKSpriteNode
+        fgNode = worldNode.childNode(withName: "Foreground")!
+        player = fgNode.childNode(withName: "Player") as! SKSpriteNode
+        lava = fgNode.childNode(withName: "Lava") as! SKSpriteNode
         setupLava()
-        fgNode.childNodeWithName("Bomb")?.runAction(SKAction.hide())
+        fgNode.childNode(withName: "Bomb")?.run(SKAction.hide())
         addChild(cameraNode)
         camera = cameraNode
 
         // Squash and Stretch
-        let squishAction = SKAction.scaleXTo(1, y: 1.0, duration: 0.25)
-        squishAction.timingMode = SKActionTimingMode.EaseInEaseOut
-        let stretchAction = SKAction.scaleXTo(0.85, y: 1.15, duration: 0.25)
-        stretchAction.timingMode = SKActionTimingMode.EaseInEaseOut
+        let squishAction = SKAction.scaleX(to: 1, y: 1.0, duration: 0.25)
+        squishAction.timingMode = SKActionTimingMode.easeInEaseOut
+        let stretchAction = SKAction.scaleX(to: 0.85, y: 1.15, duration: 0.25)
+        stretchAction.timingMode = SKActionTimingMode.easeInEaseOut
         
         squishAndStretch = SKAction.sequence([squishAction, stretchAction])
         
@@ -630,84 +629,84 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 //        healthBar.removeFromParent()
 
         func collectGoalUpdate() {
-            let collectGoal = NSUserDefaults().integerForKey("collectGoal")
+            let collectGoal = UserDefaults().integer(forKey: "collectGoal")
             if collectGoal == 0 {
                 collectGoalLabel.text = "No collection "
             } else {
-                NSUserDefaults().setInteger(collectGoal, forKey: "collectGoal")
+                UserDefaults().set(collectGoal, forKey: "collectGoal")
             }
             
-            collectGoalLabel.text = "You have: " + NSUserDefaults().integerForKey("collectGoal").description
+            collectGoalLabel.text = "You have: " + UserDefaults().integer(forKey: "collectGoal").description
         }
         
         // KunaiCount
-        KunaiCount = childNodeWithName("KunaiCount") as! SKSpriteNode
+        KunaiCount = childNode(withName: "KunaiCount") as! SKSpriteNode
 
         KunaiCount.position.x = 0
         KunaiCount.position.y = 650
         KunaiCount.zPosition = 500
         KunaiCount.removeFromParent()
         camera!.addChild(KunaiCount)
-        KunaiCount.hidden = true
+        KunaiCount.isHidden = true
         
-        collectGoalLabel = childNodeWithName("collectGoal") as! SKLabelNode
-        collectGoalLabel.fontSize = 150
-        collectGoalLabel.horizontalAlignmentMode = .Left
-        collectGoalLabel.verticalAlignmentMode = .Top
+        collectGoalLabel = childNode(withName: "collectGoal") as! SKLabelNode
+        collectGoalLabel.fontSize = 100
+        collectGoalLabel.horizontalAlignmentMode = .left
+        collectGoalLabel.verticalAlignmentMode = .top
         collectGoalLabel.position.x = -100
         collectGoalLabel.position.y = 700
         
         collectGoalLabel.fontName = "Pixel Coleco"
-        collectGoalLabel.fontColor = SKColor.yellowColor()
+        collectGoalLabel.fontColor = SKColor.yellow
         collectGoalLabel.zPosition = 500
         collectGoalLabel.removeFromParent()
         camera!.addChild(collectGoalLabel)
-        collectGoalLabel.hidden = false
+        collectGoalLabel.isHidden = true
 
         
-        scoreLabel = childNodeWithName("score1") as! SKLabelNode
-        scoreLabel.fontSize = 150
-        scoreLabel.horizontalAlignmentMode = .Left
-        scoreLabel.verticalAlignmentMode = .Top
+        scoreLabel = childNode(withName: "score1") as! SKLabelNode
+        scoreLabel.fontSize = 100
+        scoreLabel.horizontalAlignmentMode = .left
+        scoreLabel.verticalAlignmentMode = .top
         scoreLabel.position.x = -100
         scoreLabel.position.y = 900
         
         scoreLabel.fontName = "Pixel Coleco"
-        scoreLabel.fontColor = SKColor.yellowColor()
+        scoreLabel.fontColor = SKColor.yellow
         scoreLabel.zPosition = 500
         scoreLabel.removeFromParent()
         camera!.addChild(scoreLabel)
         
         //added highScoreLabel
-        highScoreLabel = childNodeWithName("highScore") as! SKLabelNode
-        highScoreLabel.fontSize = 100
+        highScoreLabel = childNode(withName: "highScore") as! SKLabelNode
+        highScoreLabel.fontSize = 80
 //        highScoreLabel.horizontalAlignmentMode = .Left
 //        highScoreLabel.verticalAlignmentMode = .Top
-        highScoreLabel.position.x = 150
+        highScoreLabel.position.x = 100
         highScoreLabel.position.y = 300
-        highScoreLabel.fontColor = SKColor.yellowColor()
+        highScoreLabel.fontColor = SKColor.yellow
         highScoreLabel.fontName = "Pixel Coleco"
 
         highScoreLabel.zPosition = 200
         highScoreLabel.removeFromParent()
         camera!.addChild(highScoreLabel)
-        highScoreLabel.hidden = true
+        highScoreLabel.isHidden = true
         
         //gameOverLabel
         //Twitter Button
-        twitterFeatureButton = self.childNodeWithName("//twitterFeatureButton") as! MSButtonNode
+        twitterFeatureButton = self.childNode(withName: "//twitterFeatureButton") as! MSButtonNode
         twitterFeatureButton.zPosition = 300
         twitterFeatureButton.removeFromParent()
         camera!.addChild(twitterFeatureButton)
         
         /// Facebook Button
-        socialFeatureButton = self.childNodeWithName("//socialFeatureButton") as! MSButtonNode
+        socialFeatureButton = self.childNode(withName: "//socialFeatureButton") as! MSButtonNode
         socialFeatureButton.zPosition = 300
         socialFeatureButton.removeFromParent()
         camera!.addChild(socialFeatureButton)
-        socialFeatureButton.hidden = true
+        socialFeatureButton.isHidden = true
         
-        twitterFeatureButton.hidden = true
+        twitterFeatureButton.isHidden = true
         print( "Twitter Feature Button ________")
         
         
@@ -726,49 +725,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             
         }
 
-        playAgainButton = self.childNodeWithName("//playAgainButton") as! MSButtonNode
-        playAgainButton.zPosition = 200
+        playAgainButton = self.childNode(withName: "//playAgainButton") as! MSButtonNode
+        playAgainButton.zPosition = 500
         playAgainButton.removeFromParent()
         camera!.addChild(playAgainButton)
-        playAgainButton.hidden = true
+        playAgainButton.isHidden = true
         playAgainButton.position.x = 200
 
-        ShareFeatureLabel = childNodeWithName("ShareFeatureLabel") as! SKLabelNode
+        ShareFeatureLabel = childNode(withName: "ShareFeatureLabel") as! SKLabelNode
         ShareFeatureLabel.fontSize = 100
         ShareFeatureLabel.position.x = 160
-        ShareFeatureLabel.position.y = -100
-        ShareFeatureLabel.fontColor = SKColor.whiteColor()
+        ShareFeatureLabel.position.y = 100
+        ShareFeatureLabel.fontColor = SKColor.white
         ShareFeatureLabel.fontName = "Pixel Coleco"
         ShareFeatureLabel.zPosition = 300
         ShareFeatureLabel.removeFromParent()
         camera!.addChild(ShareFeatureLabel)
-        ShareFeatureLabel.hidden = true
+        ShareFeatureLabel.isHidden = true
         
-        tapAnyWhereLabel = childNodeWithName("TapAnyWhere") as! SKLabelNode
+        tapAnyWhereLabel = childNode(withName: "TapAnyWhere") as! SKLabelNode
         tapAnyWhereLabel.fontSize = 60
         
-        tapAnyWhereLabel.position.x = 160
-        tapAnyWhereLabel.position.y = 100
-        tapAnyWhereLabel.fontColor = SKColor.whiteColor()
+        tapAnyWhereLabel.position.x = 130
+        tapAnyWhereLabel.position.y = 50
+        tapAnyWhereLabel.fontColor = SKColor.yellow
         tapAnyWhereLabel.fontName = "Pixel Coleco"
         
         tapAnyWhereLabel.zPosition = 300
         tapAnyWhereLabel.removeFromParent()
         camera!.addChild(tapAnyWhereLabel)
-        tapAnyWhereLabel.hidden = false
+        tapAnyWhereLabel.isHidden = false
         
-        gameOverLabel = childNodeWithName("gameOver") as! SKLabelNode
-        gameOverLabel.fontSize = 200
+        gameOverLabel = childNode(withName: "gameOver") as! SKLabelNode
+        gameOverLabel.fontSize = 100
         
         gameOverLabel.position.x = 160
         gameOverLabel.position.y = 100
-        gameOverLabel.fontColor = SKColor.blackColor()
+        gameOverLabel.fontColor = SKColor.yellow
         gameOverLabel.fontName = "Pixel Coleco"
         
         gameOverLabel.zPosition = 300
         gameOverLabel.removeFromParent()
         camera!.addChild(gameOverLabel)
-        gameOverLabel.hidden = true
+        gameOverLabel.isHidden = true
         
 
         //heartRef = loadOverlayNode("heartRef")
@@ -797,23 +796,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     
     func playerScoreUpdate() {
-        _ = NSUserDefaults().integerForKey("highscore")
+        _ = UserDefaults().integer(forKey: "highscore")
         if scorePoint == 0 {
             highScoreLabel.text = " No High Score: "
         } else {
-            NSUserDefaults().setInteger(scorePoint, forKey: "highscore")
+            UserDefaults().set(scorePoint, forKey: "highscore")
         }
         
-        highScoreLabel.text = "High Score: " + NSUserDefaults().integerForKey("highscore").description
+        highScoreLabel.text = "High Score: " + UserDefaults().integer(forKey: "highscore").description
     }
 
     
     // load up the coin
-    func loadCoinOverlayNode(fileName: String) -> SKSpriteNode {
+    func loadCoinOverlayNode(_ fileName: String) -> SKSpriteNode {
         let overlayScene = SKScene(fileNamed: fileName)!
-        let contentTemplateNode = overlayScene.childNodeWithName("Overlay")
+        let contentTemplateNode = overlayScene.childNode(withName: "Overlay")
         
-        contentTemplateNode!.enumerateChildNodesWithName("*", usingBlock: {
+        contentTemplateNode!.enumerateChildNodes(withName: "*", using: {
             (node, stop) in
             let coinPos = node.position
             let ref: SKSpriteNode
@@ -832,7 +831,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     
     func setupLava() {
-        lava = fgNode.childNodeWithName("Lava") as! SKSpriteNode
+        lava = fgNode.childNode(withName: "Lava") as! SKSpriteNode
         let emitter = SKEmitterNode(fileNamed: "Lava.sks")!
         emitter.particlePositionRange = CGVector(dx: size.width * 1.125, dy:
             0.0)
@@ -847,7 +846,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 
     
     //falling off the platform like that.
-    func setPlayerVelocity(amount:CGFloat) {
+    func setPlayerVelocity(_ amount:CGFloat) {
         let gain: CGFloat = 1.5
         player.physicsBody!.velocity.dy =
             max(player.physicsBody!.velocity.dy, amount * gain)
@@ -880,8 +879,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         //runAction(soundExplosions[randomNum])
         // 3
         let explode = explosion(0.25 * CGFloat(randomNum + 1))
-        explode.position = convertPoint(screenPos, toNode: bgNode)
-        explode.runAction(SKAction.removeFromParentAfterDelay(2.0))
+        explode.position = convert(screenPos, to: bgNode)
+        explode.run(SKAction.removeFromParentAfterDelay(2.0))
         //bgNode.addChild(explode)
         
         if randomNum == 3 {
@@ -902,7 +901,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         lastItemPosition = itemPosition
         lastItemHeight = initialPlatform.size.height / 2.0
         // Create random level
-        levelY = bgNode.childNodeWithName("Overlay")!.position.y + backHeight
+        levelY = bgNode.childNode(withName: "Overlay")!.position.y + backHeight
         while lastItemPosition.y < levelY {
             addRandomOverlayNode()
         }
@@ -912,12 +911,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
 /// track the time interval  - gameStart
 /// NSDate(0.timeIntervalSince1970 - gameStart
     
-    func updateLava(dt: NSTimeInterval) {
+    func updateLava(_ dt: TimeInterval) {
         // 1
         let lowerLeft = CGPoint(x: 0, y: cameraNode.position.y -
             (size.height / 2))
         // 2
-        let visibleMinYFg = scene!.convertPoint(lowerLeft, toNode:
+        let visibleMinYFg = scene!.convert(lowerLeft, to:
             fgNode).y
         // 3
         let lavaVelocity = CGPoint(x: 0, y: 120)
@@ -930,67 +929,56 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     }
     
     
-    //        let lowerLeft = CGPoint(x: 0, y: cameraNode.position.y - (size.height / 2))
-    //        let visibleMinYFg = scene!.convertPoint(lowerLeft, toNode: fgNode).y
-    //        let healthVelocity = CGPoint(x: 0, y: 220)
-    //        let healthStep = healthVelocity * CGFloat(dt)
-    //        var cameraPosition = health.position + healthStep
-    //        cameraPosition.y = max(cameraPosition.y, (visibleMinYFg - 125.0))
-    //        health.position = cameraPosition
-    
-    
+
     // collision with the lava
     func updateCollisionLava() {
         if player.position.y < lava.position.y + 200 {
-            playerState.enterState(Lava)
+            playerState.enter(Lava.self)
             
-            //changing the player color
-            //player.runAction()
-            
-            player.runAction(SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50))
-            print ("!!!!!!!!!Red ")
+            player.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
+            print ("Red ")
 
-            _ = SKAction.waitForDuration(0.5)
+            _ = SKAction.wait(forDuration: 0.5)
             //let fadeAway = SKAction.fadeOutWithDuration(1)
             //let remove = SKAction.removeFromParent()
-            let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
-            let whitecolor = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.50)
+            let redColor = SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50)
+            let whitecolor = SKAction.colorize(with: UIColor.white, colorBlendFactor: 1.0, duration: 0.50)
 
             let lavaDamageColor = SKAction.sequence([redColor, whitecolor])
-            player.runAction(lavaDamageColor)
+            player.run(lavaDamageColor)
             
             //FixMe
             /// Calling protcol
             if healthCounter.isDead(){
-                playerState.enterState(Dead)
-                gameState.enterState(GameOver)
+                playerState.enter(Dead.self)
+                gameState.enter(GameOver.self)
 
             } else if healthCounter.life == 1 {
-                let redColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50)
+                let redColor = SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50)
                 let DagerHealth = SKAction.sequence([redColor])
-                player.runAction(DagerHealth)
+                player.run(DagerHealth)
             }
         }
     }
     
     
     func setUpHighScoreLabel() {
-        let fadeIn = SKAction.fadeInWithDuration(1.5)
+        let fadeIn = SKAction.fadeIn(withDuration: 1.5)
         let sequence = SKAction.sequence([fadeIn])
-        highScoreLabel.runAction(sequence)
+        highScoreLabel.run(sequence)
         addChild(highScoreLabel)
         
     }
     
-    func setUpExplosion(point: CGPoint) {
+    func setUpExplosion(_ point: CGPoint) {
         if let explosion = SKEmitterNode(fileNamed: "explosion") {
             explosion.position = point
             addChild(explosion)
-            let fadeAway = SKAction.fadeOutWithDuration(0.5)
-            let wait = SKAction.waitForDuration(0.8)
+            let fadeAway = SKAction.fadeOut(withDuration: 0.5)
+            let wait = SKAction.wait(forDuration: 0.8)
             let remove = SKAction.removeFromParent()
             let seq = SKAction.sequence([wait, fadeAway, wait, remove])
-            explosion.runAction(seq)
+            explosion.run(seq)
             
         }
     }
@@ -998,18 +986,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     // adding this right after updateCollisionLava
     //method checks periodically to see when to set off an explosion by comparing the last explosion time with a randomly chosen time in the future.
     
-    func updateExplosions(dt: NSTimeInterval) {
-        timeSinceLastExplosion += dt
-        if timeSinceLastExplosion > timeForNextExplosion {
-            timeForNextExplosion = NSTimeInterval(CGFloat.random(min: 0.1, max: 0.5))
-            timeSinceLastExplosion = 0
-            
-            createRandomExplosion()
-        }
-    }
+
+    
     // Contact Collision
     // Marks: Contacts
-    func didBeginContact(contact: SKPhysicsContact) {
+    func didBegin(_ contact: SKPhysicsContact) {
         let other = contact.bodyA.categoryBitMask ==
             PhysicsCategory.Player ? contact.bodyB : contact.bodyA
         //scoreLabel.text = String(scorePoint)
@@ -1050,15 +1031,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         case PhysicsCategory.Heart:
             if let heart = other.node as? SKSpriteNode {
                 emitParticles("CollectSpecial", sprite: heart)
-                let yellowColor = SKAction.colorizeWithColor(UIColor.yellowColor(), colorBlendFactor: 1.0, duration: 1.50)
+                let yellowColor = SKAction.colorize(with: UIColor.yellow, colorBlendFactor: 1.0, duration: 1.50)
                 
-                let wait = SKAction.waitForDuration(0.5)
-                let whitecolor = SKAction.colorizeWithColor(UIColor.whiteColor(), colorBlendFactor: 1.0, duration: 0.50)
+                let wait = SKAction.wait(forDuration: 0.5)
+                let whitecolor = SKAction.colorize(with: UIColor.white, colorBlendFactor: 1.0, duration: 0.50)
                 scorePoint += 1000
                 scoreLabel.text = String(scorePoint)
                 let HealthYellow = SKAction.sequence([yellowColor, wait, whitecolor
                     ])
-                player.runAction(HealthYellow)
+                player.run(HealthYellow)
                 increaseHealthCounter()
             }
             
@@ -1098,17 +1079,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             break; }
     }
     
-    func platformAction(sprite: SKSpriteNode, breakable: Bool) {
+    func platformAction(_ sprite: SKSpriteNode, breakable: Bool) {
         let amount = CGPoint(x: 0, y: -75.0)
         let action = SKAction.screenShakeWithNode(sprite, amount: amount, oscillations: 10, duration: 2.0)
-        sprite.runAction(action)
+        sprite.run(action)
         
         if breakable == true {
             emitParticles("BrokenPlatform", sprite: sprite)
         }
     }
     
-    func addTrail(name: String) -> SKEmitterNode {
+    func addTrail(_ name: String) -> SKEmitterNode {
         let trail = SKEmitterNode(fileNamed: name)!
         trail.targetNode = fgNode
         player.addChild(trail)
@@ -1117,54 +1098,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
     
     func reactToLava() {
         let smokeTrail = addTrail("SmokeTrail")
-        self.runAction(SKAction.sequence([
-            SKAction.waitForDuration(1.0),
-            SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50),
-            SKAction.runBlock() {
+        self.run(SKAction.sequence([
+            SKAction.wait(forDuration: 1.0),
+            SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50),
+            SKAction.run() {
                 self.removeTrail(smokeTrail)
             }
             ]))
         superBoostPlayer()
         removeHeartCounter()
-        gameState.enterState(Jump)
+        gameState.enter(Jump.self)
         
     }
-    func removeTrail(trail: SKEmitterNode) {
+    func removeTrail(_ trail: SKEmitterNode) {
         trail.numParticlesToEmit = 1
-        trail.runAction(SKAction.removeFromParentAfterDelay(1.0))
+        trail.run(SKAction.removeFromParentAfterDelay(1.0))
     }
     
     //screenShake by amount
-    func screenShakeByAmt(amt: CGFloat) {
-        let worldNode = childNodeWithName("World")!
+    func screenShakeByAmt(_ amt: CGFloat) {
+        let worldNode = childNode(withName: "World")!
         worldNode.position = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
-        worldNode.removeActionForKey("shake")
+        worldNode.removeAction(forKey: "shake")
         
         // introduce amount
         let amount = CGPoint(x: 0, y: -(amt * gameGain))
         let action = SKAction.screenShakeWithNode(worldNode, amount: amount, oscillations: 10, duration: 2.0)
-        worldNode.runAction(action, withKey: "shake")
+        worldNode.run(action, withKey: "shake")
     }
     
     // Normal Coin Animation
-    func emitParticles(name: String, sprite: SKSpriteNode) {
-        let pos = fgNode.convertPoint(sprite.position, fromNode: sprite.parent!)
+    func emitParticles(_ name: String, sprite: SKSpriteNode) {
+        let pos = fgNode.convert(sprite.position, from: sprite.parent!)
         let particles = SKEmitterNode(fileNamed: name)!
         particles.position = pos
         particles.zPosition = 3
         fgNode.addChild(particles)
-        particles.runAction(SKAction.removeFromParentAfterDelay(1.0))
-        sprite.runAction(SKAction.sequence([SKAction.scaleTo(0.0, duration: 0.5), SKAction.removeFromParent()]))
+        particles.run(SKAction.removeFromParentAfterDelay(1.0))
+        sprite.run(SKAction.sequence([SKAction.scale(to: 0.0, duration: 0.5), SKAction.removeFromParent()]))
     }
     
-    func runAnim(anim: SKAction) {
+    func runAnim(_ anim: SKAction) {
         if curAnim == nil || curAnim! != anim {
-            player.removeActionForKey("anim")
-            player.runAction(anim, withKey: "anim")
+            player.removeAction(forKey: "anim")
+            player.run(anim, withKey: "anim")
             curAnim = anim
         }
     }
-    func playBackgroundMusic(name: String) {
+    func playBackgroundMusic(_ name: String) {
         var delay = 0.0
         if backgroundMusic != nil {
             backgroundMusic.removeFromParent()
@@ -1179,14 +1160,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
             delay = 0.1
         }
         
-        runAction(SKAction.waitForDuration(delay)) {
+        run(SKAction.wait(forDuration: delay), completion: {
             self.backgroundMusic = SKAudioNode(fileNamed: name) as? SKAudioNode
             self.backgroundMusic.autoplayLooped = true
             self.addChild(self.backgroundMusic)
-        }
+        }) 
     }
     
-    func explosion(intensity: CGFloat) -> SKEmitterNode {
+    func explosion(_ intensity: CGFloat) -> SKEmitterNode {
         let emitter = SKEmitterNode()
         let particleTexture = SKTexture(imageNamed: "spark")
         
@@ -1205,15 +1186,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, GameProtocol {
         emitter.particleScaleRange = 2.0
         emitter.particleScaleSpeed = -1.5
         emitter.particleColorBlendFactor = 1
-        emitter.particleBlendMode = SKBlendMode.Add
-        emitter.runAction(SKAction.removeFromParentAfterDelay(2.0))
+        emitter.particleBlendMode = SKBlendMode.add
+        emitter.run(SKAction.removeFromParentAfterDelay(2.0))
         
         let sequence = SKKeyframeSequence(capacity: 5)
-        sequence.addKeyframeValue(SKColor.whiteColor(), time: 0)
-        sequence.addKeyframeValue(SKColor.yellowColor(), time: 0.10)
-        sequence.addKeyframeValue(SKColor.orangeColor(), time: 0.15)
-        sequence.addKeyframeValue(SKColor.redColor(), time: 0.75)
-        sequence.addKeyframeValue(SKColor.blackColor(), time: 0.95)
+        sequence.addKeyframeValue(SKColor.white, time: 0)
+        sequence.addKeyframeValue(SKColor.yellow, time: 0.10)
+        sequence.addKeyframeValue(SKColor.orange, time: 0.15)
+        sequence.addKeyframeValue(SKColor.red, time: 0.75)
+        sequence.addKeyframeValue(SKColor.black, time: 0.95)
         
         emitter.particleColorSequence = sequence
         

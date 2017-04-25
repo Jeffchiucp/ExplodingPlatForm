@@ -9,7 +9,8 @@ target 'DroppingCharge' do
 
   # Pods for DroppingCharge
 
-
+pod 'Fabric'
+pod 'Crashlytics'
 pod 'Firebase/Core'
 pod 'Firebase/AdMob'
 end

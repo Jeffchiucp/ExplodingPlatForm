@@ -39,39 +39,39 @@ class WaitingForBomb: GKState {
         super.init()
     }
     
-    override func didEnterWithPreviousState(
-        previousState: GKState?) {
+    override func didEnter(
+        from previousState: GKState?) {
         if previousState is WaitingForTap {
             
             print("_________________________waiting for bomb________")
             // Scale out title & ready label
-            let scale = SKAction.scaleTo(0, duration: 0.4)
+            let scale = SKAction.scale(to: 0, duration: 0.4)
             //scene.fgNode.childNodeWithName("Title")!.runAction(scale)
-            scene.fgNode.childNodeWithName("Ready")!.runAction(
+            scene.fgNode.childNode(withName: "Ready")!.run(
                 SKAction.sequence(
-                    [SKAction.waitForDuration(0.2), scale]))
+                    [SKAction.wait(forDuration: 0.2), scale]))
             
             // Bounce bomb
-            let scaleUp = SKAction.scaleTo(1.6, duration: 0.25)
-            let scaleDown = SKAction.scaleTo(1.7 , duration: 0.25)
+            let scaleUp = SKAction.scale(to: 1.6, duration: 0.25)
+            let scaleDown = SKAction.scale(to: 1.7 , duration: 0.25)
             let sequence = SKAction.sequence([scaleUp, scaleDown])
-            let repeatSeq = SKAction.repeatActionForever(sequence)
-            scene.fgNode.childNodeWithName("Bomb")!.runAction(
+            let repeatSeq = SKAction.repeatForever(sequence)
+            scene.fgNode.childNode(withName: "Bomb")!.run(
                 SKAction.unhide())
-            scene.fgNode.childNodeWithName("Bomb")!.runAction(
+            scene.fgNode.childNode(withName: "Bomb")!.run(
                 repeatSeq)
             
             
         }
     }
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is Playing.Type
     }
     
-    override func willExitWithNextState(nextState: GKState) {
+    override func willExit(to nextState: GKState) {
         if nextState is Playing {
-            let bomb = scene.fgNode.childNodeWithName("Bomb")!
+            let bomb = scene.fgNode.childNode(withName: "Bomb")!
             let explosion = scene.explosion(4.0)
             explosion.position = bomb.position
             scene.fgNode.addChild(explosion)

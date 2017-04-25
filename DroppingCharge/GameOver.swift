@@ -39,20 +39,20 @@ class GameOver: GKState {
         super.init()
     }
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         if previousState is Playing {
             _ = SKSpriteNode(imageNamed: "HighestScore")
             if scene.scorePoint == 0 {
-            scene.highScoreLabel.hidden = true
+            scene.highScoreLabel.isHidden = true
             }
-            scene.highScoreLabel.hidden = false
-            scene.tapAnyWhereLabel.hidden = true
+            scene.highScoreLabel.isHidden = false
+            scene.tapAnyWhereLabel.isHidden = true
 
-            scene.playAgainButton.hidden = false
-            scene.gameOverLabel.hidden = false
+            scene.playAgainButton.isHidden = false
+            scene.gameOverLabel.isHidden = false
             
-            scene.socialFeatureButton.hidden = false
-            scene.twitterFeatureButton.hidden = false
+            scene.socialFeatureButton.isHidden = false
+            scene.twitterFeatureButton.isHidden = false
             print("GameOver")
 
             
@@ -62,7 +62,7 @@ class GameOver: GKState {
 
     
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is WaitingForTap.Type
     }
 }

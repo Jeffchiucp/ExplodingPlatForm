@@ -15,13 +15,35 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.5</string>
+	<string>5.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3.5</string>
+	<string>5.3</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>2fa76459a602e5e63d6d32fa9070b4678c1003d7</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>My description about why I need this capability</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>My description about why I need this capability</string>
+	<key>NSCameraUsageDescription</key>
+	<string>My description about why I need this capability</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library Access Warning</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Minecraftory.ttf</string>

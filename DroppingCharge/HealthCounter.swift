@@ -12,7 +12,7 @@ import SpriteKit
 class HealthCounter: SKNode{
 
     // synch up the life and Heart
-    // isDead should also check the array is empty
+    // func isDead should also check the array is empty
     // when to remove my array
     // remove it out of array, then it's good
     
@@ -46,6 +46,7 @@ class HealthCounter: SKNode{
     }
     
     /// - remove 1 heart  */
+    // parent class from the GameScene//
     func removeHeart(){
         _life -= 1
         hearts.last!.removeFromParent()
@@ -69,7 +70,9 @@ class HealthCounter: SKNode{
     }
     
     // set up the array that counts the number of health and hearts */
-
+    // use the delegate method
+    // addHeart method
+    
     func heartGenerator(){
         if isMaxHealth() {
             self.removeHeart()

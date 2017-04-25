@@ -39,26 +39,25 @@ class Playing: GKState {
         super.init()
     }
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         if previousState is WaitingForBomb {
-            scene.player.physicsBody!.dynamic = true
+            scene.player.physicsBody!.isDynamic = true
             scene.superBoostPlayer()
             print("playState")
-            scene.tapAnyWhereLabel.hidden = true
+            scene.tapAnyWhereLabel.isHidden = true
 
         }
     }
     
-    override func updateWithDeltaTime(seconds: NSTimeInterval) {
+    override func update(deltaTime seconds: TimeInterval) {
         scene.updateCamera()
         scene.updateLevel()
         scene.updatePlayer()
         scene.updateLava(seconds)
-        scene.updateExplosions(seconds)
         scene.updateCollisionLava()
     }
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is GameOver.Type || stateClass is GameWon.Type
         
     }

@@ -47,7 +47,7 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
     
     @IBOutlet weak var bannerView: GADBannerView!
     
-    func loadScene(inScene:SKScene?) -> SKScene? {
+    func loadScene(_ inScene:SKScene?) -> SKScene? {
         if let scene = inScene {
             
             // Configure the view.
@@ -59,7 +59,7 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .aspectFill
             
             skView.presentScene(scene)
             return scene
@@ -72,7 +72,7 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
         print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
         bannerView.adUnitID = "ca-app-pub-9213470812256501/3639736473"
         bannerView.rootViewController = self
-        bannerView.loadRequest(GADRequest())
+        bannerView.load(GADRequest())
 
         //        if let scene = CharacterScene(fileNamed:"CharacterScene") {
         // MainScene
@@ -82,15 +82,15 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
         }
     }
 
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return true
     }
 
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
         } else {
-            return .All
+            return .all
         }
     }
 
@@ -99,22 +99,22 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
         // Release any cached data, images, etc that aren't in use.
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
     
     func postToTwitter() {
         let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        vc.setInitialText("Posting to Twitter. Check out my Highests Score at Ninja Jumping Quest")
+        vc?.setInitialText("Posting to Twitter. Check out my Highests Score at Ninja Jumping Quest")
         // vc.addImage(UIImage!) // Add an image
         // vc.addURL(NSURL!) // Add a URL
-        presentViewController(vc, animated: true, completion: nil)
+        present(vc!, animated: true, completion: nil)
     }
     
     func postToFaceBook() {
         let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-        vc.setInitialText("Posting to FaceBook. Check out my Highests Score at Ninja Jumping Quest")
+        vc?.setInitialText("Posting to FaceBook. Check out my Highests Score at Ninja Jumping Quest")
 //        UIGraphicsBeginImageContext(view.frame.size)
 //        let context = UIGraphicsGetCurrentContext()!
 //        view.layer.drawInContext(context)
@@ -122,7 +122,7 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
 //        vc.addImage(image) // Add an image
 //        let NSURL = "https://itunes.apple.com/us/app/ninja-jumping-quest/id1139367120"
 //        vc.addURL(NSURL!) // Add a URL
-        presentViewController(vc, animated: true, completion: nil)
+        present(vc!, animated: true, completion: nil)
     }
     
     func sendMessage() {
@@ -130,11 +130,11 @@ class GameViewController: UIViewController, MFMessageComposeViewControllerDelega
         messageVC.body = "Your message string"
         messageVC.recipients = []
         messageVC.messageComposeDelegate = self
-        presentViewController(messageVC, animated: true, completion: nil)
+        present(messageVC, animated: true, completion: nil)
         
     }
     
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         
         
     }

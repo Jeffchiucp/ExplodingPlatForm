@@ -1,4 +1,7 @@
 PODS:
+  - Crashlytics (3.7.3):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.7)
   - Firebase/AdMob (3.4.0):
     - Firebase/Analytics
     - Google-Mobile-Ads-SDK (= 7.9.1)
@@ -20,10 +23,14 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - Firebase/AdMob
   - Firebase/Core
 
 SPEC CHECKSUMS:
+  Crashlytics: 76f6beaff70acf226139582c09c78461597c2b98
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   Firebase: 754562547af419cc2f4b15247fee419081924bc2
   FirebaseAnalytics: 228be2991cb28efb96cdafc4d62f64680e615c69
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
@@ -32,6 +39,6 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
 
-PODFILE CHECKSUM: 80fedf0fd118132b236ca92d6ad29e029eb2fa39
+PODFILE CHECKSUM: 6d76942e2476e461d62eaa67b006dc0b383bb5b9
 
 COCOAPODS: 1.0.1
